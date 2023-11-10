@@ -1,0 +1,49 @@
+body{
+    background: rgb(007,137,157);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    opacity: 1;
+    align-content: center;
+}
+html {
+    font-family: Arial, sans-serif;
+    background-color: rgb(177,196,077);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1 {
+    font-size: 1.5em;
+    color: rgb(036,050,088);
+    text-align: center;
+    opacity: 1;
+}
+#LoginForm
+{
+
+}
+#LoginForm input {
+    opacity: 80%;
+    width: 275px;
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(247,191,099);
+    border:0;
+}
+#LoginForm button{
+    opacity: 1;
+    width: 145px;
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(119, 247, 99);
+    border:0;
+}
