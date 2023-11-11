@@ -5,6 +5,7 @@ const Link2Display = document.getElementById("Link2Display");
 const Link3Display = document.getElementById("Link3Display");
 const Link4Display = document.getElementById("Link4Display");
 const Link5Display = document.getElementById("Link5Display");
+var advancedsearch=true;
 document.addEventListener("DOMContentLoaded", function () {
     var defaultpos=0;
     switch(page){
@@ -91,6 +92,16 @@ document.addEventListener("DOMContentLoaded", function () {
         page=5;
         loadPage5();
     });
+    document.getElementById("advancedSearch").addEventListener("click",(event) => {
+        if(advancedsearch){
+            document.getElementById("advSear").style.display="flex";
+            advancedsearch=false;
+        }
+        else{
+            document.getElementById("advSear").style.display="none";
+            advancedsearch=true;
+        }
+    });
 });
 /*
 function load(){
@@ -163,6 +174,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"高等数学",
                     "CourseId":"1",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":true,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":1,
                         "starttime":1,
@@ -176,6 +192,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"大学物理",
                     "CourseId":"2",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":false,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":2,
                         "starttime":1,
@@ -189,6 +210,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"线性代数",
                     "CourseId":"3",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":true,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":1,
                         "starttime":1,
@@ -202,6 +228,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"高等数学",
                     "CourseId":"4",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":false,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":1,
                         "starttime":1,
@@ -215,6 +246,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"高等数学",
                     "CourseId":"5",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":true,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":1,
                         "starttime":1,
@@ -228,6 +264,11 @@ function initializeCourseSelectPage(){
                     "CourseName":"高等数学",
                     "CourseId":"6",
                     "CourseTeacher":"张三",
+                    "status":{
+                        "selected":false,
+                        "selectednum":1,
+                        "maxnum":50
+                    },
                     "CourseTime":{
                         "day":1,
                         "starttime":1,
@@ -252,14 +293,58 @@ function initializeCourseSelectPage(){
         courseLists.forEach((course)=>{
             const courseDiv=document.createElement("div");
             courseDiv.className="course";
-            courseDiv.textContent=`
-        课程名称: ${course.CourseName}
+            const courseName=document.createElement("h3");
+            courseName.textContent=course.CourseName;
+            const courseInfo=document.createElement("p");
+            const stuNum=document.createElement("p");
+            const selectbutton = document.createElement("button");
+            selectbutton.textContent="选课";
+            if(course.status.selected){
+
+                selectbutton.style.backgroundColor="red";
+                selectbutton.textContent="退课";
+            }            
+            stuNum.textContent=`已选人数: ${course.status.selectednum}/${course.status.maxnum}`;
+            stuNum.style="color:gray;";
+            selectbutton.onclick=function(){
+                //这里记得补上交互逻辑
+                
+                
+
+
+                if(course.status.selected){
+                    //如果请求成功
+
+
+                    alert("课程ID"+course.CourseId+"退课成功");
+                    course.status.selected=false;
+                    console.log(selectbutton.textContent);
+                    selectbutton.textContent="选课";
+                    stuNum.textContent=`已选人数: ${course.status.selectednum-1}/${course.status.maxnum}`;
+                    selectbutton.style.backgroundColor="#f1c40f";
+                }else{
+                    //如果请求成功
+                    
+                    //定义一个查询指定课程的接口
+                    selectbutton.style.backgroundColor="red";
+                    course.status.selected=true;
+                    selectbutton.textContent="退课";
+                    stuNum.textContent=`已选人数: ${course.status.selectednum+1}/${course.status.maxnum}`;
+                alert("课程ID"+course.CourseId+"选课成功");
+                }
+            }
+            courseInfo.textContent=`
         课程ID: ${course.CourseId}
         授课教师: ${course.CourseTeacher}
         上课时间: 周${course.CourseTime.day} ${course.CourseTime.starttime}-${course.CourseTime.endtime}节
         上课周数: ${course.CourseTime.beginweek}-${course.CourseTime.endweek}周
         上课地点: ${course.CoursePlace}
       `;
+
+            courseDiv.appendChild(courseName);
+            courseDiv.appendChild(courseInfo);
+            courseDiv.appendChild(selectbutton);
+            courseDiv.appendChild(stuNum);
             console.log(courseDiv);
             CourseDisplay.appendChild(courseDiv);
         });

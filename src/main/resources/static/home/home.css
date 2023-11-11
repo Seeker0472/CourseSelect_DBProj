@@ -58,3 +58,94 @@ header nav ul .slider {
     opacity: 80%;
 
 }
+#advSear{
+
+    margin: 0px 20px 20px;
+    padding: 10px;
+    display: flex;
+    border: 2px solid #359697;
+    border-radius: 10px;
+    background-color: #fff;
+}
+label { white-space: nowrap; } /* Prevent text from wrapping */
+#advancedSearch
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(27, 122, 217, 0.65);
+    padding: 10px;
+    margin: 0 auto 0;
+    border-radius: 5px;
+    font-size: 20px;
+    border-color: unset;
+}
+#advancedSearch:hover
+{
+    background-color: #1b79d9;
+}
+.course
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    background-color: rgba(27, 173, 217, 0.65);
+    padding: 10px;
+    margin: 5px auto 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    border-color: unset;
+}
+.course:hover
+{
+    background-color: #1bb1d9;
+}
+.course button
+{
+    margin-left: 10px;
+    background-color: gold;
+    border-radius: 5px;
+    border-color: unset;
+}
+.course button:hover
+{
+    background-color: #f1c40f;
+}
+#showMore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    background-color: rgba(81, 217, 27, 0.29);
+    padding: 10px;
+    margin: 5px auto 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    border-color: unset;
+}
+.Button002 {
+    box-shadow:inset 0 -3px 7px 0 #29bbff;
+    background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    border-radius:3px;
+    border:1px solid #0b0e07;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Arial, serif;
+    font-size:15px;
+    padding:4px 15px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #263666;
+}
+.Button002:hover {
+    background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+}
+.Button002:active {
+    position:relative;
+    top:1px;
+}

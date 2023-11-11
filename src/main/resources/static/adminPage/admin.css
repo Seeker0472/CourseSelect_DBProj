@@ -1,0 +1,207 @@
+html, body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+header{
+    background-color: #359697;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    font-size: 15px;
+    font-weight:normal;
+    margin-bottom: 30px;
+}
+header  .welcome{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+
+}
+header  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header  ul {
+    position: relative;
+    display: flex;
+}
+
+header nav ul li {
+    list-style: none;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+header ul li a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    z-index: 3;
+}
+header nav ul .slider {
+    width: 100px;
+    height: 40px;
+    background-color: #5352ed;
+    border-radius: 4px;
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    z-index: 0;
+    transition: all ease 0.4s;
+    animation: 2s ease-in-out waves infinite;
+    opacity: 80%;
+
+}
+
+#popDiv{
+    /*display: block;*/
+    display: none;
+    background-color: crimson;
+    z-index: 11;
+    width: 70%;
+    height: 80%;
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    margin:auto;
+    border-radius: 10px 10px 5px 5px;
+    box-shadow: 0 0 10px #000;
+
+}
+.banner{
+    height: 50px;
+    border-radius: 10px 10px 0 4px;
+    z-index: 12;
+    background-color: #eda552;
+}
+/* 关闭按钮样式 */
+#popDiv .close a {
+    text-decoration: none;
+    color: #2D2C3B;
+}
+/* 弹出界面的关闭按钮 */
+#popDiv .close{
+    position: sticky;
+    display: inline-block;
+    float: right;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-70%);
+}
+.banner .title
+{
+    position: relative;
+    font-size: x-large;
+    display: inline-block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#popMain{
+    position: relative;
+    height: 80%; /* Adjust the percentage as needed */
+    max-height: 88%; /* Add max-height property */
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    overflow: auto;
+}
+#popMian p{
+    text-align: center;
+    font-size: large;
+    border-radius: 0 0 10px 10px;
+    overflow: auto;
+}
+
+
+table{
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    border: 1px solid #999;
+    text-align: center;
+    padding: 10px 0;
+}
+
+table thead tr{
+    background-color: #008c8c;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table tbody tr:hover{
+    background-color: #ccc;
+}
+
+table tbody tr td:nth-child(1){
+    color: #f40;
+}
+
+table tfoot tr td{
+    text-align: right;
+    padding-right: 20px;
+}
+
+
+.Button001 {
+    box-shadow: 0 10px 14px -7px #3e7327;
+    background: #77b55a linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    border-radius:4px;
+    border:1px solid #4b8f29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Arial, serif;
+    font-size:13px;
+    font-weight:bold;
+    padding:6px 12px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #5b8a3c;
+}
+.Button001:hover {
+    background: #72b352 linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+}
+.Button001:active {
+    position:relative;
+    top:1px;
+}
+.Button002 {
+    box-shadow:inset 0 -3px 7px 0 #29bbff;
+    background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    border-radius:3px;
+    border:1px solid #0b0e07;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Arial, serif;
+    font-size:15px;
+    padding:4px 15px;
+    text-decoration:none;
+    text-shadow:0 1px 0 #263666;
+}
+.Button002:hover {
+    background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+}
+.Button002:active {
+    position:relative;
+    top:1px;
+}
