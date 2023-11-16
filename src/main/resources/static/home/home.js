@@ -1,4 +1,6 @@
-var page=1;
+let page=1;
+let slider;
+let defaultpos = 0;//slider默认位置
 const main = document.querySelector("main");
 const Link1Display = document.getElementById("Link1Display");
 const Link2Display = document.getElementById("Link2Display");
@@ -7,7 +9,7 @@ const Link4Display = document.getElementById("Link4Display");
 const Link5Display = document.getElementById("Link5Display");
 var advancedsearch=true;
 document.addEventListener("DOMContentLoaded", function () {
-    var defaultpos=0;
+    slider = document.getElementById("slider1");
     switch(page){
         case 1:
             loadPage1();
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loadPage5();
             break;
     }
-    const slider = document.getElementById("slider1");
+    
     const link1 = document.getElementById("link1");
     const link2 = document.getElementById("link2");
     const link3 = document.getElementById("link3");
@@ -67,29 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
     link5.addEventListener("mouseleave",(event) => {
         slider.style.transform='translateX('+defaultpos+'px)';
     });
-    link1.addEventListener("click",(event) => {
-        defaultpos=0;
-        page=1;
+    link1.addEventListener("click", (event) => {
         loadPage1();
     });
-    link2.addEventListener("click",(event) => {
-        defaultpos=120;
-        page=2;
+    link2.addEventListener("click", (event) => {
         loadPage2();
     });
-    link3.addEventListener("click",(event) => {
-        defaultpos=240;
-        page=3;
+    link3.addEventListener("click", (event) => {
         loadPage3();
     });
-    link4.addEventListener("click",(event) => {
-        defaultpos=360;
-        page=4;
+    link4.addEventListener("click", (event) => {
         loadPage4();
     });
-    link5.addEventListener("click",(event) => {
-        defaultpos=480;
-        page=5;
+    link5.addEventListener("click", (event) => {
         loadPage5();
     });
     document.getElementById("advancedSearch").addEventListener("click",(event) => {
@@ -134,31 +126,51 @@ function load(){
 }*/
 function loadPage1(){
     console.log("Loading Page1");
-    clearall();
+    defaultpos = 0;
+    page = 1;
+    slider.style.transform = 'translateX(' + defaultpos + 'px)';
+    clearAll();
     Link1Display.style.display="unset";
+    setPageParams(1);
 }
 function loadPage2(){
     console.log("Loading Page2");
-    clearall();
+    defaultpos = 120;
+    page = 2;
+    slider.style.transform = 'translateX(' + defaultpos + 'px)';
+    clearAll();
     Link2Display.style.display="unset";
     initializeCourseSelectPage();
+    setPageParams(2);
 }
 function loadPage3(){
     console.log("Loading Page3");
-    clearall();
+    defaultpos = 240;
+    page = 3;
+    slider.style.transform = 'translateX(' + defaultpos + 'px)';
+    clearAll();
     Link3Display.style.display="unset";
+    setPageParams(3);
 }
 function loadPage4(){
     console.log("Loading Page4");
-    clearall();
+    defaultpos = 360;
+    page = 4;
+    slider.style.transform = 'translateX(' + defaultpos + 'px)';
+    clearAll();
     Link4Display.style.display="unset";
+    setPageParams(4);
 }
 function loadPage5(){
     console.log("Loading Page5");
-    clearall();
+    defaultpos = 480;
+    page = 5;
+    slider.style.transform = 'translateX(' + defaultpos + 'px)';
+    clearAll();
     Link5Display.style.display="unset";
+    setPageParams(5);
 }
-function clearall(){
+function clearAll(){
     //const main = document.querySelector("main");
     const alldiv = document.querySelectorAll('main > div');
     alldiv.forEach((div) => {
@@ -350,4 +362,45 @@ function initializeCourseSelectPage(){
         });
     }
     
+}
+function setPageParams(param){
+    const url= new URL(window.location.href);
+    const searchParams=url.searchParams;
+    if(searchParams.get('Page')===param.toString())
+        return;
+    searchParams.delete('Page');
+    searchParams.set('Page',param);
+    const newUrl=url.href;
+    //window.location.href = newUrl;
+    history.pushState({}, '', newUrl);
+}
+function getPageParams(){
+    const url= new URL(window.location.href);
+    const searchParams=url.searchParams;
+    var page1=searchParams.get('Page');
+    if(page1===null)
+    {
+        popDiv();
+        //这里可以加上第一次加载页面的逻辑
+
+
+
+
+
+
+        setPageParams(1);
+        page=1;
+        return 1;
+    }
+    else if(page1>0&&page1<6)
+    {
+        page=page1;
+        return page1;
+    }
+    else
+    {
+        page=1;
+        return 1;
+    }
+
 }

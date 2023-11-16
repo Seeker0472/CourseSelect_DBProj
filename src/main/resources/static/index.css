@@ -17,7 +17,7 @@ html {
     align-items: center;
     height: 100vh;
 }
-h1 {
+div h1 {
     font-size: 1.5em;
     color: rgb(036,050,088);
     text-align: center;

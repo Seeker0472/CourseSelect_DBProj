@@ -10,8 +10,6 @@ public class login {
     public RedirectView loginMe(String username, String password){
         System.out.println(username+":"+password);
         //return new RedirectView("?error=true");
-
         return new RedirectView("/home/home.html");
-
     }
 }
