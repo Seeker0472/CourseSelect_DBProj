@@ -1,9 +1,8 @@
 
 
-let page=1;
+
 const main = document.querySelector("main");
-let slider;
-let defaultpos = 0;//slider默认位置
+
 /*
 document.getElementById("test").addEventListener("click", (event) => {
     event.preventDefault();
@@ -22,144 +21,12 @@ document.getElementById("test").addEventListener("click", (event) => {
     window.location.href = newUrl;
 });
 */
-const Link1Display = document.getElementById("Link1Display");
-const Link2Display = document.getElementById("Link2Display");
-const Link3Display = document.getElementById("Link3Display");
-const Link4Display = document.getElementById("Link4Display");
-const Link5Display = document.getElementById("Link5Display");
 const ClassBody = document.getElementById("ClassBody");
 const appliancesBody = document.getElementById("appliances");
 const stuTable = document.getElementById("stuTable");
 const popTitle = document.getElementById("popTitle");
-document.addEventListener("DOMContentLoaded", function () {
-    
-    slider = document.getElementById("slider1");
-    
-    getPageParams();
-    switch (page) {
-        case '1':
-            loadPage1();
-            break;
-        case '2':
-            loadPage2();
-            break;
-        case '3':
-            loadPage3();
-            break;
-        case '4':
-            loadPage4();
-            break;
-        case '5':
-            loadPage5();
-            break;
-        default:
-            console.log("Error:Page not found"+page);
-    }
-    const link1 = document.getElementById("link1");
-    const link2 = document.getElementById("link2");
-    const link3 = document.getElementById("link3");
-    const link4 = document.getElementById("link4");
-    const link5 = document.getElementById("link5");
-    //var link6=document.getElementById("link6");
-    link1.addEventListener("mouseenter",
-        (event) => {
-            slider.style.transform = 'translateX(0)';
-        });
-    link2.addEventListener("mouseenter",
-        (event) => {
-            slider.style.transform = 'translateX(120px)';
-        });
-    link3.addEventListener("mouseenter",
-        (event) => {
-            slider.style.transform = 'translateX(240px)';
-        });
-    link4.addEventListener("mouseenter",
-        (event) => {
-            slider.style.transform = 'translateX(360px)';
-        });
-    link5.addEventListener("mouseenter",
-        (event) => {
-            slider.style.transform = 'translateX(480px)';
-        });
-    link1.addEventListener("mouseleave", (event) => {
-        slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    });
-    link2.addEventListener("mouseleave", (event) => {
-        slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    });
-    link3.addEventListener("mouseleave", (event) => {
-        slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    });
-    link4.addEventListener("mouseleave", (event) => {
-        slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    });
-    link5.addEventListener("mouseleave", (event) => {
-        slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    });
-    link1.addEventListener("click", (event) => {
-        loadPage1();
-    });
-    link2.addEventListener("click", (event) => {
-        loadPage2();
-    });
-    link3.addEventListener("click", (event) => {
-        loadPage3();
-    });
-    link4.addEventListener("click", (event) => {
-        loadPage4();
-    });
-    link5.addEventListener("click", (event) => {
-        loadPage5();
-    });
-});
-function loadPage1(){
-    console.log("Loading Page1");
-    defaultpos = 0;
-    page = 1;
-    slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    clearAll();
-    Link1Display.style.display="unset";
-    setPageParams(1);
-}
-function loadPage2(){
-    console.log("Loading Page2");
-    defaultpos = 120;
-    page = 2;
-    slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    clearAll();
-    Link2Display.style.display="unset";
-    initializeClassBody();
-    setPageParams(2);
-}
-function loadPage3(){
-    console.log("Loading Page3");
-    defaultpos = 240;
-    page = 3;
-    slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    clearAll();
-    Link3Display.style.display="unset";
-    initializeCheckBody();
-    setPageParams(3);
-}
-function loadPage4(){
-    console.log("Loading Page4");
-    defaultpos = 360;
-    page = 4;
-    slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    clearAll();
-    Link4Display.style.display="unset";
-    initializeStuTable();
-    setPageParams(4);
-}
-function loadPage5(){
-    console.log("Loading Page5");
-    defaultpos = 480;
-    page = 5;
-    slider.style.transform = 'translateX(' + defaultpos + 'px)';
-    clearAll();
-    Link5Display.style.display="unset";
-    setPageParams(5);
-}
+
+
 function clearAll() {
     //const main = document.querySelector("main");
     const alldiv = document.querySelectorAll('main > div');
@@ -189,10 +56,15 @@ function initializeClassBody()
     credits.innerHTML="学分";
     const time=document.createElement("td");
     time.innerHTML="学时";
+    const teacher=document.createElement("td");
+    teacher.innerHTML="教师";
+    const compulsory=document.createElement("td");
+    compulsory.innerHTML="是否必修";
     const action=document.createElement("td");
     const button1=document.createElement("button");
     button1.className="Button001";
     button1.innerHTML="查看详情";
+    
     button1.onclick=function(){
         //记得补充交互逻辑
 
@@ -204,8 +76,10 @@ function initializeClassBody()
     table.appendChild(classname);
     table.appendChild(credits);
     table.appendChild(time);
+    table.appendChild(teacher);
+    table.appendChild(compulsory);
     table.appendChild(action);
-ClassBody.appendChild(table);
+    ClassBody.appendChild(table);
     }
 
     
@@ -234,7 +108,7 @@ function initializeCheckBody() {
         const action = document.createElement("td");
         const button1 = document.createElement("button");
         button1.className="Button001";
-        button1.innerHTML = "操作";
+        button1.innerHTML = "查看详情";
         button1.onclick = function () {
             //记得补充交互逻辑
 
@@ -334,33 +208,28 @@ function closePop(){
 }
 
 //获取页面参数
-function getPageParams(){
-    const url= new URL(window.location.href);
-    const searchParams=url.searchParams;
-    var page1=searchParams.get('Page');
-    if(page1===null)
-    {
-        popDiv();
-        //这里可以加上第一次加载页面的逻辑  
-        
-        
-        
-        
-        
-        
-        setPageParams(1);
-        page=1;
-        return 1;
-    }
-    else if(page1>0&&page1<6)
-    {
-        page=page1;
-        return page1;
-    }
-    else
-    {
-        page=1;
-        return 1;
-    }
 
+function loadPage1(){
+
+}
+function loadPage2(){
+
+    initializeClassBody();
+
+}
+function loadPage3(){
+
+    initializeCheckBody();
+
+}
+function loadPage4(){
+
+    initializeStuTable();
+
+}
+function loadPage5(){
+
+}
+function firstload() {
+    popDiv();
 }

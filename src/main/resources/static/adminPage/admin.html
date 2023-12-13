@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>管理员页面</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" href="../HeaderSlider.css">
     <link rel="stylesheet" href="admin.css">
     <script src="admin.js" defer></script>
+    <script src="../slider.js" defer></script>
 </head>
 <body>
 <header>
+    <div class="user">
+        退出
+    </div>
     <div class="welcome">欢迎!</div>
+
     <div>Have a nice day!</div>
     <nav>
         <ul>
@@ -40,6 +46,9 @@
                     <th scope="col">课程名</th>
                     <th scope="col">学分</th>
                     <th scope="col">学时</th>
+                    <th scope="col">教师</th>
+                    <th scope="col">必修?</th>
+                   
                     <th scope="col">操作</th>
                 </tr>
                 </thead>

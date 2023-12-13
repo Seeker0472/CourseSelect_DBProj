@@ -10,16 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     document.getElementById("LoginForm").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        const form = new FormData(event.target);
+        const formData = new FormData(event.target);
         fetch("./login", {
             method: 'POST',
             body: formData
-        })
+        }).then(response =>{ return response.json();})
             .then(response => {
-                if (response.ok) {
+                if (response.code===200) {
                     // 登录成功，可以执行相应操作
-                    alert("登录成功");
+                    //alert("登录成功");
+                    window.location.href="./home/home.html";
                 } else {
                     // 登录失败，处理错误
                     alert("登录失败");
@@ -30,3 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 });
+
+function closePop(){
+    // 获取弹出窗口元素
+    let popDiv = document.getElementById("popDiv");
+    popDiv.style.display = "none";
+}
+function gotoRegister(event){
+    event.preventDefault();
+    window.location.href="./enroll/enroll.html";
+}

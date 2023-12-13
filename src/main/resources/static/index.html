@@ -10,13 +10,28 @@
 <body>
 <div class="login">
     <h1>登录</h1>
-    <form id="LoginForm" action="login" method="post">
+    <form id="LoginForm">
         <input  type="text" name="username" placeholder="用户名" required="required" />
         <input type="password" name="password" placeholder="密码" required="required" /><br>
         <button type="submit" >登录</button>
-        <button type="create">注册</button>
+        <button onclick="gotoRegister(event)">注册</button>
     </form>
 </div>
-
+<div id="popDiv">
+    <div class="banner">
+        <div class="title" id="popTitle">
+            公告
+        </div>
+        <div class="close">
+            <a href="javascript:void(0)" onclick="closePop()">关闭</a>
+        </div>
+    </div>
+    <div id="popMain">
+        <p style="font-size: 25px;text-align:center;">欢迎!</p>
+       ToDo:写提示语<br>
+        ----------------Eed of ALL----------------<br>
+    </div>
+</div>
 </body>
+
 </html>

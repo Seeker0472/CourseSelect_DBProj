@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>主页</title>
+    <link rel="stylesheet" href="../HeaderSlider.css">
     <link rel="stylesheet" href="home.css">
+
     <script src="home.js" defer></script>
+    <script src="../slider.js" defer></script>
 </head>
 <body>
 <header>
-    <div class="welco">欢迎!</div>
+    <div class="user">
+        退出
+    </div>
+    <div class="welcome">欢迎!</div>
     <div>Have a nice day!</div>
     <nav>
         <ul>
@@ -29,7 +35,7 @@
             选课以外的页面懒得写CSS了,就这样吧,摆烂<br>
         </div>
     <div id="Link2Display" style="display: none">
-         <button id="advancedSearch" >高级搜索</button><br>
+         <button id="advancedSearch" onclick="showadvs()" >高级搜索</button><br>
         <div id="advSear" style="display: none">
             <form action="/submit_course_selection" method="post">
             <label for="classID">课程代码:</label>
@@ -108,23 +114,45 @@
             <option value="yes">已选</option>
             <option value="no">未选</option>
         </select>
+        <div>
+            <table class="stuManage">
+                <thead>
+                <tr>
+                    <th scope="col">课程名称</th>
+                    <th scope="col">课程代码</th>
+                    <th scope="col">学年</th>
+                    <th scope="col">学期</th>
+                    <th scope="col">课程性质</th>
+                    <th scope="col">学分</th>
+                    <th scope="col">成绩</th>
+                    <th scope="col">绩点</th>
+                    <th scope="col">老师</th>
+                    <th scope="col">学分绩点</th>
+                </tr>
+                </thead>
+                <tbody id="stuTable">
+
+                </tbody>
+            </table>
+        </div>
     </div>
+
     <div id="Link4Display" style="display: none">
 
-        <button class="Button002">转专业申请</button>
+        <button class="Button002" onclick='location.href=("/apply/zzy/zzy.html?stuId="+stuid)'>转专业申请</button>
         <button class="Button002">退学申请</button>
-        <button class="Button002">专业分流</button>
-        <button class="Button002">学籍异动</button>
-        <button class="Button002">辅修申请</button>
+        <button class="Button002" onclick='location.href=("/apply/zyfl/zyfl.html?stuId="+stuid)'>专业分流</button>
+        <button class="Button002" onclick='location.href=("/apply/xjyd/xjyd.html?stuId="+stuid)'>学籍异动</button>
+        <button class="Button002" onclick="alert('少年别卷了!')">辅修申请</button>
 
         <button class="Button002">测试:随机信息生成器</button>
     </div>
     <div id="Link5Display" style="display: none">
-        <button class="Button002">注销账号</button>
-        <button class="Button002">查询个人信息</button>
-        <button class="Button002">修改密码</button>
-        <button class="Button002">修改登录邮箱</button>
-        <button class="Button002">安全退出</button>
+        <button class="Button002" onclick="alert('功能正在开发中哦')">注销账号</button>
+        <button class="Button002" onclick="alert('功能正在开发中哦')">查询个人信息</button>
+        <button class="Button002" onclick="alert('功能正在开发中哦')">修改密码</button>
+        <button class="Button002" onclick="alert('功能正在开发中哦')">修改登录邮箱</button>
+        <button class="Button002" onclick="alert('功能正在开发中哦')">安全退出</button>
     </div>
 </main>
 </body>

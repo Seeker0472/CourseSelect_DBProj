@@ -1,65 +1,5 @@
-html, body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-header{
-    background-color: #359697;
-    color: #fff;
-    padding: 15px;
-    text-align: left;
-    font-size: 15px;
-    font-weight:normal;
-    margin-bottom: 30px;
-}
-header  .welco{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
 
-
- }
-header  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header  ul {
-    position: relative;
-    display: flex;
-}
-
-header nav ul li {
-    list-style: none;
-    width: 120px;
-    line-height: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-header ul li a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    z-index: 3;
-}
-header nav ul .slider {
-    width: 100px;
-    height: 40px;
-    background-color: #5352ed;
-    border-radius: 4px;
-    position: absolute;
-    left: 10px;
-    bottom: 0;
-    z-index: 0;
-    transition: all ease 0.4s;
-    animation: 2s ease-in-out waves infinite;
-    opacity: 80%;
-
-}
 #advSear{
-
     margin: 0 20px 20px;
     padding: 10px;
     display: flex;
@@ -129,23 +69,109 @@ label { white-space: nowrap; } /* Prevent text from wrapping */
     border-color: unset;
 }
 .Button002 {
-    box-shadow:inset 0 -3px 7px 0 #29bbff;
-    background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    background: #2dabf9;
     border-radius:3px;
-    border:1px solid #0b0e07;
+    border:unset;
     display:inline-block;
-    cursor:pointer;
     color:#ffffff;
     font-family: Arial, serif;
     font-size:15px;
     padding:4px 15px;
     text-decoration:none;
-    text-shadow:0 1px 0 #263666;
 }
 .Button002:hover {
-    background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+    background: #0688fa;
 }
 .Button002:active {
     position:relative;
     top:1px;
+}
+table{
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    border: 1px solid #999;
+    text-align: center;
+    padding: 10px 0;
+}
+
+table thead tr{
+    background-color: #008c8c;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table tbody tr:hover{
+    background-color: #ccc;
+}
+
+table tbody tr td:nth-child(1){
+    color: #f40;
+}
+
+table tfoot tr td{
+    text-align: right;
+    padding-right: 20px;
+}
+
+
+
+/* 表单和按钮的样式 */
+
+
+#advSear input[type="text"], #advSear input[type="password"], #advSear select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#advSear input[type="submit"],#advSear button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#advSear input[type="submit"]:hover,#advSear button:hover {
+    background-color: #45a049;
+}
+
+/* 复选框和它们的标签 */
+#xueyuan {
+    margin: 10px 0;
+}
+
+#xueyuan input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#xueyuan label {
+    margin-right: 15px;
+}
+
+/* 将标签和输入框放在同一行 */
+label {
+    display: inline-block;
+    min-width: 120px;
+    margin-right: 10px;
 }
