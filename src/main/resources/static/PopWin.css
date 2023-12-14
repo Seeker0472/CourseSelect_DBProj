@@ -48,6 +48,16 @@
     font-size: 16px;
     text-align: center;
 }
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 5; /* Ensure the overlay is below the pop-up (#popDiv) */
+}
 
 /* 滚动条 */
 #popMain {
@@ -65,4 +75,7 @@
 
 #popMain::-webkit-scrollbar-track {
     background-color: #f0f0f0;
+}
+body.popup-active #overlay {
+    display: block;
 }

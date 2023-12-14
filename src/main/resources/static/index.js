@@ -1,6 +1,12 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("loginPlace").addEventListener("mouseenter", function (){
+        document.body.style.opacity="100%"
+    });
+    document.getElementById("loginPlace").addEventListener("mouseleave", function (){
+        document.body.style.opacity="50%"
+    });
     const praseUrl=new URL(window.location.href);
     const error=praseUrl.searchParams.get("error");
     if(error==="true")
@@ -37,12 +43,16 @@ function closePop(){
     // 获取弹出窗口元素
     let popDiv = document.getElementById("popDiv");
     popDiv.style.display = "none";
+    document.body.style.opacity="30%"
+    document.body.classList.remove('popup-active');
 }
 function popDiv(){
     // 获取div元素
     const popBox = document.getElementById("popDiv");
     // 控制两个div的显示与隐藏
     popBox.style.display = "block";
+    document.body.style.opacity="100%"
+    document.body.classList.add('popup-active');
 }
 
 function gotoRegister(event){

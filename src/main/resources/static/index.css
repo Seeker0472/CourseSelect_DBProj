@@ -1,14 +1,15 @@
 body{
-    background: rgb(007,137,157);
+    background: #009999;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    opacity: 1;
+    opacity: 50%;
     /*align-content: inherit;*/
     /*位置在页面右边*/
     position: absolute;
     right: 8%;
+
 }
 html {
     font-family: Arial, sans-serif;
@@ -29,18 +30,23 @@ div h1 {
     text-align: center;
     opacity: 1;
 }
-#LoginForm
+#loginPlace
 {
 
 }
+#LoginForm
+{
+
+
+}
 #LoginForm input {
-    opacity: 80%;
+    opacity: 3;
     width: 275px;
     margin: 10px 0px 10px 0px;
     padding: 10px;
     border-radius: 5px;
     outline: none;
-    background-color: rgb(247,191,099);
+    background-color: #CCCCFF;
     border:0;
 }
 #LoginForm button{
@@ -50,7 +56,7 @@ div h1 {
     padding: 10px;
     border-radius: 5px;
     outline: none;
-    background-color: rgb(119, 247, 99);
+    background-color: #66CCCC;
     border:0;
 }
 
