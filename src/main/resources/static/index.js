@@ -38,6 +38,13 @@ function closePop(){
     let popDiv = document.getElementById("popDiv");
     popDiv.style.display = "none";
 }
+function popDiv(){
+    // 获取div元素
+    const popBox = document.getElementById("popDiv");
+    // 控制两个div的显示与隐藏
+    popBox.style.display = "block";
+}
+
 function gotoRegister(event){
     event.preventDefault();
     window.location.href="./enroll/enroll.html";

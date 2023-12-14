@@ -1,4 +1,3 @@
-
 let stuid=0;//学生id
 const main = document.querySelector("main");
 let advs
@@ -146,17 +145,6 @@ function initializeCourseSelectPage(){
             console.error('获取课程信息请求出错:', error);
         });
     
-}
-function setPageParams(param){
-    const url= new URL(window.location.href);
-    const searchParams=url.searchParams;
-    if(searchParams.get('Page')===param.toString())
-        return;
-    searchParams.delete('Page');
-    searchParams.set('Page',param);
-    const newUrl=url.href;
-    //window.location.href = newUrl;
-    history.pushState({}, '', newUrl);
 }
 
 function initializeScoreTable()

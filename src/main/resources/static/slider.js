@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const link3 = document.getElementById("link3");
     const link4 = document.getElementById("link4");
     const link5 = document.getElementById("link5");
-
-    //设置监听器
     //var link6=document.getElementById("link6");
+
+    //设置监听器,当鼠标悬浮和离开的时候移动
     link1.addEventListener("mouseenter",
         (event) => {
             slider.style.transform = 'translateX(0)';
@@ -119,6 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
     link5.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
     });
+
+    //当鼠标点击时执行
     link1.addEventListener("click", (event) => {
         console.log("Loading Page1");
         defaultpos = 0;
@@ -170,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
         loadPage5();
     });
 });
+
+//从URL中获取Page等参数(第一次加载或者刷新的时候运行)
 function getPageParams(){
     const url= new URL(window.location.href);
     const searchParams=url.searchParams;
@@ -177,8 +181,8 @@ function getPageParams(){
     if(page1===null)
     {
         console.log("null");
-        firstload();
-        //这里可以加上第一次加载页面的逻辑
+        firstload();//第一次加载页面的逻辑
+
 
 
 
@@ -200,4 +204,16 @@ function getPageParams(){
         return 1;
     }
 
+}
+//设置页面参数
+function setPageParams(param){
+    const url= new URL(window.location.href);
+    const searchParams=url.searchParams;
+    if(searchParams.get('Page')===param.toString())//如果页面参数是正确的
+        return;
+    searchParams.delete('Page');//删除原来的参数
+    searchParams.set('Page',param);
+    const newUrl=url.href;
+    //window.location.href = newUrl;
+    history.pushState({}, '', newUrl);//设置参数但是不刷新页面
 }

@@ -19,7 +19,9 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: null;
+    background-image: url("./img/DHLG.jpg");
+    background-size: cover;
+    background-position: right bottom;
 }
 div h1 {
     font-size: 1.5em;
@@ -52,76 +54,76 @@ div h1 {
     border:0;
 }
 
-#popDiv{
+/*#popDiv{*/
 
-    opacity: initial;
-    align-content: initial;
+/*    opacity: initial;*/
+/*    align-content: initial;*/
 
-    font-family: initial;
+/*    font-family: initial;*/
 
 
-    padding: initial;
+/*    padding: initial;*/
 
-    justify-content: initial;
-    align-items: initial;
+/*    justify-content: initial;*/
+/*    align-items: initial;*/
 
-    /*display: block;*/
-    //display: none;
-    background-color: crimson;
-    z-index: 11;
-    width: 70%;
-    height: 80%;
-    position:fixed;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
-    margin:auto;
-    border-radius: 10px 10px 5px 5px;
-    box-shadow: 0 0 10px #000;
+/*    !*display: block;*!*/
+/*    //display: none;*/
+/*    background-color: crimson;*/
+/*    z-index: 11;*/
+/*    width: 70%;*/
+/*    height: 80%;*/
+/*    position:fixed;*/
+/*    top:0;*/
+/*    right:0;*/
+/*    left:0;*/
+/*    bottom:0;*/
+/*    margin:auto;*/
+/*    border-radius: 10px 10px 5px 5px;*/
+/*    box-shadow: 0 0 10px #000;*/
 
-}
-.banner{
-    height: 50px;
-    border-radius: 10px 10px 0 4px;
-    z-index: 12;
-    background-color: #eda552;
-}
-/* 关闭按钮样式 */
-#popDiv .close a {
-    text-decoration: none;
-    color: #2D2C3B;
-}
-/* 弹出界面的关闭按钮 */
-#popDiv .close{
-    position: sticky;
-    display: inline-block;
-    float: right;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-70%);
-}
-.banner .title
-{
-    position: relative;
-    font-size: x-large;
-    display: inline-block;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-}
-#popMain{
-    position: relative;
-    height: 80%; /* Adjust the percentage as needed */
-    max-height: 88%; /* Add max-height property */
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-    overflow: auto;
-}
-#popMian p{
-    text-align: center;
-    font-size: large;
-    border-radius: 0 0 10px 10px;
-    overflow: auto;
-}
+/*}*/
+/*.banner{*/
+/*    height: 50px;*/
+/*    border-radius: 10px 10px 0 4px;*/
+/*    z-index: 12;*/
+/*    background-color: #eda552;*/
+/*}*/
+/*!* 关闭按钮样式 *!*/
+/*#popDiv .close a {*/
+/*    text-decoration: none;*/
+/*    color: #2D2C3B;*/
+/*}*/
+/*!* 弹出界面的关闭按钮 *!*/
+/*#popDiv .close{*/
+/*    position: sticky;*/
+/*    display: inline-block;*/
+/*    float: right;*/
+/*    left: 50%;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%,-70%);*/
+/*}*/
+/*.banner .title*/
+/*{*/
+/*    position: relative;*/
+/*    font-size: x-large;*/
+/*    display: inline-block;*/
+/*    left: 50%;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%,-50%);*/
+/*}*/
+/*#popMain{*/
+/*    position: relative;*/
+/*    height: 80%; !* Adjust the percentage as needed *!*/
+/*    max-height: 88%; !* Add max-height property *!*/
+/*    width: 100%;*/
+/*    border-radius: 0 0 10px 10px;*/
+/*    overflow: auto;*/
+/*}*/
+/*#popMian p{*/
+/*    text-align: center;*/
+/*    font-size: large;*/
+/*    border-radius: 0 0 10px 10px;*/
+/*    overflow: auto;*/
+/*}*/
 
