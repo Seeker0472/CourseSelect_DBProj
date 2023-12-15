@@ -1,26 +1,4 @@
 
-
-
-const main = document.querySelector("main");
-
-/*
-document.getElementById("test").addEventListener("click", (event) => {
-    event.preventDefault();
-    // 获取当前页面的URL
-    var currentUrl = window.location.href;
-
-    // 添加参数到查询字符串
-    var newUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'param1=value1&param2=value2';
-    // 更新页面URL
-    var url = new URL(currentUrl);
-    var params = url.searchParams;
-    params.delete('param1');
-    params.set('param1', 'value1');
-    params.set('param1', 'value2');
-    var newUrl = url.toString();
-    window.location.href = newUrl;
-});
-*/
 const ClassBody = document.getElementById("ClassBody");
 const appliancesBody = document.getElementById("appliances");
 const stuTable = document.getElementById("stuTable");
@@ -54,30 +32,43 @@ function initializeClassBody()
     classname.innerHTML="课程名";
     const credits=document.createElement("td");
     credits.innerHTML="学分";
-    const time=document.createElement("td");
-    time.innerHTML="学时";
-    const teacher=document.createElement("td");
-    teacher.innerHTML="教师";
-    const compulsory=document.createElement("td");
-    compulsory.innerHTML="是否必修";
+    const teacherId=document.createElement("td");
+    teacherId.innerHTML="教师编号";
+    const teacherName=document.createElement("td");
+    teacherName.innerHTML="教师";
+    const TargetMajor=document.createElement("td");
+    TargetMajor.innerHTML="面向专业";
     const action=document.createElement("td");
     const button1=document.createElement("button");
     button1.className="Button001";
     button1.innerHTML="查看详情";
+    const button2=document.createElement("button");
+    button2.innerHTML="删除课程";
+    const  button3=document.createElement("button");
+    button3.innerHTML="修改信息";
     
+        
     button1.onclick=function(){
         //记得补充交互逻辑
 
 
 
     }
+    button2.onclick=function (){
+        
+    }
+    button3.onclick=function(){
+        
+    }
     action.appendChild(button1);
+    action.appendChild(button2);
+    action.appendChild(button3);
     table.appendChild(classnum);
     table.appendChild(classname);
     table.appendChild(credits);
-    table.appendChild(time);
-    table.appendChild(teacher);
-    table.appendChild(compulsory);
+    table.appendChild(teacherId);
+    table.appendChild(teacherName);
+    table.appendChild(TargetMajor);
     table.appendChild(action);
     ClassBody.appendChild(table);
     }

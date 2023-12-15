@@ -61,20 +61,29 @@
 
 /* 滚动条 */
 #popMain {
-    scrollbar-width: thin;
+    scrollbar-width: auto;
     scrollbar-color: #3498db #f0f0f0;
 }
 
 #popMain::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
+
+
 }
 
 #popMain::-webkit-scrollbar-thumb {
-    background-color: #3498db;
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+    background-color: rgba(52, 219, 194, 0.48);
+    margin: 10px;
+    border-radius: 10px;
+
 }
 
 #popMain::-webkit-scrollbar-track {
     background-color: #f0f0f0;
+    border-radius: 10px;
 }
 body.popup-active #overlay {
     display: block;
