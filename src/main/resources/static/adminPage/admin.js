@@ -21,7 +21,7 @@ function initializeClassBody() {
     while (ClassBody.hasChildNodes()) {
         ClassBody.removeChild(ClassBody.firstChild);
     }
-    //在这里加一个foreach循环
+    //TODO:等后端完成之后在这里加一个foreach循环
     {
         const table = document.createElement("tr");
         const classnum = document.createElement("td");
@@ -76,14 +76,14 @@ function initializeClassBody() {
 }
 
 
-
+//TODO:修改为选课管理表格逻辑
 //初始化申请表格
 function initializeCheckBody() {
 
     while (appliancesBody.hasChildNodes()) {
         appliancesBody.removeChild(appliancesBody.firstChild);
     }
-    //在这里加一个foreach循环
+    //TODO:等后端完成之后在这里加一个foreach循环
     {
         const table = document.createElement("tr");
         const applyID = document.createElement("td");
@@ -123,7 +123,7 @@ function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    //在这里加一个foreach循环
+    //TODO:等后端完成之后在这里加一个foreach循环
     {
         const table = document.createElement("tr");
         const stuid = document.createElement("td");

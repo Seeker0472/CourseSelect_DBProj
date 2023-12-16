@@ -1,30 +1,33 @@
 
-
-
 const main = document.querySelector("main");
 
-/*
-document.getElementById("test").addEventListener("click", (event) => {
-    event.preventDefault();
-    // 获取当前页面的URL
-    var currentUrl = window.location.href;
-
-    // 添加参数到查询字符串
-    var newUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'param1=value1&param2=value2';
-    // 更新页面URL
-    var url = new URL(currentUrl);
-    var params = url.searchParams;
-    params.delete('param1');
-    params.set('param1', 'value1');
-    params.set('param1', 'value2');
-    var newUrl = url.toString();
-    window.location.href = newUrl;
-});
-*/
 const ClassBody = document.getElementById("ClassBody");
 const appliancesBody = document.getElementById("appliances");
 const stuTable = document.getElementById("stuTable");
 const popTitle = document.getElementById("popTitle");
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.getElementById("slider2");
+    const stuManage = document.getElementById("stuManage");
+    const tsaManage = document.getElementById("tsaManage");
+    const teaManage = document.getElementById("teaManage");
+
+    //TODO:完成各个页面逻辑
+    stuManage.addEventListener("click", function () {
+        slider.style.transform = 'translateX(0)';
+        console.log("stuManage");
+    });
+    tsaManage.addEventListener("click", function () {
+        slider.style.transform = 'translateX(118px)';
+        console.log("tsaManage");
+    });
+    teaManage.addEventListener("click", function () {
+        slider.style.transform = 'translateX(240px)';
+        console.log("teaManage");
+    });
+
+});
 
 
 function clearAll() {
