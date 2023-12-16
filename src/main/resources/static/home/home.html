@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,149 +11,247 @@
     <script src="home.js" defer></script>
     <script src="../slider.js" defer></script>
 </head>
+
 <body>
-<header>
-    <div class="user">
-        退出
-    </div>
-    <div class="welcome">欢迎!</div>
-    <div>Have a nice day!</div>
-    <nav>
-        <ul>
-            <li id="link1"><a>首页</a></li>
-            <li id="link2"><a>选课</a></li>
-            <li id="link3"><a>成绩查询</a></li>
-            <li id="link4"><a>信息维护</a></li>
-            <li id="link5"><a>我的</a></li>
-            <div class="slider" id="slider1"></div>
-        </ul>
-    </nav>
-</header>
-
-<main>
-        <div id="Link1Display" style="display: none">
-            其实目前我想认真完成的功能只有  选课  和  成绩查询  ，其他的都还没做<br>
-            选课以外的页面懒得写CSS了,就这样吧,摆烂<br>
+    <header>
+        <div class="user">
+            退出
         </div>
-    <div id="Link2Display" style="display: none">
-         <button id="advancedSearch" onclick="showadvs()" >高级搜索</button><br>
-        <div id="advSear" style="display: none">
-            <form action="/submit_course_selection" method="post">
-            <label for="classID">课程代码:</label>
-            <input type="text" id="classID" name="classID" placeholder="请输入要搜索的课程代码"><br>
+        <div class="welcome">欢迎!</div>
+        <div>Have a nice day!</div>
+        <nav>
+            <ul>
+                <li id="link1"><a>首页</a></li>
+                <li id="link2"><a>选课</a></li>
+                <li id="link3"><a>成绩查询</a></li>
+                <li id="link4"><a>信息维护</a></li>
+                <li id="link5"><a>我的</a></li>
+                <div class="slider" id="slider1"></div>
+            </ul>
+        </nav>
+    </header>
 
-            <label for="empty">选择课程:</label>
-            <select id="empty" name="empty" required>
+    <main>
+        <div id="Link1Display" style="display: unset">
+            摆烂<br>
+        </div>
+        <div id="Link2Display" style="display: none">
+            <button onclick="setSideBar()">侧边栏</button>
+            <div id="SideBar">
+                <button class="closebtn" onclick="setSideBar()">关闭</button>
+                <div id="SideTiTle">
+                    test
+                </div>
+                <span id="SideContent">
+                    <span class="DayContainer">
+                        <span class="Day">
+                            <a>星期一</a>
+                        </span>
+                        <span class="Day">
+                            <a>星期二</a>
+                        </span>
+                        <span class="Day">
+                            <a>星期三</a>
+
+                        </span>
+                        <span class="Day">
+                            <a>星期四</a>
+
+                        </span>
+                        <span class="Day">
+                            <a>星期五</a>
+
+                        </span>
+                        <span class="Day">
+                            <a>星期六</a>
+
+                        </span>
+                        <span class="Day">
+                            <a>星期日</a>
+
+                        </span>
+
+                    </span>
+                    <span class="TimeContainer">
+                        <span class="time" title="第一节课8:00-8:45">
+                            <a>1</a>
+                        </span>
+                        <span class="time" title="第二节课8:55-9:40">
+                            <a>2</a>
+                        </span>
+                        <span class="time" title="第三节课10:00-10:45">
+                            <a>3</a>
+                        </span>
+                        <span class="time" title="第四节课10:55-11:40">
+                            <a>4</a>
+                        </span>
+                        <span class="time" title="第五节课14:00-14:45">
+                            <a>5</a>
+                        </span>
+                        <span class="time" title="第六节课14:55-15:40">
+                            <a>6</a>
+                        </span>
+                        <span class="time" title="第七节课16:00-16:45">
+                            <a>7</a>
+                        </span>
+                        <span class="time" title="第八节课16:55-17:40">
+                            <a>8</a>
+                        </span>
+                        <span class="time" title="第九节课19:00-19:45">
+                            <a>9</a>
+                        </span>
+                        <span class="time" title="第十节课19:55-19:40">
+                            <a>10</a>
+
+                        </span>
+
+                    </span>
+                    <span class="DayView" id="Day1">
+
+                    </span>
+                    <span class="DayView" id="Day2">
+
+                    </span>
+                    <span class="DayView" id="Day3">
+
+                    </span>
+                    <span class="DayView" id="Day4">
+
+                    </span>
+                    <span class="DayView" id="Day5">
+
+                    </span>
+                    <span class="DayView" id="Day6">
+
+                    </span>
+                    <span class="DayView" id="Day7">
+
+                    </span>
+                    <span style="display: block">End</span>
+                </span>
+            </div>
+            <!--        </div>-->
+            <div id="MainCont">
+                <button id="advancedSearch" onclick="showadvs()">高级搜索</button><br>
+                <div id="advSear" style="display: none">
+                    <form action="/submit_course_selection" method="post">
+                        <label for="classID">课程代码:</label>
+                        <input type="text" id="classID" name="classID" placeholder="请输入要搜索的课程代码"><br>
+
+                        <label for="empty">选择课程:</label>
+                        <select id="empty" name="empty" required>
+                            <option value="all">全部</option>
+                            <option value="yes">有余量</option>
+                            <option value="no">无余量</option>
+                        </select>
+                        <label for="selected">课程状态:</label>
+                        <select id="selected" name="empty" required>
+                            <option value="all">全部</option>
+                            <option value="yes">已选</option>
+                            <option value="no">未选</option>
+                        </select><br>
+                        <label for="selectall">选择学院:</label>
+                        <button id="selectall">全选</button>
+                        <div id="xueyuan">
+                            <input type="checkbox" name="search" id="xxgc">
+                            <label for="xxgc">信息工程学院</label>
+                            <input type="checkbox" name="search" id="chgc">
+                            <label for="chgc">测绘工程学院</label>
+                            <input type="checkbox" name="search" id="tmgc">
+                            <label for="tmgc">土木工程学院</label>
+                            <input type="checkbox" name="search" id="jxgc">
+                            <label for="jxgc">机械工程学院</label>
+                            <input type="checkbox" name="search" id="dqgc">
+                            <label for="dqgc">电气工程学院</label>
+                            <input type="checkbox" name="search" id="clgc">
+                            <label for="clgc">材料工程学院</label>
+                            <input type="checkbox" name="search" id="hxgc">
+                            <label for="hxgc">化学工程学院</label>
+                            <input type="checkbox" name="search" id="jjgl">
+                            <label for="jjgl">经济管理学院</label>
+                            <input type="checkbox" name="search" id="jzgc">
+                            <label for="jzgc">建筑工程学院</label>
+                            <input type="checkbox" name="search" id="hjgc">
+                            <label for="hjgc">环境工程学院</label>
+                            <input type="checkbox" name="search" id="wgy">
+                            <label for="wgy">外国语学院</label>
+                            <input type="checkbox" name="search" id="lxy">
+                            <label for="lxy">理学院</label>
+                            <input type="checkbox" name="search" id="ty">
+                            <label for="ty">体育学院</label>
+                            <input type="checkbox" name="search" id="ys">
+                            <label for="ys">艺术学院</label>
+                            <input type="checkbox" name="search" id="mkszy">
+                            <label for="mkszy">马克思主义学院</label>
+                            <input type="checkbox" name="search" id="gjjy">
+                            <label for="gjjy">国际教育学院</label>
+                            <input type="checkbox" name="search" id="cxcy">
+                            <label for="cxcy">创新创业学院</label>
+                            <input type="checkbox" name="search" id="hkxygc">
+                            <label for="hkxygc">核科学与工程学院</label>
+                        </div>
+                        <label for="semester">学期:</label>
+                        <input type="text" id="semester" name="semester"><br>
+                        <label for="courseName">课程名称:</label>
+                        <input type="text" id="courseName" name="courseName" placeholder="请输入要搜索的课程名称"><br>
+                        <label for="professor">教授</label>
+                        <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授"><br>
+                        <button type="submit">搜索</button>
+                    </form>
+                </div>
+                <div id="CourseList">
+
+                </div>
+                <button id="showMore">显示更多</button>
+
+            </div>
+        </div>
+        <div id="Link3Display" style="display: none">
+            <label for="year">学年:</label>
+            <select id="year" name="selectyear" required>
                 <option value="all">全部</option>
-                <option value="yes">有余量</option>
-                <option value="no">无余量</option>
+                <option value="yes">已选</option>
+                <option value="no">未选</option>
             </select>
-                <label for="selected">课程状态:</label>
-                <select id="selected" name="empty" required>
-                    <option value="all">全部</option>
-                    <option value="yes">已选</option>
-                    <option value="no">未选</option>
-                </select><br>
-            <label for="selectall">选择学院:</label>
-                <button id="selectall">全选</button>
-            <div id="xueyuan">
-                <input type="checkbox" name="search" id="xxgc">
-                <label for="xxgc">信息工程学院</label>
-                <input type="checkbox" name="search" id="chgc">
-                <label for="chgc">测绘工程学院</label>
-                <input type="checkbox" name="search" id="tmgc">
-                <label for="tmgc">土木工程学院</label>
-                <input type="checkbox" name="search" id="jxgc">
-                <label for="jxgc">机械工程学院</label>
-                <input type="checkbox" name="search" id="dqgc">
-                <label for="dqgc">电气工程学院</label>
-                <input type="checkbox" name="search" id="clgc">
-                <label for="clgc">材料工程学院</label>
-                <input type="checkbox" name="search" id="hxgc">
-                <label for="hxgc">化学工程学院</label>
-                <input type="checkbox" name="search" id="jjgl">
-                <label for="jjgl">经济管理学院</label>
-                <input type="checkbox" name="search" id="jzgc">
-                <label for="jzgc">建筑工程学院</label>
-                <input type="checkbox" name="search" id="hjgc">
-                <label for="hjgc">环境工程学院</label>
-                <input type="checkbox" name="search" id="wgy">
-                <label for="wgy">外国语学院</label>
-                <input type="checkbox" name="search" id="lxy">
-                <label for="lxy">理学院</label>
-                <input type="checkbox" name="search" id="ty">
-                <label for="ty">体育学院</label>
-                <input type="checkbox" name="search" id="ys">
-                <label for="ys">艺术学院</label>
-                <input type="checkbox" name="search" id="mkszy">
-                <label for="mkszy">马克思主义学院</label>
-                <input type="checkbox" name="search" id="gjjy">
-                <label for="gjjy">国际教育学院</label>
-                <input type="checkbox" name="search" id="cxcy">
-                <label for="cxcy">创新创业学院</label>
-                <input type="checkbox" name="search" id="hkxygc">
-                <label for="hkxygc">核科学与工程学院</label>
+            <div>
+                <table class="stuManage">
+                    <thead>
+                        <tr>
+                            <th scope="col">课程名称</th>
+                            <th scope="col">课程代码</th>
+                            <th scope="col">学年</th>
+                            <th scope="col">学期</th>
+                            <th scope="col">课程性质</th>
+                            <th scope="col">学分</th>
+                            <th scope="col">成绩</th>
+                            <th scope="col">绩点</th>
+                            <th scope="col">老师</th>
+                            <th scope="col">学分绩点</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stuTable">
+
+                    </tbody>
+                </table>
             </div>
-            <label for="semester">学期:</label>
-            <input type="text" id="semester" name="semester"><br>
-            <label for="courseName">课程名称:</label>
-            <input type="text" id="courseName" name="courseName" placeholder="请输入要搜索的课程名称"><br>
-                <label for="professor">教授</label>
-                <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授"><br>
-            <button type="submit">搜索</button>
-            </form>
         </div>
-            <div id="CourseList">
 
-            </div>
-        <button id="showMore">显示更多</button>
-    </div>
-    <div id="Link3Display" style="display: none">
-        <label for="year">学年:</label>
-        <select id="year" name="selectyear" required>
-            <option value="all">全部</option>
-            <option value="yes">已选</option>
-            <option value="no">未选</option>
-        </select>
-        <div>
-            <table class="stuManage">
-                <thead>
-                <tr>
-                    <th scope="col">课程名称</th>
-                    <th scope="col">课程代码</th>
-                    <th scope="col">学年</th>
-                    <th scope="col">学期</th>
-                    <th scope="col">课程性质</th>
-                    <th scope="col">学分</th>
-                    <th scope="col">成绩</th>
-                    <th scope="col">绩点</th>
-                    <th scope="col">老师</th>
-                    <th scope="col">学分绩点</th>
-                </tr>
-                </thead>
-                <tbody id="stuTable">
+        <div id="Link4Display" style="display: none">
 
-                </tbody>
-            </table>
+            <button class="Button002" onclick='location.href=("../apply/zzy/zzy.html?stuId="+stuid)'>转专业申请</button>
+            <button class="Button002">退学申请</button>
+            <button class="Button002" onclick='location.href=("../apply/zyfl/zyfl.html?stuId="+stuid)'>专业分流</button>
+            <button class="Button002" onclick='location.href=("../apply/xjyd/xjyd.html?stuId="+stuid)'>学籍异动</button>
+            <button class="Button002" onclick="alert('少年别卷了!')">辅修申请</button>
+
+            <button class="Button002">测试:随机信息生成器</button>
         </div>
-    </div>
-
-    <div id="Link4Display" style="display: none">
-
-        <button class="Button002" onclick='location.href=("/apply/zzy/zzy.html?stuId="+stuid)'>转专业申请</button>
-        <button class="Button002">退学申请</button>
-        <button class="Button002" onclick='location.href=("/apply/zyfl/zyfl.html?stuId="+stuid)'>专业分流</button>
-        <button class="Button002" onclick='location.href=("/apply/xjyd/xjyd.html?stuId="+stuid)'>学籍异动</button>
-        <button class="Button002" onclick="alert('少年别卷了!')">辅修申请</button>
-
-        <button class="Button002">测试:随机信息生成器</button>
-    </div>
-    <div id="Link5Display" style="display: none">
-        <button class="Button002" onclick="alert('功能正在开发中哦')">注销账号</button>
-        <button class="Button002" onclick="alert('功能正在开发中哦')">查询个人信息</button>
-        <button class="Button002" onclick="alert('功能正在开发中哦')">修改密码</button>
-        <button class="Button002" onclick="alert('功能正在开发中哦')">修改登录邮箱</button>
-        <button class="Button002" onclick="alert('功能正在开发中哦')">安全退出</button>
-    </div>
-</main>
+        <div id="Link5Display" style="display: none">
+            <button class="Button002" onclick="alert('功能正在开发中哦')">注销账号</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">查询个人信息</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">修改密码</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">修改登录邮箱</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">安全退出</button>
+        </div>
+    </main>
 </body>

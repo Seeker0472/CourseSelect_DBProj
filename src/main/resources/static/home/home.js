@@ -19,6 +19,8 @@ function showadvs(){
     else
         advs.style.display="none";
 }
+
+//ToDo: 要修改!
 function initializeCourseSelectPage(){
     //到时候处理请求逻辑
     /*const responce={
@@ -147,6 +149,8 @@ function initializeCourseSelectPage(){
     
 }
 
+//ToDo: 要修改!
+//初始化成绩表
 function initializeScoreTable()
 {
     const scoreTable=document.getElementById("stuTable");
@@ -209,6 +213,39 @@ function initializeScoreTable()
             })
 
 }
+
+//显示/隐藏侧边栏
+function setSideBar()
+{
+    const SideBar=document.getElementById("SideBar");
+    if(SideBar.style.width==='')
+        SideBar.style.width='100%';
+    else
+        SideBar.style.width='';
+
+}
+
+// Todo:还没写完加载课程表逻辑
+// 这个函数要实现加载课程表,目前打算实现比较直观地显示每一周的课程情况
+// classBox放置一个时间段的课程,如果为空则是classBoxEmpty,满则为classBoxFilled
+function renderClassTable()
+{
+    const Day1=document.getElementById("Day1");
+    const Day2=document.getElementById("Day2");
+    const Day3=document.getElementById("Day3");
+    const Day4=document.getElementById("Day4");
+    const Day5=document.getElementById("Day5");
+    const Day6=document.getElementById("Day6");
+    const Day7=document.getElementById("Day7");
+
+    let test=document.createElement("span");
+    let n=3;
+    // test.className="classBoxEmpty";
+    test.className="classBox";
+    // test.style.height=(50*n+(n-1))+"px";
+    Day1.appendChild(test);
+
+}
 function loadPage1(){
 
 }
@@ -225,5 +262,5 @@ function loadPage5(){
 
 }
 function firstload() {
-
+    
 }
