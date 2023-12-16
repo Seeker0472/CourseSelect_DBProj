@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>管理员页面</title>
@@ -10,141 +11,143 @@
     <script src="admin.js" defer></script>
     <script src="../slider.js" defer></script>
 </head>
+
 <body>
-<header>
-    <div class="user">
-        退出
-    </div>
-    <div class="welcome">欢迎!</div>
+    <header>
+        <div class="user">
+            退出
+        </div>
+        <div class="welcome">欢迎!</div>
 
-    <div>Have a nice day!</div>
-    <nav>
-        <ul>
-            <li id="link1"><a>首页</a></li>
-            <li id="link2"><a>课程管理</a></li>
-            <li id="link3"><a>申请审核</a></li>
-            <li id="link4"><a>学生管理</a></li>
-            <li id="link5"><a>我的</a></li>
-            <div class="slider" id="slider1"></div>
-        </ul>
-    </nav>
-</header>
-<main>
-    <div id="Link1Display" style="display: none">
-<button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
+        <div>Have a nice day!</div>
+        <nav>
+            <ul>
+                <li id="link1"><a>首页</a></li>
+                <li id="link2"><a>课程管理</a></li>
+                <li id="link3"><a>申请审核</a></li>
+                <li id="link4"><a>学生管理</a></li>
+                <li id="link5"><a>我的</a></li>
+                <div class="slider" id="slider1"></div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="Link1Display" style="display: none">
+            <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
         </div>
-    <!--课程管理-->
-    <div id="Link2Display" style="display: none">
-        <div>
-            有空添加一个高级搜索功能
-            <button id="addCourse" class="Button002" style="display: block; margin: auto;">添加课程</button>
-            <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>
-            <br>
-            <table class="thead">
-                <thead>
-                <tr>
-                    <th scope="col">课程号</th>
-                    <th scope="col">课程名</th>
-                    <th scope="col">学分</th>
-                    <th scope="col">学时</th>
-                    <th scope="col">教师</th>
-                    <th scope="col">必修?</th>
-                   
-                    <th scope="col">操作</th>
-                </tr>
-                </thead>
-                <tbody id="ClassBody">
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div id="Link3Display" style="display: none">
-        <div>
-            <table class="courseTable">
-                <thead>
-                <tr>
-                    <th scope="col">申请序号</th>
-                    <th scope="col">申请事件</th>
-                    <th scope="col">申请人</th>
-                    <th scope="col">申请时间</th>
-                    <th scope="col">操作</th>
-                </tr>
-                </thead>
-                <tbody id="appliances">
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div id="Link4Display" style="display: none">
-        有空添加一个搜索功能
-        <div>
-            <table class="stuManage">
-                <thead>
-                <tr>
-                    <th scope="col">姓名</th>
-                    <th scope="col">学号</th>
-                    <th scope="col">入学时间</th>
-                    <th scope="col">院系</th>
-                    <th scope="col">操作</th>
-                </tr>
-                </thead>
-                <tbody id="stuTable">
+        <!--课程管理-->
+        <div id="Link2Display" style="display: none">
+            <div>
+                有空添加一个高级搜索功能
+                <button id="addCourse" class="Button002" style="display: block; margin: auto;">添加课程</button>
+                <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>
+                <br>
+                <table class="thead">
+                    <thead>
+                        <tr>
+                            <th scope="col">课程号</th>
+                            <th scope="col">课程名</th>
+                            <th scope="col">学分</th>
+                            <th scope="col">学时</th>
+                            <th scope="col">教师</th>
+                            <th scope="col">必修?</th>
 
-                </tbody>
-            </table>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ClassBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="Link3Display" style="display: none">
+            <div>
+                <table class="courseTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">申请序号</th>
+                            <th scope="col">申请事件</th>
+                            <th scope="col">申请人</th>
+                            <th scope="col">申请时间</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appliances">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="Link4Display" style="display: none">
+            有空添加一个搜索功能
+            <div>
+                <table class="stuManage">
+                    <thead>
+                        <tr>
+                            <th scope="col">姓名</th>
+                            <th scope="col">学号</th>
+                            <th scope="col">入学时间</th>
+                            <th scope="col">院系</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stuTable">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="Link5Display" style="display: none">
+            <button id="changePassword" class="Button002" style="display: block; margin: auto;">修改密码</button><br>
+            <button id="changeInfo" class="Button002" style="display: block; margin: auto;">修改信息</button><br>
+            <button id="changeAvatar" class="Button002" style="display: block; margin: auto;">修改头像</button><br>
+            <button id="changeEmail" class="Button002" style="display: block; margin: auto;">修改邮箱</button><br>
+            <button id="exit" class="Button002" style="display: block; margin: auto;">退出</button>
+        </div>
+    </main>
+    <div id="popDiv">
+        <div class="banner">
+            <div class="title" id="popTitle">
+                原神启动
+            </div>
+            <div class="close">
+                <a href="javascript:void(0)" onclick="closePop()">关闭</a>
+            </div>
+        </div>
+        <div id="popMain">
+            <p style="font-size: 150px;text-align:center;">原神怎么你了</p>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
+            前面的区域以后再来探索吧<br>
+            前面的区域以后再来探索吧<br>
+            ----------------Eed of ALL----------------<br>
         </div>
     </div>
-    <div id="Link5Display" style="display: none">
-        <button id="changePassword" class="Button002" style="display: block; margin: auto;">修改密码</button><br>
-        <button id="changeInfo" class="Button002" style="display: block; margin: auto;">修改信息</button><br>
-        <button id="changeAvatar" class="Button002" style="display: block; margin: auto;">修改头像</button><br>
-        <button id="changeEmail" class="Button002" style="display: block; margin: auto;">修改邮箱</button><br>
-        <button id="exit" class="Button002" style="display: block; margin: auto;">退出</button>
-    </div>
-</main>
-<div id="popDiv">
-    <div class="banner">
-        <div class="title" id="popTitle">
-            原神启动
-        </div>
-    <div class="close">
-        <a href="javascript:void(0)" onclick="closePop()">关闭</a>
-    </div>
-</div>
-    <div id="popMain">
-    <p style="font-size: 150px;text-align:center;">原神怎么你了</p>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        你是不是又背着我偷偷玩原神了,求求你能不能别玩原神了<br>
-        前面的区域以后再来探索吧<br>
-        前面的区域以后再来探索吧<br>
-        ----------------Eed of ALL----------------<br>
-    </div>
-</div>
-<div id="overlay"></div>
+    <div id="overlay"></div>
 </body>
+
 </html>
