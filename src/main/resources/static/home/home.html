@@ -7,8 +7,10 @@
     <title>主页</title>
     <link rel="stylesheet" href="../HeaderSlider.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../SideClassTable.css">
 
     <script src="home.js" defer></script>
+    <script src="../courseTable.js" defer></script>
     <script src="../slider.js" defer></script>
 </head>
 
@@ -32,7 +34,7 @@
     </header>
 
     <main>
-        <div id="Link1Display" style="display: unset">
+        <div id="Link1Display" style="display: none">
             摆烂<br>
         </div>
         <div id="Link2Display" style="display: none">
@@ -152,6 +154,7 @@
                         </select><br>
                         <label for="selectall">选择学院:</label>
                         <button id="selectall">全选</button>
+                        <!--TODO:根据后端的返回值动态设定,而不是写死!-->
                         <div id="xueyuan">
                             <input type="checkbox" name="search" id="xxgc">
                             <label for="xxgc">信息工程学院</label>

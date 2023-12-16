@@ -73,12 +73,12 @@ function initializeCourseSelectPage() {
                     }
                     //将新的选课信息加载到页面上
                     courseLists.forEach((course) => {
-                        const courseDiv = document.createElement("div");
+                        const courseDiv = document.createElement("div");//课程
                         courseDiv.className = "course";
-                        const courseName = document.createElement("h3");
+                        const courseName = document.createElement("h3");//课程名
                         courseName.textContent = course.name;
-                        const courseInfo = document.createElement("p");
-                        const stuNum = document.createElement("p");
+                        const courseInfo = document.createElement("p");//课程信息
+                        const stuNum = document.createElement("p");//人数
                         const selectbutton = document.createElement("button");
                         selectbutton.textContent = "选课";
                         if (course.selected) {
@@ -86,6 +86,15 @@ function initializeCourseSelectPage() {
                             selectbutton.style.backgroundColor = "red";
                             selectbutton.textContent = "退课";
                         }
+                        courseInfo.textContent = `
+        课程ID: ${course.id}
+        学分: ${course.credit}
+        授课教师: ${course.teacher}
+        上课时间: 周${course.day} ${course.starttime}-${course.endtime}节
+        学期: ${course.semestername}
+        上课周数: ${course.beginweek}-${course.endweek}周
+        上课地点: ${course.place}
+      `;
                         stuNum.textContent = `已选人数: ${course.selectednum}/${course.maxnum}`;
                         stuNum.style = "color:gray;";
                         selectbutton.onclick = function () {
@@ -94,11 +103,12 @@ function initializeCourseSelectPage() {
 
 
 
+
                             if (course.selected) {
                                 //如果请求成功
 
 
-                                alert("课程ID" + course.CourseId + "退课成功");
+                                alert("课程ID" + course.id + "退课成功");
                                 course.selected = false;
                                 console.log(selectbutton.textContent);
                                 selectbutton.textContent = "选课";
@@ -112,16 +122,10 @@ function initializeCourseSelectPage() {
                                 course.selected = true;
                                 selectbutton.textContent = "退课";
                                 stuNum.textContent = `已选人数: ${course.selectednum + 1}/${course.maxnum}`;
-                                alert("课程ID" + course.CourseId + "选课成功");
+                                alert("课程ID" + course.id + "选课成功");
                             }
                         }
-                        courseInfo.textContent = `
-        课程ID: ${course.id}
-        授课教师: ${course.teacher}
-        上课时间: 周${course.day} ${course.starttime}-${course.endtime}节
-        上课周数: ${course.beginweek}-${course.endweek}周
-        上课地点: ${course.CoursePlace}
-      `;
+
 
                         courseDiv.appendChild(courseName);
                         courseDiv.appendChild(courseInfo);
@@ -215,33 +219,15 @@ function initializeScoreTable() {
 //显示/隐藏侧边栏
 function setSideBar() {
     const SideBar = document.getElementById("SideBar");
-    if (SideBar.style.width === '')
+    if (SideBar.style.width === '') {
+        renderClassTable();
         SideBar.style.width = '100%';
+    }
     else
         SideBar.style.width = '';
 
 }
 
-// Todo:还没写完加载课程表逻辑
-// 这个函数要实现加载课程表,目前打算实现比较直观地显示每一周的课程情况
-// classBox放置一个时间段的课程,如果为空则是classBoxEmpty,满则为classBoxFilled
-function renderClassTable() {
-    const Day1 = document.getElementById("Day1");
-    const Day2 = document.getElementById("Day2");
-    const Day3 = document.getElementById("Day3");
-    const Day4 = document.getElementById("Day4");
-    const Day5 = document.getElementById("Day5");
-    const Day6 = document.getElementById("Day6");
-    const Day7 = document.getElementById("Day7");
-
-    let test = document.createElement("span");
-    let n = 3;
-    // test.className="classBoxEmpty";
-    test.className = "classBox";
-    // test.style.height=(50*n+(n-1))+"px";
-    Day1.appendChild(test);
-
-}
 function loadPage1() {
 
 }

@@ -177,6 +177,7 @@ function getPageParams() {
     if (page1 === null) {
         console.log("null");
         firstload();//第一次加载页面的逻辑
+        Link1Display.style.display = 'unset';
 
 
 

@@ -1,5 +1,4 @@
-
-#advSear{
+#advSear {
     margin: 0 20px 20px;
     padding: 10px;
     display: flex;
@@ -7,9 +6,13 @@
     border-radius: 10px;
     background-color: #fff;
 }
-label { white-space: nowrap; } /* Prevent text from wrapping */
-#advancedSearch
-{
+
+label {
+    white-space: nowrap;
+}
+
+/* Prevent text from wrapping */
+#advancedSearch {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,12 +25,12 @@ label { white-space: nowrap; } /* Prevent text from wrapping */
     font-size: 20px;
     border-color: unset;
 }
-#advancedSearch:hover
-{
+
+#advancedSearch:hover {
     background-color: #1b79d9;
 }
-.course
-{
+
+.course {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,21 +43,22 @@ label { white-space: nowrap; } /* Prevent text from wrapping */
     font-size: 15px;
     border-color: unset;
 }
-.course:hover
-{
+
+.course:hover {
     background-color: #1bb1d9;
 }
-.course button
-{
+
+.course button {
     margin-left: 10px;
     background-color: gold;
     border-radius: 5px;
     border-color: unset;
 }
-.course button:hover
-{
+
+.course button:hover {
     background-color: #f1c40f;
 }
+
 #showMore {
     display: flex;
     align-items: center;
@@ -68,60 +72,65 @@ label { white-space: nowrap; } /* Prevent text from wrapping */
     font-size: 15px;
     border-color: unset;
 }
+
 .Button002 {
     background: #2dabf9;
-    border-radius:3px;
-    border:unset;
-    display:inline-block;
-    color:#ffffff;
+    border-radius: 3px;
+    border: unset;
+    display: inline-block;
+    color: #ffffff;
     font-family: Arial, serif;
-    font-size:15px;
-    padding:4px 15px;
-    text-decoration:none;
+    font-size: 15px;
+    padding: 4px 15px;
+    text-decoration: none;
 }
+
 .Button002:hover {
     background: #0688fa;
 }
+
 .Button002:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
-table{
+
+table {
     width: 90%;
     margin: 0 auto;
     border-collapse: collapse;
 }
 
-table caption{
+table caption {
     font-size: 2em;
     font-weight: bold;
     margin: 1em 0;
 }
 
-th,td{
+th,
+td {
     border: 1px solid #999;
     text-align: center;
     padding: 10px 0;
 }
 
-table thead tr{
+table thead tr {
     background-color: #008c8c;
     color: #fff;
 }
 
-table tbody tr:nth-child(odd){
+table tbody tr:nth-child(odd) {
     background-color: #eee;
 }
 
-table tbody tr:hover{
+table tbody tr:hover {
     background-color: #ccc;
 }
 
-table tbody tr td:nth-child(1){
+table tbody tr td:nth-child(1) {
     color: #f40;
 }
 
-table tfoot tr td{
+table tfoot tr td {
     text-align: right;
     padding-right: 20px;
 }
@@ -131,7 +140,9 @@ table tfoot tr td{
 /* 表单和按钮的样式 */
 
 
-#advSear input[type="text"], #advSear input[type="password"], #advSear select {
+#advSear input[type="text"],
+#advSear input[type="password"],
+#advSear select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -141,7 +152,8 @@ table tfoot tr td{
     box-sizing: border-box;
 }
 
-#advSear input[type="submit"],#advSear button {
+#advSear input[type="submit"],
+#advSear button {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -152,7 +164,8 @@ table tfoot tr td{
     cursor: pointer;
 }
 
-#advSear input[type="submit"]:hover,#advSear button:hover {
+#advSear input[type="submit"]:hover,
+#advSear button:hover {
     background-color: #45a049;
 }
 
@@ -174,129 +187,4 @@ label {
     display: inline-block;
     min-width: 120px;
     margin-right: 10px;
-}
-/*SideBar*/
-#SideBar
-{
-    /*background-color: firebrick;*/
-    /*position: fixed;*/
-    /*width:120vh;*/
-    /*height: 90vh;*/
-    /*right:0vh;*/
-
-    /*margin-top:-30px;*/
-    height: calc(100% - 186px);
-    width: 0vh;
-    position: fixed;
-    z-index: 1;
-    /*top: 0;*/
-    margin-top:-54px;
-    right: 0;
-    background-color: #CCCCFF;
-    overflow-x: auto;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-#SideBar .closebtn
-{
-    position: fixed;
-    margin-top:-60px;
-    border: unset;
-    border-radius: 0 5px 5px 5px;
-    background-color: blueviolet;
-}
-#SideContent
-{
-    /*background-color: blue;*/
-    white-space: nowrap;
-}
-#MainCont
-{
-    flex:1;
-    margin-right:10px;
-}
-.DayView
-{
-    display: inline-block;
-    background-color: #1b79d9;
-    height:511px;
-    width:162px;
-    margin: 0px -1px -1px;
-    vertical-align: top; /* Align to the top of the line */
-}
-.TimeContainer
-{
-    display: inline-block;
-    background-color: #1b79d9;
-    height:511px;
-    width:25px;
-    margin-left: 3px;
-    margin-right: -1px;
-    align-items: flex-start; /* Align to the top of the line */
-}
-.time
-{
-
-    display: block;
-    background-color: #4caf98;
-    height: 50px;
-    width:23px;
-    margin: 1px 1px 0 1px;
-}
-.DayContainer
-{
-    display: block;
-    background-color: #1b79d9;
-    height:20px;
-    width: 1160px;
-    margin: 0 1px 1px 31px;
-
-    align-items: flex-start; /* Align to the top of the line */
-}
-.Day
-{
-    display: inline-block;
-    background-color: #4caf98;
-    height:20px;
-    width: 162px;
-    margin: 0 -2px -3px 0px;
-
-    align-items: flex-start; /* Align to the top of the line */
-}
-.classBoxEmpty
-{
-    display: block;
-    background-color: #4CAF50;
-    height: 49px;
-    width:158px;
-    margin: 1px 1px 0 1px;
-    transition: transform .2s;
-}
-.classBoxEmpty:hover
-{
-    transform: scale(1.05);
-    background-color: #03f668;
-}
-.classBoxFilled
-{
-    display: block;
-    background-color: salmon;
-    height: 50px;
-    width:158px;
-    margin: 1px 1px 0 1px;
-    transition: transform .2s;
-}
-.classBoxFilled:hover
-{
-    transform: scale(1.05);
-    background-color: darkred;
-}
-.classBox
-{
-    display: block;
-    background-color: #4CAF50;
-    height: 50px;
-    width:160px;
-    margin: 1px 1px 0 1px;
-    transition: transform .2s;
 }

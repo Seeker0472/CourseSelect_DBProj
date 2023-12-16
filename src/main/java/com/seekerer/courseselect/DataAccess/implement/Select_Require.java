@@ -10,7 +10,7 @@ public class Select_Require implements com.seekerer.courseselect.DataAccess.Sele
     @Override
     public ArrayList<LectureInfo> ListLecture() {
         ArrayList<LectureInfo> arr=new ArrayList();
-        LectureInfo lectureInfo=new LectureInfo("高等数学","123","文涛",2,1,2,3,19,false,10,10);
+        LectureInfo lectureInfo=new LectureInfo("软件工程","1","张三",1,1,2,1,16,false,0,100,"001","2023年上学期",2.0,"教学楼");
         arr.add(lectureInfo);
 
 
