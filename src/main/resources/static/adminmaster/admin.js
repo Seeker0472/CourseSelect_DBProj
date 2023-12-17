@@ -135,17 +135,21 @@ function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    //在这里加一个foreach循环
+    //TODO:在这里加一个foreach循环
     {
         const table = document.createElement("tr");
         const stuid = document.createElement("td");
         stuid.innerHTML = "学号";
         const stuname = document.createElement("td");
         stuname.innerHTML = "姓名";
-        const enrollTime = document.createElement("td");
-        enrollTime.innerHTML = "入学时间";
         const college = document.createElement("td");
         college.innerHTML = "学院";
+        const major = document.createElement("td");
+        major.innerHTML = "专业";
+        const sex = document.createElement("td");
+        sex.innerHTML = "性别";
+        const phone = document.createElement("td");
+        phone.innerHTML = "电话";
         const action = document.createElement("td");
         const button1 = document.createElement("button");
         button1.className = "Button001";
@@ -158,14 +162,129 @@ function initializeStuTable() {
         action.appendChild(button1);
         table.appendChild(stuname);
         table.appendChild(stuid);
-        table.appendChild(enrollTime);
         table.appendChild(college);
+        table.appendChild(major);
+        table.appendChild(sex);
+        table.appendChild(phone);
+
         table.appendChild(action);
         stuTable.appendChild(table);
     }
 
 }
 
+//初始化员工表格
+function initializeStaTable() {
+    const staTable = document.getElementById("staTable");
+    while (staTable.hasChildNodes()) {
+        staTable.removeChild(staTable.firstChild);
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const name = document.createElement("td");
+        name.innerHTML = "姓名";
+        const id = document.createElement("td");
+        id.innerHTML = "工号";
+        const sex = document.createElement("td");
+        sex.innerHTML = "性别";
+        const phone = document.createElement("td");
+        phone.innerHTML = "电话";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+        action.appendChild(button1);
+        table.appendChild(name);
+        table.appendChild(id);
+        table.appendChild(sex);
+        table.appendChild(phone);
+        table.appendChild(action);
+        staTable.appendChild(table);
+
+    }
+}
+
+//初始化教务表格
+function initializetsaTable() {
+    const tsaTable = document.getElementById("tsaTable");
+    while (tsaTable.hasChildNodes()) {
+        tsaTable.removeChild(tsaTable.firstChild);
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const name = document.createElement("td");
+        name.innerHTML = "姓名";
+        const id = document.createElement("td");
+        id.innerHTML = "工号";
+        const phone = document.createElement("td");
+        phone.innerHTML = "电话";
+        const sex = document.createElement("td");
+        sex.innerHTML = "性别";
+        const college = document.createElement("td");
+        college.innerHTML = "学院";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+
+        action.appendChild(button1);
+        table.appendChild(name);
+        table.appendChild(id);
+        table.appendChild(phone);
+        table.appendChild(sex);
+        table.appendChild(college);
+        table.appendChild(action);
+        tsaTable.appendChild(table);
+    }
+}
+
+//初始化教师表格
+function initializeTeaTable() {
+    const teaTable = document.getElementById("teaTable");
+    while (teaTable.hasChildNodes()) {
+        teaTable.removeChild(teaTable.firstChild);
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const name = document.createElement("td");
+        name.innerHTML = "姓名";
+        const id = document.createElement("td");
+        id.innerHTML = "工号";
+        const phone = document.createElement("td");
+        phone.innerHTML = "电话";
+        const sex = document.createElement("td");
+        sex.innerHTML = "性别";
+        const college = document.createElement("td");
+        college.innerHTML = "学院";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+        action.appendChild(button1);
+        table.appendChild(name);
+        table.appendChild(id);
+        table.appendChild(phone);
+        table.appendChild(sex);
+        table.appendChild(college);
+        table.appendChild(action);
+        teaTable.appendChild(table);
+    }
+}
 
 //清除弹出框内容
 function clearPop() {
@@ -246,6 +365,7 @@ function LoadPage21() {
 //TODO:加上加载页面的逻辑和前后端交互
 
 function LoadPage22() {
+    initializeStaTable();
     const page22 = document.getElementById("staManageDisplay");
     console.log("LoadPage22");
     clearPage2();
@@ -258,6 +378,7 @@ function LoadPage22() {
 //TODO:加上加载页面的逻辑和前后端交互
 
 function LoadPage23() {
+    initializetsaTable();
     const page23 = document.getElementById("tsaManageDisplay");
     console.log("LoadPage23");
     clearPage2();
@@ -268,6 +389,7 @@ function LoadPage23() {
 }
 //TODO:加上加载页面的逻辑和前后端交互
 function LoadPage24() {
+    initializeTeaTable();
     const page24 = document.getElementById("teaManageDisplay");
     console.log("LoadPage24");
     clearPage2();
@@ -321,6 +443,39 @@ function pahsePageParm2() {
             break;
     }
 }
+
+function initcourseMangeTasble() {
+    const courseManageTable = document.getElementById("courseTable");
+    while (courseManageTable.hasChildNodes()) {
+        courseManageTable.removeChild(courseManageTable.firstChild);
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const classid = document.createElement("td");
+        classid.innerHTML = "课程号";
+        const classname = document.createElement("td");
+        classname.innerHTML = "课程名";
+        const credits = document.createElement("td");
+        credits.innerHTML = "课程备注";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+        action.appendChild(button1);
+        table.appendChild(classid);
+        table.appendChild(classname);
+        table.appendChild(credits);
+        table.appendChild(action);
+        courseManageTable.appendChild(table);
+
+
+    }
+}
 function editPageParm4(pagenum) {
     const url = new URL(window.location.href);
     const params = url.searchParams;
@@ -357,6 +512,7 @@ function pahsePageParm4() {
 function LoadPage41() {
     console.log("LoadPage41");
     editPageParm4(1);
+    initCollManTable();
     const page41 = document.getElementById("collAdmin");
     const page42 = document.getElementById("majorAdmin");
     page41.style.display = "unset";
@@ -367,6 +523,9 @@ function LoadPage41() {
 function LoadPage42() {
     console.log("LoadPage42");
     editPageParm4(2);
+
+    initMajorManTable();
+
     const page41 = document.getElementById("collAdmin");
     const page42 = document.getElementById("majorAdmin");
     page41.style.display = "none";
@@ -375,6 +534,79 @@ function LoadPage42() {
 
 }
 
+function initCollManTable() {
+    const collManTable = document.getElementById("collAdminTable");
+    while (collManTable.hasChildNodes()) {
+        collManTable.removeChild(collManTable.firstChild);
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const collid = document.createElement("td");
+        collid.innerHTML = "学院号";
+        const collname = document.createElement("td");
+        collname.innerHTML = "学院名";
+        const admin = document.createElement("td");
+        admin.innerHTML = "学院负责人";
+        const appendx = document.createElement("td");
+        appendx.innerHTML = "备注";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+        action.appendChild(button1);
+        table.appendChild(collid);
+        table.appendChild(collname);
+        table.appendChild(admin);
+        table.appendChild(appendx);
+        table.appendChild(action);
+        collManTable.appendChild(table);
+    }
+}
+
+
+function initMajorManTable() {
+    const majorManTable = document.getElementById("majorAdminTable");
+    while (majorManTable.hasChildNodes()) {
+        majorManTable.removeChild(majorManTable.firstChild);
+
+    }
+    //TODO:在这里加一个foreach循环
+    {
+        const table = document.createElement("tr");
+        const majorid = document.createElement("td");
+        majorid.innerHTML = "专业号";
+        const majorname = document.createElement("td");
+        majorname.innerHTML = "专业名";
+        const belong = document.createElement("td");
+        belong.innerHTML = "所属学院";
+        const admin = document.createElement("td");
+        admin.innerHTML = "专业负责人";
+        const appendx = document.createElement("td");
+        appendx.innerHTML = "备注";
+        const action = document.createElement("td");
+        const button1 = document.createElement("button");
+        button1.className = "Button001";
+        button1.innerHTML = "查看详情";
+        button1.onclick = function () {
+            //记得补充交互逻辑
+
+        }
+        action.appendChild(button1);
+        table.appendChild(majorid);
+        table.appendChild(majorname);
+        table.appendChild(belong);
+        table.appendChild(admin);
+        table.appendChild(appendx);
+        table.appendChild(action);
+        majorManTable.appendChild(table);
+
+    }
+}
 
 //加载页面是执行的函数
 function loadPage1() {
@@ -386,7 +618,7 @@ function loadPage2() {
 }
 function loadPage3() {
 
-    // initializeCheckBody();
+    initcourseMangeTasble();
 
 }
 function loadPage4() {
