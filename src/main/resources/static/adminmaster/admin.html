@@ -74,7 +74,8 @@
             <div id="stuManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addStudent" class="Button002" style="display: block; margin: auto;">添加学生</button>
+                    <button class="Button002" style="display: block; margin: auto;"
+                        onclick="popDiv(1, '添加学生')">添加学生</button>
                     <br>
                     <table class="stuManage">
                         <thead>
@@ -97,7 +98,8 @@
             <div id="staManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addSTA" class="Button002" style="display: block; margin: auto;">添加职工</button>
+                    <button class="Button002" style="display: block; margin: auto;"
+                        onclick="popDiv(2, '添加职工');">添加职工</button>
                     <br>
                     <table class="stuManage">
                         <thead>
@@ -117,7 +119,8 @@
             <div id="tsaManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addTSA" class="Button002" style="display: block; margin: auto;">绑定教务</button>
+                    <button class="Button002" style="display: block; margin: auto;"
+                        onclick="popDiv(3, '绑定教务身份');">绑定教务</button>
                     <br>
                     <table class="stuManage">
                         <thead>
@@ -138,7 +141,8 @@
             <div id="teaManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addTeacher" class="Button002" style="display: block; margin: auto;">绑定教师</button>
+                    <button class="Button002" style="display: block; margin: auto;"
+                        onclick="popDiv(4, '绑定教师身份');">绑定教师</button>
                     <br>
                     <table class="stuManage">
                         <thead>
@@ -176,15 +180,34 @@
         </div>
         <!--TODO:完成学院管理部分-->
         <div id="Link4Display" style="display: none">
-            有空添加一个搜索功能
-            <div>
+
+            <div id="collAdmin">
+                有空添加一个搜索功能
                 <table class="stuManage">
                     <thead>
                         <tr>
-                            <th scope="col">姓名</th>
-                            <th scope="col">学号</th>
-                            <th scope="col">入学时间</th>
-                            <th scope="col">院系</th>
+                            <th scope="col">学院编号</th>
+                            <th scope="col">学院名称</th>
+                            <th scope="col">学院负责人</th>
+                            <th scope="col">备注</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stuTable">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="majorAdmin">
+                有空添加一个搜索功能
+                <table class="stuManage">
+                    <thead>
+                        <tr>
+                            <th scope="col">专业编号</th>
+                            <th scope="col">专业名称</th>
+                            <th scope="col">所属学院</th>
+                            <th scope="col">专业负责人</th>
+                            <th scope="col">备注</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
@@ -212,37 +235,18 @@
             </div>
         </div>
         <div id="popMain">
-            <p style="font-size: 150px;text-align:center;">CONTENT</p>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            Content<br>
-            ----------------Eed of ALL----------------<br>
+            <div id="addStu" style="display : none">
+                在这里填写学生信息
+            </div>
+            <div id="addSTA" style="display : none">
+                在这里填写职工信息
+            </div>
+            <div id="bindTSA" style="display : none">
+                在这里绑定教务信息(列表)
+            </div>
+            <div id="bindTEA" style="display : none">
+                在这里绑定教师信息(列表)
+            </div>
         </div>
     </div>
     <div id="overlay"></div>

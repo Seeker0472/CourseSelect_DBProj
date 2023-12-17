@@ -2,7 +2,7 @@
 const main = document.querySelector("main");
 
 const ClassBody = document.getElementById("ClassBody");
-const appliancesBody = document.getElementById("appliances");
+// const appliancesBody = document.getElementById("appliances");
 const stuTable = document.getElementById("stuTable");
 const popTitle = document.getElementById("popTitle");
 
@@ -92,37 +92,37 @@ function initializeClassBody() {
 //初始化申请表格
 function initializeCheckBody() {
 
-    while (appliancesBody.hasChildNodes()) {
-        appliancesBody.removeChild(appliancesBody.firstChild);
-    }
-    //在这里加一个foreach循环
-    {
-        const table = document.createElement("tr");
-        const applyID = document.createElement("td");
-        applyID.innerHTML = "申请序号";
-        const issue = document.createElement("td");
-        issue.innerHTML = "申请事件";
-        const applicant = document.createElement("td");
-        applicant.innerHTML = "申请人";
-        const time = document.createElement("td");
-        time.innerHTML = "申请时间";
-        const action = document.createElement("td");
-        const button1 = document.createElement("button");
-        button1.className = "Button001";
-        button1.innerHTML = "查看详情";
-        button1.onclick = function () {
-            //记得补充交互逻辑
+    // while (appliancesBody.hasChildNodes()) {
+    //     appliancesBody.removeChild(appliancesBody.firstChild);
+    // }
+    // //在这里加一个foreach循环
+    // {
+    //     const table = document.createElement("tr");
+    //     const applyID = document.createElement("td");
+    //     applyID.innerHTML = "申请序号";
+    //     const issue = document.createElement("td");
+    //     issue.innerHTML = "申请事件";
+    //     const applicant = document.createElement("td");
+    //     applicant.innerHTML = "申请人";
+    //     const time = document.createElement("td");
+    //     time.innerHTML = "申请时间";
+    //     const action = document.createElement("td");
+    //     const button1 = document.createElement("button");
+    //     button1.className = "Button001";
+    //     button1.innerHTML = "查看详情";
+    //     button1.onclick = function () {
+    //         //记得补充交互逻辑
 
 
-        }
-        action.appendChild(button1);
-        table.appendChild(applyID);
-        table.appendChild(issue);
-        table.appendChild(applicant);
-        table.appendChild(time);
-        table.appendChild(action);
-        appliancesBody.appendChild(table);
-    }
+    //     }
+    //     action.appendChild(button1);
+    //     table.appendChild(applyID);
+    //     table.appendChild(issue);
+    //     table.appendChild(applicant);
+    //     table.appendChild(time);
+    //     table.appendChild(action);
+    //     appliancesBody.appendChild(table);
+    // }
 
 
 
@@ -180,60 +180,218 @@ function clearPop() {
 
 
 //弹出窗口
-function popDiv() {
+function popDiv(page, title) {
+    //清除弹出框内容
+    const popMain = document.getElementById("popMain");
+    const popTitle = document.getElementById("popTitle");
+    const addStu = document.getElementById("addStu");
+    const addSTA = document.getElementById("addSTA");
+    const bindTSA = document.getElementById("bindTSA");
+    const bindTEA = document.getElementById("bindTEA");
+
+    // popMain.forEach((div) => {
+    //     div.style = "display:none;";
+    // });
+    for (Object of popMain.children) {
+        Object.style.display = "none";
+    }
+
+    switch (page) {
+        case 1:
+            popTitle.innerHTML = "添加学生";
+            addStu.style.display = "unset";
+            break;
+        case 2:
+            popTitle.innerHTML = "添加职工";
+            addSTA.style.display = "unset";
+            break;
+        case 3:
+            popTitle.innerHTML = "绑定教务身份";
+            bindTSA.style.display = "unset";
+            break;
+        case 4:
+            popTitle.innerHTML = "绑定教师身份";
+            bindTEA.style.display = "unset";
+            break;
+        case 5:
+            break;
+        default:
+            console.log("POPDIV:page Parameter Not Found");
+            break;
+    }
     // 获取div元素
     const popBox = document.getElementById("popDiv");
     // 控制两个div的显示与隐藏
     popBox.style.display = "block";
+    document.body.classList.add('popup-active');
 }
 
 function closePop() {
     // 获取弹出窗口元素
     let popDiv = document.getElementById("popDiv");
     popDiv.style.display = "none";
+    document.body.classList.remove('popup-active');
 }
-
+//TODO:加上加载页面的逻辑和前后端交互
 function LoadPage21() {
+    const page21 = document.getElementById("stuManageDisplay");
     console.log("LoadPage21");
+    clearPage2();
+    page21.style.display = "unset";
+    editPageParm2(1);
+
+    initializeStuTable();
+
 }
+//TODO:加上加载页面的逻辑和前后端交互
+
 function LoadPage22() {
+    const page22 = document.getElementById("staManageDisplay");
     console.log("LoadPage22");
+    clearPage2();
+    page22.style.display = "unset";
+    editPageParm2(2);
+
+
 
 }
+//TODO:加上加载页面的逻辑和前后端交互
+
 function LoadPage23() {
+    const page23 = document.getElementById("tsaManageDisplay");
     console.log("LoadPage23");
+    clearPage2();
+    page23.style.display = "unset";
+    editPageParm2(3);
+
 
 }
+//TODO:加上加载页面的逻辑和前后端交互
 function LoadPage24() {
+    const page24 = document.getElementById("teaManageDisplay");
     console.log("LoadPage24");
+    clearPage2();
+    page24.style.display = "unset";
+    editPageParm2(4);
+
 
 }
+function clearPage2() {
+    const Link2Display = document.getElementById("Link2Display");
+    for (Object of Link2Display.children) {
+        Object.style.display = "none";
+    }
+}
+
+function editPageParm2(pagenum) {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    let accountpage = params.get('accm');
+    if (accountpage === pagenum.toString())
+        return;
+    params.delete('accm');
+    params.set('accm', pagenum);
+    const newUrl = url.href;
+    //window.location.href = newUrl;
+    history.pushState({}, '', newUrl);//设置参数但是不刷新页面
+}
+function pahsePageParm2() {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    let accountpage = params.get('accm');
+    if (accountpage === null) {
+        LoadPage21();
+        return;
+    }
+    switch (accountpage) {
+        case "1":
+            LoadPage21();
+            break;
+        case "2":
+            LoadPage22();
+            break;
+        case "3":
+            LoadPage23();
+            break;
+        case "4":
+            LoadPage24();
+            break;
+        default:
+            LoadPage21();
+            break;
+    }
+}
+function editPageParm4(pagenum) {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    let accountpage = params.get('acam');
+    if (accountpage === pagenum.toString())
+        return;
+    params.delete('acam');
+    params.set('acam', pagenum);
+    const newUrl = url.href;
+    //window.location.href = newUrl;
+    history.pushState({}, '', newUrl);//设置参数但是不刷新页面
+}
+function pahsePageParm4() {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    let accountpage = params.get('acam');
+    if (accountpage === null) {
+        LoadPage41();
+        return;
+    }
+    switch (accountpage) {
+        case "1":
+            LoadPage41();
+            break;
+        case "2":
+            LoadPage42();
+            break;
+        default:
+            LoadPage41();
+            break;
+    }
+}
+
 function LoadPage41() {
     console.log("LoadPage41");
+    editPageParm4(1);
+    const page41 = document.getElementById("collAdmin");
+    const page42 = document.getElementById("majorAdmin");
+    page41.style.display = "unset";
+    page42.style.display = "none";
+
 
 }
 function LoadPage42() {
     console.log("LoadPage42");
+    editPageParm4(2);
+    const page41 = document.getElementById("collAdmin");
+    const page42 = document.getElementById("majorAdmin");
+    page41.style.display = "none";
+    page42.style.display = "unset";
+
 
 }
+
 
 //加载页面是执行的函数
 function loadPage1() {
 
 }
 function loadPage2() {
-
-    // initializeClassBody();
+    pahsePageParm2();
 
 }
 function loadPage3() {
 
-    initializeCheckBody();
+    // initializeCheckBody();
 
 }
 function loadPage4() {
+    pahsePageParm4();
 
-    initializeStuTable();
 
 }
 function loadPage5() {
@@ -242,4 +400,8 @@ function loadPage5() {
 //第一次加载
 function firstload() {
     popDiv();
+}
+function addStudent() {
+    const addForm = document.getElementById("addStu");
+    addForm.style.display = "unset";
 }
