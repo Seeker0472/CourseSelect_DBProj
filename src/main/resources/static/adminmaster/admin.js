@@ -43,45 +43,45 @@ function clearAll() {
 
 //初始化课程表格
 function initializeClassBody() {
-    while (ClassBody.hasChildNodes()) {
-        ClassBody.removeChild(ClassBody.firstChild);
-    }
-    //在这里加一个foreach循环
-    {
-        const table = document.createElement("tr");
-        const classnum = document.createElement("td");
-        classnum.innerHTML = "课程号";
-        const classname = document.createElement("td");
-        classname.innerHTML = "课程名";
-        const credits = document.createElement("td");
-        credits.innerHTML = "学分";
-        const time = document.createElement("td");
-        time.innerHTML = "学时";
-        const teacher = document.createElement("td");
-        teacher.innerHTML = "教师";
-        const compulsory = document.createElement("td");
-        compulsory.innerHTML = "是否必修";
-        const action = document.createElement("td");
-        const button1 = document.createElement("button");
-        button1.className = "Button001";
-        button1.innerHTML = "查看详情";
+    // while (ClassBody.hasChildNodes()) {
+    //     ClassBody.removeChild(ClassBody.firstChild);
+    // }
+    // //在这里加一个foreach循环
+    // {
+    //     const table = document.createElement("tr");
+    //     const classnum = document.createElement("td");
+    //     classnum.innerHTML = "课程号";
+    //     const classname = document.createElement("td");
+    //     classname.innerHTML = "课程名";
+    //     const credits = document.createElement("td");
+    //     credits.innerHTML = "学分";
+    //     const time = document.createElement("td");
+    //     time.innerHTML = "学时";
+    //     const teacher = document.createElement("td");
+    //     teacher.innerHTML = "教师";
+    //     const compulsory = document.createElement("td");
+    //     compulsory.innerHTML = "是否必修";
+    //     const action = document.createElement("td");
+    //     const button1 = document.createElement("button");
+    //     button1.className = "Button001";
+    //     button1.innerHTML = "查看详情";
 
-        button1.onclick = function () {
-            //记得补充交互逻辑
+    //     button1.onclick = function () {
+    //         //记得补充交互逻辑
 
 
 
-        }
-        action.appendChild(button1);
-        table.appendChild(classnum);
-        table.appendChild(classname);
-        table.appendChild(credits);
-        table.appendChild(time);
-        table.appendChild(teacher);
-        table.appendChild(compulsory);
-        table.appendChild(action);
-        ClassBody.appendChild(table);
-    }
+    //     }
+    //     action.appendChild(button1);
+    //     table.appendChild(classnum);
+    //     table.appendChild(classname);
+    //     table.appendChild(credits);
+    //     table.appendChild(time);
+    //     table.appendChild(teacher);
+    //     table.appendChild(compulsory);
+    //     table.appendChild(action);
+    //     ClassBody.appendChild(table);
+    // }
 
 
 

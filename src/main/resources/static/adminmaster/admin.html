@@ -36,7 +36,9 @@
         <div id="Link1Display" style="display: none">
             <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
         </div>
+        <!--TODO:在账号管理部分能不能像数据库一样把权限分配给角色,一个角色对应多个权限,一个用户分配多个角色,就相当于账号分为两种,职工和学生,职工分为教师和教务-->
         <!--TODO:完成账号管理部分-->
+        <!--TODO:加上后端请求-->
         <div id="Link2Display" style="display: none">
             <nav>
                 <ul>
@@ -46,46 +48,91 @@
                     <div class="miniSlider" id="slider2"></div>
                 </ul>
             </nav>
-            <div>
-                有空添加一个高级搜索功能
-                <button id="addCourse" class="Button002" style="display: block; margin: auto;">添加课程</button>
-                <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>
-                <br>
-                <table class="thead">
-                    <thead>
-                        <tr>
-                            <th scope="col">课程号</th>
-                            <th scope="col">课程名</th>
-                            <th scope="col">学分</th>
-                            <th scope="col">学时</th>
-                            <th scope="col">教师</th>
-                            <th scope="col">必修?</th>
+            <!--TODO:学生信息应该显示姓,学号,专业,学院,性别,电话,密码只能修改不能查看-->
+            <div id="stuManageDisplay" style="display: unset">
+                <div>
+                    有空添加一个高级搜索功能
+                    <button id="addStudent" class="Button002" style="display: block; margin: auto;">添加学生</button>
+                    <br>
+                    <table class="stuManage">
+                        <thead>
+                            <tr>
+                                <th scope="col">姓名</th>
+                                <th scope="col">学号</th>
+                                <th scope="col">学院</th>
+                                <th scope="col">专业</th>
+                                <th scope="col">性别</th>
+                                <th scope="col">电话</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stuTable">
 
-                            <th scope="col">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ClassBody">
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tsaManageDisplay" style="display: unset">
+                <div>
+                    有空添加一个高级搜索功能
+                    <button id="addTSA" class="Button002" style="display: block; margin: auto;">添加教务</button>
+                    <br>
+                    <table class="stuManage">
+                        <thead>
+                            <tr>
+                                <th scope="col">姓名</th>
+                                <th scope="col">工号</th>
+                                <th scope="col">性别</th>
+                                <th scope="col">学院</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tsaTable">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="teaManageDisplay" style="display: unset">
+                <div>
+                    有空添加一个高级搜索功能
+                    <button id="addTeacher" class="Button002" style="display: block; margin: auto;">添加教师</button>
+                    <br>
+                    <table class="stuManage">
+                        <thead>
+                            <tr>
+                                <th scope="col">姓名</th>
+                                <th scope="col">工号</th>
+                                <th scope="col">性别</th>
+                                <th scope="col">院系</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teaTable">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <!--TODO:完成课程管理部分-->
         <div id="Link3Display" style="display: none">
             <div>
                 <table class="courseTable">
                     <thead>
                         <tr>
-                            <th scope="col">申请序号</th>
-                            <th scope="col">申请事件</th>
-                            <th scope="col">申请人</th>
-                            <th scope="col">申请时间</th>
+                            <th scope="col">课程编号</th>
+                            <th scope="col">课程名称</th>
+                            <th scope="col">课程备注</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
-                    <tbody id="appliances">
+                    <tbody id="courseTable">
                     </tbody>
                 </table>
             </div>
         </div>
+        <!--完成学院管理部分-->
         <div id="Link4Display" style="display: none">
             有空添加一个搜索功能
             <div>

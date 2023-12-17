@@ -80,7 +80,7 @@ table tfoot tr td {
     position: absolute;
     z-index: -1;
     transition: all ease 0.4s;
-    animation: 2s ease-in-out waves infinite;
+    animation: 1s ease-in-out waves infinite;
 }
 
 
