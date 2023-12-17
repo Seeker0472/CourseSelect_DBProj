@@ -23,9 +23,30 @@
         <nav>
             <ul>
                 <li id="link1"><a>首页</a></li>
-                <li id="link2"><a>账号管理</a></li>
+                <!-- <li id="link2"><a>账号管理</a></li>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div> -->
+                <li id="link2" class="dropdown">
+                    <a>账号管理</a>
+                    <div class="dropdown-content">
+                        <a href="#">学生账号管理</a>
+                        <a href="#">职工账号管理</a>
+                        <a href="#">教务账号绑定</a>
+                        <a href="#">教师账号绑定</a>
+                    </div>
+                </li>
                 <li id="link3"><a>课程管理</a></li>
-                <li id="link4"><a>学院管理</a></li>
+                <!-- <li id="link4"><a>学院管理</a></li> -->
+                <li id="link4" class="dropdown">
+                    <a>学院管理</a>
+                    <div class="dropdown-content">
+                        <a href="#">专业信息管理</a>
+                        <a href="#">学院信息管理</a>
+                    </div>
+                </li>
                 <li id="link5"><a>我的</a></li>
                 <div class="slider" id="slider1"></div>
             </ul>
@@ -36,18 +57,19 @@
         <div id="Link1Display" style="display: none">
             <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
         </div>
+        <!--TODO:这里最好开会讨论-->
         <!--TODO:在账号管理部分能不能像数据库一样把权限分配给角色,一个角色对应多个权限,一个用户分配多个角色,就相当于账号分为两种,职工和学生,职工分为教师和教务-->
         <!--TODO:完成账号管理部分-->
         <!--TODO:加上后端请求-->
         <div id="Link2Display" style="display: none">
-            <nav>
+            <!-- <nav>
                 <ul>
                     <li id="stuManage"><a>学生账号管理</a></li>
                     <li id="tsaManage"><a>教务账号管理</a></li>
                     <li id="teaManage"><a>教师账号管理</a></li>
                     <div class="miniSlider" id="slider2"></div>
                 </ul>
-            </nav>
+            </nav> -->
             <!--TODO:学生信息应该显示姓,学号,专业,学院,性别,电话,密码只能修改不能查看-->
             <div id="stuManageDisplay" style="display: unset">
                 <div>
@@ -132,7 +154,7 @@
                 </table>
             </div>
         </div>
-        <!--完成学院管理部分-->
+        <!--TODO:完成学院管理部分-->
         <div id="Link4Display" style="display: none">
             有空添加一个搜索功能
             <div>

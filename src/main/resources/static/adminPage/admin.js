@@ -134,6 +134,8 @@ function initializeStuTable() {
         enrollTime.innerHTML = "入学时间";
         const college = document.createElement("td");
         college.innerHTML = "学院";
+        const major = document.createElement("td");
+        major.innerHTML = "专业";
         const action = document.createElement("td");
         const button1 = document.createElement("button");
         button1.className = "Button001";
@@ -148,6 +150,7 @@ function initializeStuTable() {
         table.appendChild(stuid);
         table.appendChild(enrollTime);
         table.appendChild(college);
+        table.appendChild(major);
         table.appendChild(action);
         stuTable.appendChild(table);
     }
