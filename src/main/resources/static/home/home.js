@@ -15,7 +15,7 @@ function clearAll() {
 
 function showadvs() {
     if (advs.style.display === "none")
-        advs.style.display = "unset";
+        advs.style.display = "flex";
     else
         advs.style.display = "none";
 }
