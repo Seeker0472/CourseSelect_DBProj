@@ -14,18 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const teaManage = document.getElementById("teaManage");
 
     //TODO:完成各个页面逻辑
-    stuManage.addEventListener("click", function () {
-        slider.style.transform = 'translateX(0)';
-        console.log("stuManage");
-    });
-    tsaManage.addEventListener("click", function () {
-        slider.style.transform = 'translateX(118px)';
-        console.log("tsaManage");
-    });
-    teaManage.addEventListener("click", function () {
-        slider.style.transform = 'translateX(240px)';
-        console.log("teaManage");
-    });
+    // stuManage.addEventListener("click", function () {
+    //     slider.style.transform = 'translateX(0)';
+    //     console.log("stuManage");
+    // });
+    // tsaManage.addEventListener("click", function () {
+    //     slider.style.transform = 'translateX(118px)';
+    //     console.log("tsaManage");
+    // });
+    // teaManage.addEventListener("click", function () {
+    //     slider.style.transform = 'translateX(240px)';
+    //     console.log("teaManage");
+    // });
 
 });
 
@@ -193,7 +193,29 @@ function closePop() {
     popDiv.style.display = "none";
 }
 
+function LoadPage21() {
+    console.log("LoadPage21");
+}
+function LoadPage22() {
+    console.log("LoadPage22");
 
+}
+function LoadPage23() {
+    console.log("LoadPage23");
+
+}
+function LoadPage24() {
+    console.log("LoadPage24");
+
+}
+function LoadPage41() {
+    console.log("LoadPage41");
+
+}
+function LoadPage42() {
+    console.log("LoadPage42");
+
+}
 
 //加载页面是执行的函数
 function loadPage1() {
@@ -201,7 +223,7 @@ function loadPage1() {
 }
 function loadPage2() {
 
-    initializeClassBody();
+    // initializeClassBody();
 
 }
 function loadPage3() {

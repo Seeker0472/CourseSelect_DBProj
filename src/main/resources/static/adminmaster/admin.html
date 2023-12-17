@@ -32,10 +32,10 @@
                 <li id="link2" class="dropdown">
                     <a>账号管理</a>
                     <div class="dropdown-content">
-                        <a href="#">学生账号管理</a>
-                        <a href="#">职工账号管理</a>
-                        <a href="#">教务账号绑定</a>
-                        <a href="#">教师账号绑定</a>
+                        <a onclick="LoadPage21()">学生账号管理</a>
+                        <a onclick="LoadPage22()">职工账号管理</a>
+                        <a onclick="LoadPage23()">教务身份绑定</a>
+                        <a onclick="LoadPage24()">教师身份绑定</a>
                     </div>
                 </li>
                 <li id="link3"><a>课程管理</a></li>
@@ -43,8 +43,8 @@
                 <li id="link4" class="dropdown">
                     <a>学院管理</a>
                     <div class="dropdown-content">
-                        <a href="#">专业信息管理</a>
-                        <a href="#">学院信息管理</a>
+                        <a onclick="LoadPage41()">专业信息管理</a>
+                        <a onclick="LoadPage42()">学院信息管理</a>
                     </div>
                 </li>
                 <li id="link5"><a>我的</a></li>
@@ -94,10 +94,30 @@
                     </table>
                 </div>
             </div>
+            <div id="staManageDisplay" style="display: unset">
+                <div>
+                    有空添加一个高级搜索功能
+                    <button id="addSTA" class="Button002" style="display: block; margin: auto;">添加职工</button>
+                    <br>
+                    <table class="stuManage">
+                        <thead>
+                            <tr>
+                                <th scope="col">姓名</th>
+                                <th scope="col">工号</th>
+                                <th scope="col">性别</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staTable">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div id="tsaManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addTSA" class="Button002" style="display: block; margin: auto;">添加教务</button>
+                    <button id="addTSA" class="Button002" style="display: block; margin: auto;">绑定教务</button>
                     <br>
                     <table class="stuManage">
                         <thead>
@@ -118,7 +138,7 @@
             <div id="teaManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button id="addTeacher" class="Button002" style="display: block; margin: auto;">添加教师</button>
+                    <button id="addTeacher" class="Button002" style="display: block; margin: auto;">绑定教师</button>
                     <br>
                     <table class="stuManage">
                         <thead>
