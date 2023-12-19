@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginPlace").addEventListener("mouseleave", function () {
         document.body.style.opacity = "50%"
     });
+    document.getElementById("varify-key").addEventListener("click", function () {
+        getVarifyPic();
+    });
     const praseUrl = new URL(window.location.href);
     const error = praseUrl.searchParams.get("error");
     if (error === "true") {
@@ -36,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('登录请求出错:', error);
             });
     });
+
 });
 
 function closePop() {
@@ -57,4 +61,13 @@ function popDiv() {
 function gotoRegister(event) {
     event.preventDefault();
     window.location.href = "./enroll/enroll.html";
+}
+
+//TODO:在这里加上后端访问逻辑
+function getVarifyPic() {
+    console.log("getVarifyPic");
+    const pic = document.getElementById("varify-key");
+    // pic.src = "";
+
+
 }

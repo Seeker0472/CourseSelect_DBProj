@@ -4,7 +4,7 @@ let advs
 
 document.addEventListener("DOMContentLoaded", function () {
     advs = document.getElementById("advSear");
-})
+});
 function clearAll() {
     //const main = document.querySelector("main");
     const alldiv = document.querySelectorAll('main > div');

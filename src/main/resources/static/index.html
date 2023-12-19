@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>登录</title>
+    <title>登录</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="PopWin.css">
     <script src="index.js" defer></script>
 </head>
+
 <body>
-<div class="login" id="loginPlace">
-    <h1>登录</h1>
-    <form id="LoginForm">
-        <input  type="text" name="username" placeholder="用户名" required="required" />
-        <input type="password" name="password" placeholder="密码" required="required" /><br>
-        <button type="submit" >登录</button>
-        <button onclick="gotoRegister(event)">注册</button>
-    </form>
-</div>
-<div id="popDiv">
-    <div class="banner">
-        <div class="title" id="popTitle">
-            公告
+    <div class="login" id="loginPlace">
+        <h1>登录</h1>
+        <form id="LoginForm">
+            <input type="text" name="username" placeholder="用户名" required="required" />
+            <input type="password" name="password" placeholder="密码" required="required" /><br>
+            <input id="varifyKeyInput" type="text" name="varify" placeholder="验证码" required="required"
+                style="width:60%" />
+            <img id="varify-key" src="./img/con-key-test.png" />
+            <button type="submit">登录</button>
+            <button onclick="gotoRegister(event)">注册</button>
+        </form>
+    </div>
+    <div id="popDiv">
+        <div class="banner">
+            <div class="title" id="popTitle">
+                公告
+            </div>
+            <div class="close">
+                <a href="javascript:void(0)" onclick="closePop()">关闭</a>
+            </div>
         </div>
-        <div class="close">
-            <a href="javascript:void(0)" onclick="closePop()">关闭</a>
+        <div id="popMain">
+            <p style="font-size: 25px;text-align:center;">欢迎!</p>
+            ToDo:写提示语<br>
+            ----------------Eed of ALL----------------<br>
         </div>
     </div>
-    <div id="popMain">
-        <p style="font-size: 25px;text-align:center;">欢迎!</p>
-       ToDo:写提示语<br>
-        ----------------Eed of ALL----------------<br>
-    </div>
-</div>
-<div id="overlay"></div>
+    <div id="overlay"></div>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-body{
+body {
     background: #009999;
     padding: 20px;
     border-radius: 5px;
@@ -11,6 +11,7 @@ body{
     right: 8%;
 
 }
+
 html {
     font-family: Arial, sans-serif;
     /*background-color: rgb(177,196,077);*/
@@ -24,21 +25,18 @@ html {
     background-size: cover;
     background-position: right bottom;
 }
+
 div h1 {
     font-size: 1.5em;
-    color: rgb(036,050,088);
+    color: rgb(036, 050, 088);
     text-align: center;
     opacity: 1;
 }
-#loginPlace
-{
 
-}
-#LoginForm
-{
+#loginPlace {}
 
+#LoginForm {}
 
-}
 #LoginForm input {
     opacity: 3;
     width: 275px;
@@ -47,9 +45,10 @@ div h1 {
     border-radius: 5px;
     outline: none;
     background-color: #CCCCFF;
-    border:0;
+    border: 0;
 }
-#LoginForm button{
+
+#LoginForm button {
     opacity: 1;
     width: 145px;
     margin: 10px 0px 10px 0px;
@@ -57,7 +56,21 @@ div h1 {
     border-radius: 5px;
     outline: none;
     background-color: #66CCCC;
-    border:0;
+    border: 0;
+}
+
+#varifyKeyInput {
+    align-items: flex-start;
+}
+
+#varify-key {
+    vertical-align: top;
+    opacity: 3;
+    height: 35px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+
 }
 
 /*#popDiv{*/
@@ -132,4 +145,3 @@ div h1 {
 /*    border-radius: 0 0 10px 10px;*/
 /*    overflow: auto;*/
 /*}*/
-

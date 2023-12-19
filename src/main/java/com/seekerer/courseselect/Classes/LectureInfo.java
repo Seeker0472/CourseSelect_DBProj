@@ -12,16 +12,16 @@ public class LectureInfo {
     private String id;
     private String Teacher;
     private Integer day;
-    private  Integer starttime;
-    private  Integer endtime;
-    private  Integer beginweek;
-    private  Integer endweek;
+    private  Integer startTime;
+    private  Integer endTime;
+    private  Integer beginWeek;
+    private  Integer endWeek;
     private  Boolean selected;
-    private  Integer selectednum;
-    private Integer maxnum;
+    private  Integer selectedNum;
+    private Integer maxNum;
 
-    private String semesterid;
-    private String semestername;
+    private String semesterId;
+    private String semesterName;
 
     private Double credit;
 

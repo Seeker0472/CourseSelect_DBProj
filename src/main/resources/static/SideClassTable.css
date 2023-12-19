@@ -126,3 +126,21 @@
     margin: 1px 1px 0 1px;
     transition: transform .2s;
 }
+
+#float-desc {
+    display: unset;
+    background-color: rgba(211, 106, 31, 0.8);
+    position: fixed;
+    top: 160px;
+    left: 30vh;
+    z-index: 8;
+    padding: 6px 15px;
+    /* opacity: 10%; */
+    border-radius: 6px;
+
+}
+
+#float-desc a {
+    /* opacity: 1;
+    z-index: 9; */
+}

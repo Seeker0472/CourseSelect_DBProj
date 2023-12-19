@@ -211,6 +211,9 @@
                 <button id="showMore">显示更多</button>
 
             </div>
+            <div id="float-desc">
+                <a id="float-desc-inner">test</a>
+            </div>
         </div>
         <div id="Link3Display" style="display: none">
             <label for="year">学年:</label>
@@ -245,10 +248,12 @@
         <div id="Link4Display" style="display: none">
             <label for="CourseSemester">学年:</label>
             <select id="CourseSemester" name="CourseSemester" required>
+                <option value="all" selected="selected">全部</option>
 
             </select>
             <label for="Term">学期:</label>
             <select id="Term" name="Term" required>
+                <option value="all" selected="selected">全部</option>
                 <option value="1">第一学期</option>
                 <option value="2">第二学期</option>
             </select>
@@ -371,20 +376,21 @@
                     </tbody>
                 </table>
             </div>
-            <div id="Link5Display" style="display: none">
-                <button class="Button002" onclick='location.href=("../apply/zzy/zzy.html?stuId="+stuid)'>转专业申请</button>
-                <button class="Button002">退学申请</button>
-                <button class="Button002" onclick='location.href=("../apply/zyfl/zyfl.html?stuId="+stuid)'>专业分流</button>
-                <button class="Button002" onclick='location.href=("../apply/xjyd/xjyd.html?stuId="+stuid)'>学籍异动</button>
-                <button class="Button002" onclick="alert('少年别卷了!')">辅修申请</button>
-                <button class="Button002">测试:随机信息生成器</button>
-                <br><br>
-                <button class="Button002" onclick="alert('功能正在开发中哦')">注销账号</button>
-                <button class="Button002" onclick="alert('功能正在开发中哦')">查询个人信息</button>
-                <button class="Button002" onclick="alert('功能正在开发中哦')">修改密码</button>
-                <button class="Button002" onclick="alert('功能正在开发中哦')">修改登录邮箱</button>
-                <button class="Button002" onclick="alert('功能正在开发中哦')">安全退出</button>
-            </div>
         </div>
+        <div id="Link5Display" style="display: none">
+            <button class="Button002" onclick='location.href=("../apply/zzy/zzy.html?stuId="+stuid)'>转专业申请</button>
+            <button class="Button002">退学申请</button>
+            <button class="Button002" onclick='location.href=("../apply/zyfl/zyfl.html?stuId="+stuid)'>专业分流</button>
+            <button class="Button002" onclick='location.href=("../apply/xjyd/xjyd.html?stuId="+stuid)'>学籍异动</button>
+            <button class="Button002" onclick="alert('少年别卷了!')">辅修申请</button>
+            <button class="Button002">测试:随机信息生成器</button>
+            <br><br>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">注销账号</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">查询个人信息</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">修改密码</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">修改登录邮箱</button>
+            <button class="Button002" onclick="alert('功能正在开发中哦')">安全退出</button>
+        </div>
+
     </main>
 </body>

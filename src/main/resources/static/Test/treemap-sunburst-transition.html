@@ -1,0 +1,123 @@
+<!--可以用这个来展示选课信息-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body style="height: 100%; margin: 0">
+  <button id="toggleButton" onclick="toggleChart()">Toggle Chart</button>
+
+  <div id="container" style="height: 100%"></div>
+
+  <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    let change = 0;
+    var dom = document.getElementById('container');
+    const myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    var ROOT_PATH = './';
+    var option;
+
+    $.getJSON(
+      ROOT_PATH + 'echarts-package-size.json',
+      function (data) {
+        const treemapOption = {
+          series: [
+            {
+              type: 'treemap',
+              id: 'echarts-package-size',
+              animationDurationUpdate: 1000,
+              roam: false,
+              nodeClick: undefined,
+              data: data.children,
+              universalTransition: true,
+              label: {
+                show: true
+              },
+              breadcrumb: {
+                show: false
+              }
+            }
+          ]
+        };
+        const sunburstOption = {
+          // visualMap: {
+          //   type: 'continuous',
+          //   min: 0,
+          //   max: 30000,
+          //   inRange: {
+          //     color: ['#2F93C8', '#AEC48F', '#FFDB5C', '#F98862']
+          //   }
+          // },
+          series: [
+            {
+              type: 'sunburst',
+              id: 'echarts-package-size',
+              radius: ['20%', '90%'],
+              animationDurationUpdate: 1000,
+              // nodeClick: undefined,
+              data: data.children,
+              universalTransition: true,
+              itemStyle: {
+                borderWidth: 1,
+                borderColor: 'rgba(255,255,255,.5)'
+              },
+              label: {
+                show: false
+              }
+            }
+          ]
+        };
+
+
+        let currentOption = treemapOption;
+        myChart.setOption(currentOption);
+        setInterval(function () {
+          if (change === 0) {
+
+          } else {
+            currentOption =
+              currentOption === treemapOption ? sunburstOption : treemapOption;
+            myChart.setOption(currentOption);
+            change = 0;
+          }
+        }, 3);
+      }
+    );
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+    function toggleChart() {
+      change = 1;
+    }
+  </script>
+</body>
+
+</html>
