@@ -1,38 +1,44 @@
-html, body, h1, h2, h3, p, ul, li {
+html,
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
     list-style: none;
 }
-header{
+
+header {
     background-color: #359697;
     color: #fff;
     padding: 15px;
     text-align: left;
     font-size: 15px;
-    font-weight:normal;
+    font-weight: normal;
     margin-bottom: 30px;
 }
-header  .welcome{
+
+header .welcome {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-header  nav {
+
+header nav {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header  ul {
+header ul {
     position: relative;
     display: flex;
 }
 
-header .user{
-    float:right;
-    margin-right: 20px;
-    margin-top: 10px;
-}
+
 
 @media screen and (max-width:610px) {
     header nav ul li {
@@ -43,12 +49,14 @@ header .user{
         position: relative;
         z-index: 2;
     }
+
     header ul li a {
         color: white;
         text-decoration: none;
         position: relative;
         z-index: 3;
     }
+
     header nav ul .slider {
         width: 60px;
         height: 40px;
@@ -65,6 +73,7 @@ header .user{
     }
 
 }
+
 @media screen and (min-width:610px) {
     header nav ul li {
         list-style: none;
@@ -74,12 +83,14 @@ header .user{
         position: relative;
         z-index: 2;
     }
+
     header ul li a {
         color: white;
         text-decoration: none;
         position: relative;
         z-index: 3;
     }
+
     header nav ul .slider {
         width: 100px;
         height: 40px;
@@ -95,4 +106,71 @@ header .user{
 
     }
 
+}
+
+header .user {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.userImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+
+}
+
+.userImg:hover {
+    border: 2px solid #5352ed;
+}
+
+.userName {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.dropDownCointainer {
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    width: 100px;
+    margin-top: 50px;
+    background-color: burlywood;
+    border-radius: 5px;
+    z-index: 9;
+
+}
+
+.dropDownContent a {
+    text-align: center;
+
+    display: block;
+    color: #5352ed;
+    padding: 6px 16px;
+    border-radius: 5px;
+
+}
+
+.dropDownContent a:hover {
+    background-color: #5352ed;
+    color: white;
+}
+
+
+.identityDropDownCointainer {
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    width: 150px;
+    margin-top: 83px;
+    margin-right: 250px;
+    background-color: rgb(135, 222, 138);
+    border-radius: 5px;
+    z-index: 9;
 }

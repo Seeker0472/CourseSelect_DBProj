@@ -461,4 +461,152 @@ GET /api/semester
 
 >TODO: 选课系统的其他接口(数据可视化等)
 
-## 2.教务管理员页面
+## 2.教务管理员页面  
+
+### 2.1.获取课程列表
+
+>请求路径: /api/eduadmin/getCourseList \
+>请求方式: POST \
+>描述: 获取课程列表
+
+#### 2.1.1.请求参数
+
+| 参数名     | 类型   | 必须? | 备注                |
+| ---------- | ------ | ----- | ------------------- |
+| courseID   | String | No    | 课程编号            |
+| semesterId | String | No    | 学期编号            |
+| courseName | String | No    | 课程名,支持模糊搜索 |
+| professor  | String | No    | 教授名,支持模糊搜索 |
+| majorid    | String | No    | 专业id              |
+
+#### 2.1.2.响应参数
+
+- **成功响应：**
+
+  - **状态码:** 200 OK
+  - **内容**
+
+    | 参数名      | 类型    | 必须?      | 备注             |
+    | ----------- | ------- | ---------- | ---------------- |
+    | name        | String  | IfSuccess  | 课程名称         |
+    | courseId    | String  | IfSusccess | 课程编号         |
+    | teacherID   | String  | IfSuccess  | 教师编号         |
+    | teacherName | String  | IfSuccess  | 教师姓名         |
+    | selectedNum | Integer | IfSuccess  | 已选人数         |
+    | maxNum      | Integer | IfSuccess  | 课程限制最大人数 |
+    | major       | String  | IfSuccess  | 课程面向专业     |
+
+#### 错误情况
+
+- **服务器错误：**
+  - **状态码:** 500 Internal Server Error
+  - **内容:**
+
+    ```json
+    {
+      "status": "error",
+      "message": "服务器错误，无法获取课程信息。"
+    }
+    ```
+
+#### 2.1.3.响应数据样例
+  
+  ```json
+  {
+      "status": "success",
+      "message": "获取课程列表成功",
+      "data": [
+          {
+              "name": "高等数学",
+              "courseId": "C001",
+              "teacherID": "T001",
+              "teacherName": "张三",
+              "selectedNum": 0,
+              "maxNum": 100,
+              "major": "计算机科学与技术"
+          },
+          {
+              "name": "线性代数",
+              "courseId": "C002",
+              "teacherID": "T002",
+              "teacherName": "李四",
+              "selectedNum": 0,
+              "maxNum": 100,
+              "major": "计算机科学与技术"
+          }
+      ]
+  }
+  ```
+
+
+### 2.2.修改课程信息
+
+>请求路径: /api/eduadmin/modifyCourse \
+>请求方式: POST \
+>描述: 修改课程信息
+
+#### 2.2.1.请求参数
+
+| 参数名     | 类型   | 必须? | 备注             |
+| ---------- | ------ | ----- | ---------------- |
+| courseID   | String | Yes   | 课程编号         |
+| semesterId | String | Yes   | 学期编号         |
+| courseName | String | Yes   | 课程名           |
+| professor  | String | Yes   | 教授名           |
+| majorid    | String | Yes   | 专业id           |
+| maxNum     | String | Yes   | 课程限制最大人数 |
+
+>TODO: 这里需要修改
+
+
+
+
+### 2.3.删除课程
+
+>请求路径: /api/eduadmin/deleteCourse \
+>请求方式: DELETE \
+>描述: 删除课程
+
+#### 2.3.1.请求参数
+
+| 参数名   | 类型   | 必须? | 备注     |
+| -------- | ------ | ----- | -------- |
+| courseID | String | Yes   | 课程编号 |
+
+#### 2.3.2.响应参数
+
+- **成功响应：**
+
+  - **状态码:** 200 OK
+  - **内容**
+
+    | 参数名     | 类型   | 必须?     | 备注     |
+    | ---------- | ------ | --------- | -------- |
+    | courseID   | String | IfSuccess | 课程编号 |
+    | courseName | String | IfSuccess | 课程名   |
+
+#### 错误情况
+
+- **服务器错误：**
+  - **状态码:** 500 Internal Server Error
+  - **内容:**
+
+    ```json
+    {
+      "status": "error",
+      "message": "服务器错误，无法删除课程。"
+    }
+    ```
+
+#### 2.3.3.响应数据样例
+
+```json
+{
+    "status": "success",
+    "message": "删除课程成功",
+    "data": {
+        "courseID": "C001",
+        "courseName": "高等数学"
+    }
+}
+```

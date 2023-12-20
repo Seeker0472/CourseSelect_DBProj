@@ -9,6 +9,8 @@ const Link2Display = document.getElementById("Link2Display");
 const Link3Display = document.getElementById("Link3Display");
 const Link4Display = document.getElementById("Link4Display");
 const Link5Display = document.getElementById("Link5Display");
+const Link2Droupdown = document.getElementById("Link2Droupdown");
+const Link4Droupdown = document.getElementById("Link4Droupdown");
 
 //每次屏幕大小变化时，重新计算transform的值
 window.onresize = function () {
@@ -79,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const link5 = document.getElementById("link5");
     //var link6=document.getElementById("link6");
 
+
     //设置监听器,当鼠标悬浮和离开的时候移动
     link1.addEventListener("mouseenter",
         (event) => {
@@ -87,6 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
     link2.addEventListener("mouseenter",
         (event) => {
             slider.style.transform = 'translateX(' + transfrompos + 'px)';
+            if (Link2Droupdown != null) {
+                Link2Droupdown.style.display = "block";
+                setTimeout(function () {
+                    Link2Droupdown.style.opacity = "1";
+                }, 1);
+            }
+
         });
     link3.addEventListener("mouseenter",
         (event) => {
@@ -95,6 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
     link4.addEventListener("mouseenter",
         (event) => {
             slider.style.transform = 'translateX(' + transfrompos * 3 + 'px)';
+            if (Link4Droupdown != null) {
+                Link4Droupdown.style.display = "block";
+                setTimeout(function () {
+                    Link4Droupdown.style.opacity = "1";
+                }, 1);
+            }
         });
     link5.addEventListener("mouseenter",
         (event) => {
@@ -105,12 +121,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     link2.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
+        if (Link2Droupdown != null) {
+            //定时执行
+            setTimeout(function () {
+                Link2Droupdown.style.display = "none";
+            }, 500);
+            // Link2Droupdown.style.display = "none";
+            Link2Droupdown.style.opacity = "0";
+        }
     });
     link3.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
     });
     link4.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
+        if (Link4Droupdown != null) {
+            //定时执行
+            setTimeout(function () {
+                Link4Droupdown.style.display = "none";
+            }, 500);
+            // Link2Droupdown.style.display = "none";
+            Link4Droupdown.style.opacity = "0";
+        }
     });
     link5.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
@@ -136,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Link2Display.style.display = "unset";
         setPageParams(2);
         loadPage2();
+
     });
     link3.addEventListener("click", (event) => {
         console.log("Loading Page3");
@@ -156,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Link4Display.style.display = "unset";
         setPageParams(4);
         loadPage4();
+
     });
     link5.addEventListener("click", (event) => {
         console.log("Loading Page5");

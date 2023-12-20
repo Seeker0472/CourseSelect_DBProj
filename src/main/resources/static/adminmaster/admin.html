@@ -15,7 +15,23 @@
 <body>
     <header>
         <div class="user">
-            退出
+            <img class="userImg" src="../img/user.png" alt="user">
+            <span class="userName" id="userName">name</span>
+            <div id="userDropDown" class="dropDownCointainer">
+                <div class="dropDownContent">
+                    <a>个人信息</a>
+                    <a>身份切换</a>
+                    <a>退出</a>
+                </div>
+            </div>
+            <div id="" class="identityDropDownCointainer">
+                <div class="dropDownContent">
+                    <a>信息工程学院:教务管理员</a>
+                    <a>测绘与空间信息工程学院:教务管理员</a>
+                    <a>退出</a>
+                </div>
+            </div>
+        </div>
         </div>
         <div class="welcome">欢迎!</div>
 
@@ -31,7 +47,7 @@
                 </div> -->
                 <li id="link2" class="dropdown">
                     <a>账号管理</a>
-                    <div class="dropdown-content">
+                    <div id="Link2Droupdown" class="dropdown-content">
                         <a onclick="LoadPage21()">学生账号管理</a>
                         <a onclick="LoadPage22()">职工账号管理</a>
                         <a onclick="LoadPage23()">教务身份绑定</a>
@@ -42,7 +58,7 @@
                 <!-- <li id="link4"><a>学院管理</a></li> -->
                 <li id="link4" class="dropdown">
                     <a>学院管理</a>
-                    <div class="dropdown-content">
+                    <div id="Link4Droupdown" class="dropdown-content">
                         <a onclick="LoadPage41()">专业信息管理</a>
                         <a onclick="LoadPage42()">学院信息管理</a>
                     </div>
@@ -101,7 +117,7 @@
                     <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(2, '添加职工');">添加职工</button>
                     <br>
-                    <table class="stuManage">
+                    <table class="TableComm">
                         <thead>
                             <tr>
                                 <th scope="col">姓名</th>
@@ -123,7 +139,7 @@
                     <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(3, '绑定教务身份');">绑定教务</button>
                     <br>
-                    <table class="stuManage">
+                    <table class="TableComm">
                         <thead>
                             <tr>
                                 <th scope="col">姓名</th>
@@ -146,7 +162,7 @@
                     <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(4, '绑定教师身份');">绑定教师</button>
                     <br>
-                    <table class="stuManage">
+                    <table class="TableComm">
                         <thead>
                             <tr>
                                 <th scope="col">姓名</th>
@@ -167,7 +183,7 @@
         <!--TODO:完成课程管理部分-->
         <div id="Link3Display" style="display: none">
             <div>
-                <table class="courseTable">
+                <table class="TableComm">
                     <thead>
                         <tr>
                             <th scope="col">课程编号</th>
@@ -186,7 +202,7 @@
 
             <div id="collAdmin">
                 有空添加一个搜索功能
-                <table class="stuManage">
+                <table class="TableComm">
                     <thead>
                         <tr>
                             <th scope="col">学院编号</th>
@@ -203,7 +219,7 @@
             </div>
             <div id="majorAdmin">
                 有空添加一个搜索功能
-                <table class="stuManage">
+                <table class="TableComm">
                     <thead>
                         <tr>
                             <th scope="col">专业编号</th>

@@ -131,6 +131,9 @@ table tbody tr:hover {
 table tbody tr td:nth-child(1) {
     color: #f40;
 }
+table tbody tr th:hover{
+    background-color: #ccc;
+}
 
 table tfoot tr td {
     text-align: right;
