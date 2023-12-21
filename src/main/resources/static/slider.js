@@ -11,6 +11,14 @@ const Link4Display = document.getElementById("Link4Display");
 const Link5Display = document.getElementById("Link5Display");
 const Link2Droupdown = document.getElementById("Link2Droupdown");
 const Link4Droupdown = document.getElementById("Link4Droupdown");
+const user = document.getElementById("user");
+const userDroupdown = document.getElementById("userDroupdown");
+const idTransContainer = document.getElementById("identityDroupDownCointainer");
+const idTrans = document.getElementById("identityTransform");
+const personalInfo = document.getElementById("personalInfo");
+const exit = document.getElementById("exit");
+let timer = null;
+
 
 //每次屏幕大小变化时，重新计算transform的值
 window.onresize = function () {
@@ -29,6 +37,57 @@ window.onresize = function () {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    user.addEventListener("mouseenter", (event) => {
+        if (timer != null)
+            clearTimeout(timer);
+        userDroupdown.style.display = "block";
+        timer = setTimeout(function () {
+            userDroupdown.style.opacity = "1";
+        }, 1);
+
+    });
+
+    user.addEventListener("mouseleave", (event) => {
+        if (timer != null)
+            clearTimeout(timer);
+        userDroupdown.style.opacity = "0";
+        idTransContainer.style.opacity = "0";
+
+        timer = setTimeout(function () {
+            userDroupdown.style.display = "none";
+            idTransContainer.style.display = "none";
+        }, 300);
+    });
+    idTrans.addEventListener("mouseenter", (event) => {
+        if (timer != null)
+            clearTimeout(timer);
+        idTransContainer.style.display = "block";
+        timer = setTimeout(function () {
+            idTransContainer.style.opacity = "1";
+        }, 1);
+    });
+    idTrans.addEventListener("mouseleave", (event) => {
+        if (timer != null)
+            clearTimeout(timer);
+        idTransContainer.style.opacity = "0";
+        timer = setTimeout(function () {
+            idTransContainer.style.display = "none";
+        }, 300);
+    });
+    idTransContainer.addEventListener("mouseenter", (event) => {
+        if (timer != null)
+            clearTimeout(timer);
+        idTransContainer.style.display = "block";
+        userDroupdown.style.display = "block";
+        timer = setTimeout(function () {
+            idTransContainer.style.opacity = "1";
+            userDroupdown.style.opacity = "1";
+        }, 1);
+    });
+
+
+
 
     slider = document.getElementById("slider1");
 
@@ -125,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //定时执行
             setTimeout(function () {
                 Link2Droupdown.style.display = "none";
-            }, 500);
+            }, 300);
             // Link2Droupdown.style.display = "none";
             Link2Droupdown.style.opacity = "0";
         }
@@ -139,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //定时执行
             setTimeout(function () {
                 Link4Droupdown.style.display = "none";
-            }, 500);
+            }, 300);
             // Link2Droupdown.style.display = "none";
             Link4Droupdown.style.opacity = "0";
         }

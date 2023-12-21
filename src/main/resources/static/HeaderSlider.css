@@ -114,6 +114,7 @@ header .user {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    height: 53px;
 }
 
 .userImg {
@@ -136,14 +137,18 @@ header .user {
 }
 
 .dropDownCointainer {
+    opacity: 0;
+    display: none;
     position: absolute;
     display: inline-block;
     margin: auto;
     width: 100px;
     margin-top: 50px;
-    background-color: burlywood;
+    background-color: #33CC99;
     border-radius: 5px;
     z-index: 9;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all ease 0.5s;
 
 }
 
@@ -158,12 +163,14 @@ header .user {
 }
 
 .dropDownContent a:hover {
-    background-color: #5352ed;
-    color: white;
+    background-color: #FFCC33;
+    color: #990033;
 }
 
 
 .identityDropDownCointainer {
+    opacity: 0;
+    display: none;
     position: absolute;
     display: inline-block;
     margin: auto;
@@ -172,5 +179,7 @@ header .user {
     margin-right: 250px;
     background-color: rgb(135, 222, 138);
     border-radius: 5px;
-    z-index: 9;
+    z-index: 8;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all ease 0.5s;
 }

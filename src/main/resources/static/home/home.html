@@ -17,20 +17,21 @@
 <body>
     <header>
         <div class="user">
-            <img class="userImg" src="../img/user.png" alt="user">
-            <span class="userName" id="userName">name</span>
-            <div id="userDropDown" class="dropDownCointainer">
-                <div class="dropDownContent">
-                    <a>个人信息</a>
-                    <a>身份切换</a>
-                    <a>退出</a>
+            <div id="user" class="user">
+                <img class="userImg" src="../img/user.png" alt="user">
+                <span class="userName" id="userName">name</span>
+                <div id="userDroupdown" class="dropDownCointainer" style="display: none; opacity: 0;">
+                    <div class="dropDownContent">
+                        <a id="personalInfo">个人信息</a>
+                        <a id="identityTransform">身份切换</a>
+                        <a id="exit">退出</a>
+                    </div>
                 </div>
-            </div>
-            <div id="" class="identityDropDownCointainer">
-                <div class="dropDownContent">
-                    <a>信息工程学院:教务管理员</a>
-                    <a>测绘与空间信息工程学院:教务管理员</a>
-                    <a>退出</a>
+                <div id="identityDroupDownCointainer" class="identityDropDownCointainer"
+                    style="display: none; opacity: 0;">
+                    <div class="dropDownContent">
+                        <a>NULL</a>
+                    </div>
                 </div>
             </div>
         </div>
