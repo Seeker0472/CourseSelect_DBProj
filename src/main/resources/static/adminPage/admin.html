@@ -53,8 +53,34 @@
         <!--课程管理-->
         <div id="Link2Display" style="display: none">
             <div>
-                有空添加一个高级搜索功能
-                <button id="addCourse" class="Button002" style="display: block; margin: auto;">添加课程</button>
+                <button id="advancedSearch" onclick="showadvs()">高级搜索</button>
+                <div id="advSear" style="display: block">
+                    <form action="/submit_course_selection" method="post">
+                        <label for="classID">课程代码:</label>
+                        <input type="text" id="classID" name="classID" placeholder="请输入要搜索的课程代码">
+
+                        <label for="empty">选择课程:</label>
+                        <select id="empty" name="empty" required>
+                            <option value="all">全部</option>
+                            <option value="yes">有余量</option>
+                            <option value="no">无余量</option>
+                        </select><br>
+                        <label for="selected">课程状态:</label>
+                        <select id="selected" name="empty" required>
+                            <option value="all">全部</option>
+                            <option value="yes">已选</option>
+                            <option value="no">未选</option>
+                        </select>
+                        <label for="semester">学期:</label>
+                        <input type="text" id="semester" name="semester"><br>
+                        <label for="courseName">课程名称:</label>
+                        <input type="text" id="courseName" name="courseName" placeholder="请输入要搜索的课程名称">
+                        <label for="professor">教授</label>
+                        <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授">
+                        <button>搜索</button>
+                    </form>
+                </div>
+                <button onclick="popDiv(1)" class="Button002" style="display: block; margin: auto;">添加课程</button>
                 <!--            <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>-->
                 <br>
                 <table class="thead">
@@ -113,11 +139,15 @@
             </div>
         </div>
         <div id="Link5Display" style="display: none">
-            <button id="changePassword" class="Button002" style="display: block; margin: auto;">修改密码</button><br>
+            <!-- <button id="changePassword" class="Button002" style="display: block; margin: auto;">修改密码</button><br>
             <button id="changeInfo" class="Button002" style="display: block; margin: auto;">修改信息</button><br>
             <button id="changeAvatar" class="Button002" style="display: block; margin: auto;">修改头像</button><br>
-            <button id="changeEmail" class="Button002" style="display: block; margin: auto;">修改邮箱</button><br>
+            <button id="changeEmail" class="Button002" style="display: block; margin: auto;">修改邮箱</button><br> -->
             <!-- <button id="exit" class="Button002" style="display: block; margin: auto;">退出</button> -->
+            加上账号安全(看看能不能调用百度地图的api显示登录地点)
+
+
+
         </div>
     </main>
     <div id="popDiv">
@@ -130,10 +160,24 @@
             </div>
         </div>
         <div id="popMain">
-            123
+            <div id="addCourse">
+                在这里补上添加课程信息的表单
+            </div>
+            <div id="showDetail">
+                在这里补上显示课程详细信息的表单
+            </div>
+            <div id="editInfo">
+                在这里补上修改课程信息的表单
+            </div>
+            <div id="applyCheck">
+                在这里补上审核申请的表单
+            </div>
+            <div id="stuInfo">
+                在这里补上学生信息的表单
+
+            </div>
         </div>
-    </div>
-    <div id="overlay"></div>
+        <div id="overlay"></div>
 </body>
 
 </html>

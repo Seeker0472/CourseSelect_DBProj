@@ -155,7 +155,8 @@ function initializeStuTable() {
         button1.className = "Button001";
         button1.innerHTML = "查看详情";
         button1.onclick = function () {
-            //记得补充交互逻辑
+            //TODO:记得补充交互逻辑
+            popDiv(5, "学生详情");
 
 
         }
@@ -196,6 +197,7 @@ function initializeStaTable() {
         button1.innerHTML = "查看详情";
         button1.onclick = function () {
             //记得补充交互逻辑
+            popDiv(6, "职工详情");
 
         }
         action.appendChild(button1);
@@ -231,7 +233,7 @@ function initializetsaTable() {
         const action = document.createElement("td");
         const button1 = document.createElement("button");
         button1.className = "Button001";
-        button1.innerHTML = "查看详情";
+        button1.innerHTML = "查看详情,也许可以改成解绑?";
         button1.onclick = function () {
             //记得补充交互逻辑
 
@@ -270,7 +272,7 @@ function initializeTeaTable() {
         const action = document.createElement("td");
         const button1 = document.createElement("button");
         button1.className = "Button001";
-        button1.innerHTML = "查看详情";
+        button1.innerHTML = "查看详情,也许可以改成解绑?";
         button1.onclick = function () {
             //记得补充交互逻辑
 
@@ -307,6 +309,8 @@ function popDiv(page, title) {
     const addSTA = document.getElementById("addSTA");
     const bindTSA = document.getElementById("bindTSA");
     const bindTEA = document.getElementById("bindTEA");
+    const stuInfo = document.getElementById("stuInfo");
+    const staInfo = document.getElementById("staInfo");
 
     // popMain.forEach((div) => {
     //     div.style = "display:none;";
@@ -333,6 +337,19 @@ function popDiv(page, title) {
             bindTEA.style.display = "unset";
             break;
         case 5:
+            popTitle.innerHTML = "学生详情";
+            stuInfo.style.display = "unset";
+
+            break;
+        case 6:
+            popTitle.innerHTML = "职工详情";
+            staInfo.style.display = "unset";
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9:
             break;
         default:
             console.log("POPDIV:page Parameter Not Found");

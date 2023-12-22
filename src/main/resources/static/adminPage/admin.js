@@ -40,22 +40,21 @@ function initializeClassBody() {
         const button1 = document.createElement("button");
         button1.className = "Button001";
         button1.innerHTML = "查看详情";
+
         const button2 = document.createElement("button");
         button2.innerHTML = "删除课程";
         const button3 = document.createElement("button");
         button3.innerHTML = "修改信息";
 
-
+        //Test
         button1.onclick = function () {
-            //记得补充交互逻辑
-
-
-
+            popDiv(2);
         }
         button2.onclick = function () {
-
+            //记得补充交互逻辑
         }
         button3.onclick = function () {
+            popDiv(3);
 
         }
         action.appendChild(button1);
@@ -99,7 +98,8 @@ function initializeCheckBody() {
         button1.className = "Button001";
         button1.innerHTML = "查看详情";
         button1.onclick = function () {
-            //记得补充交互逻辑
+            //TODO:记得补充交互逻辑
+            popDiv(4);
 
 
         }
@@ -142,6 +142,7 @@ function initializeStuTable() {
         button1.innerHTML = "查看详情";
         button1.onclick = function () {
             //记得补充交互逻辑
+            popDiv(5);
 
 
         }
@@ -171,9 +172,43 @@ function clearPop() {
 
 
 //弹出窗口
-function popDiv() {
+function popDiv(page) {
     // 获取div元素
     const popBox = document.getElementById("popDiv");
+    const popMain = document.getElementById("popMain");
+    const addCourse = document.getElementById("addCourse");
+    const showDetail = document.getElementById("showDetail");
+    const editInfo = document.getElementById("editInfo");
+    const applyCheck = document.getElementById("applyCheck");
+    const stuInfo = document.getElementById("stuInfo");
+
+    for (Object of popMain.children) {
+        Object.style = "display:none;";
+    }
+    switch (page) {
+        case 1:
+            popTitle.innerHTML = "添加课程";
+            addCourse.style = "display:block;";
+            break;
+        case 2:
+            popTitle.innerHTML = "课程详情";
+            showDetail.style = "display:block;";
+            break;
+        case 3:
+            popTitle.innerHTML = "修改信息";
+            editInfo.style = "display:block;";
+            break;
+        case 4:
+            popTitle.innerHTML = "申请详细信息";
+            applyCheck.style = "display:block;";
+            break;
+        case 5:
+            popTitle.innerHTML = "学生详细信息";
+            stuInfo.style = "display:block;";
+            break;
+
+    }
+
     // 控制两个div的显示与隐藏
     popBox.style.display = "block";
 }
