@@ -219,8 +219,56 @@ function closePop() {
     popDiv.style.display = "none";
 }
 
+function loadPage31() {
+    editPageParam3(1);
+    const Link3Display = document.getElementById("Link3Display");
+    for (Object of Link3Display.children) {
+        Object.style = "display:none;";
+    }
+    const Link31 = document.getElementById("Link31");
+    Link31.style.display = "block"
+}
+function loadPage32() {
+    initializeCheckBody();
+    editPageParam3(2);
+    const Link3Display = document.getElementById("Link3Display");
+    for (Object of Link3Display.children) {
+        Object.style = "display:none;";
+    }
+    const Link32 = document.getElementById("Link32");
+    Link32.style.display = "block"
+}
 
+function editPageParam3(pagenum) {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    const exparam = params.get("exparam");
+    if (exparam === pagenum) {
+        return;
+    }
+    params.delete("exparam");
+    params.set("exparam", pagenum);
+    const newUrl = url.href;
+    history.pushState(null, null, newUrl);
+}
 
+function phasePageParam3() {
+    const url = new URL(window.location.href);
+    const exparam = url.searchParams.get("exparam");
+    if (exparam === null) {
+        loadPage31();
+        return;
+    }
+    switch (exparam) {
+        case "1":
+            loadPage31();
+            break;
+        case "2":
+            loadPage32();
+            break;
+    }
+
+}
 //加载页面是执行的函数
 function loadPage1() {
 
@@ -231,8 +279,8 @@ function loadPage2() {
 
 }
 function loadPage3() {
+    phasePageParam3();
 
-    initializeCheckBody();
 
 }
 function loadPage4() {

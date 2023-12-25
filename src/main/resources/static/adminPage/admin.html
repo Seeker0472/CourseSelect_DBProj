@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,13 @@
             <ul>
                 <li id="link1"><a>首页</a></li>
                 <li id="link2"><a>课程管理</a></li>
-                <li id="link3"><a>申请审核</a></li>
+                <li id="link3" class="dropdown">
+                    <a>信息审核</a>
+                    <div id="Link3Droupdown" class="dropdown-content">
+                        <a onclick="loadPage31()">选课结果审核</a>
+                        <a onclick="loadPage32()">其他信息审核</a>
+                    </div>
+                </li>
                 <li id="link4"><a>学生管理</a></li>
                 <li id="link5"><a>我的</a></li>
                 <div class="slider" id="slider1"></div>
@@ -104,7 +110,10 @@
             </div>
         </div>
         <div id="Link3Display" style="display: none">
-            <div>
+            <div id="Link31">
+                Link31
+            </div>
+            <div id="Link32">
                 <table class="courseTable">
                     <thead>
                         <tr>
