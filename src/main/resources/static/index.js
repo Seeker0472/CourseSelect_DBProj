@@ -71,3 +71,14 @@ function getVarifyPic() {
 
 
 }
+
+function Fibonacci() {
+    let i = 1, j = 2, temp, t = 1;
+    while (t <= 200) {
+        console.log(t + ":" + i + "..." + Math.log(i) / Math.log(2));
+        temp = i + j;
+        i = j;
+        j = temp;
+        t++;
+    }
+}
