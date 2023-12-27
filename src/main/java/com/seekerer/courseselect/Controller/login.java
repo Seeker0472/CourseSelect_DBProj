@@ -1,16 +1,38 @@
 package com.seekerer.courseselect.Controller;
 
+import com.seekerer.courseselect.Classes.LoginResult;
 import com.seekerer.courseselect.Classes.Result;
+import com.seekerer.courseselect.DataAccess.LoginAndRegister;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 public class login {
-    @RequestMapping("/login")
-    public Object loginMe(String username, String password){
-        System.out.println(username+":"+password);
-        //return new RedirectView("?error=true");
-        //return new RedirectView("/home/home.html");
-        return Result.success();
+    @Autowired
+    private com.seekerer.courseselect.DataAccess.LoginAndRegister loginAndRegister;
+
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    public Object loginMe(String username, String password,String uuid,String code){
+        Map<String, Object> params = new java.util.HashMap<>();
+        params.put("uuid", uuid);
+        params.put("code", code);
+        params.put("id", username);
+        params.put("password", password);
+
+        Integer result = 0;
+        String account_id_out = "";
+        Integer identity_out = 0;
+        loginAndRegister.Login(params);
+        if(params.get("result") != (Object)1){
+            return Result.error(500, "登录失败");
+        }
+        else{
+            return Result.success(new LoginResult((int)params.get("identity_out"), "jwt"));
+        }
     }
+
 }

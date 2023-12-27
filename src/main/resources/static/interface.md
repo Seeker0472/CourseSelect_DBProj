@@ -101,7 +101,17 @@
 
 ## 0.登录页面
 
->TODO: 登录页面的接口
+>请求路径: /api/login \
+>请求方式: POST \
+>描述: 登录
+
+#### 0.1.请求参数
+
+| 参数名   | 类型   | 必须? | 备注     |
+| -------- | ------ | ----- | -------- |
+| username | String | Yes   | 用户名   |
+| password | String | Yes   | 用户密码 |
+
 
 ## 1.学生选课页面
 
@@ -697,6 +707,70 @@ GET /api/semester
 ```
 
 ### 2.4.添加课程
+
+>请求路径: /api/eduadmin/addCourse \
+>请求方式: POST \
+>描述: 添加课程
+
+#### 2.4.1.请求参数
+
+| 参数名     | 类型   | 必须? | 备注             |
+| ---------- | ------ | ----- | ---------------- |
+| courseID   | String | Yes   | 课程编号         |
+| semesterId | String | Yes   | 学期编号         |
+| courseName | String | Yes   | 课程名           |
+| professor  | String | Yes   | 教授名           |
+| majorid    | String | Yes   | 专业id           |
+| maxNum     | String | Yes   | 课程限制最大人数 |
+
+#### 2.4.2.响应参数
+
+- **成功响应：**
+
+  - **状态码:** 200 OK
+  - **内容**
+
+    | 参数名     | 类型   | 必须?     | 备注     |
+    | ---------- | ------ | --------- | -------- |
+    | courseID   | String | IfSuccess | 课程编号 |
+    | courseName | String | IfSuccess | 课程名   |
+
+#### 错误情况
+
+- **服务器错误：**
+  - **状态码:** 500 Internal Server Error
+  - **内容:**
+
+    ```json
+    {
+      "status": "error",
+      "message": "服务器错误，无法添加课程。"
+    }
+    ```
+
+- **课程已存在：**
+  - **状态码:** 409 Conflict
+  - **内容:**
+
+    ```json
+    {
+      "status": "error",
+      "message": "课程已存在，无法添加课程。"
+    }
+    ```
+
+#### 2.4.3.响应数据样例
+
+```json
+{
+    "status": "success",
+    "message": "添加课程成功",
+    "data": {
+        "courseID": "C001",
+        "courseName": "高等数学"
+    }
+}
+```
 
 ### 2.5.查看课程详细信息
 

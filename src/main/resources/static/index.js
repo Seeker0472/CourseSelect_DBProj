@@ -1,6 +1,7 @@
-
+let uuid;
 
 document.addEventListener("DOMContentLoaded", function () {
+    initverimg();
     document.getElementById("loginPlace").addEventListener("mouseenter", function () {
         document.body.style.opacity = "100%"
     });
@@ -21,15 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         const formData = new FormData(event.target);
+        formData.append("uuid", uuid)
         fetch("./login", {
             method: 'POST',
             body: formData
         }).then(response => { return response.json(); })
             .then(response => {
                 if (response.code === 200) {
-                    // 登录成功，可以执行相应操作
-                    //alert("登录成功");
-                    window.location.href = "./home/home.html";
+                    if (response.redirectTo = 1)
+                        window.location.href = "./home/home.html";
+                    else if (response.redirectTo = 2)
+                        window.location.href = "./adminPage/admin.html";
                 } else {
                     // 登录失败，处理错误
                     alert("登录失败");
@@ -41,6 +44,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function generateRandomUUID() {
+    let uuid = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 36; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        uuid += characters.charAt(randomIndex);
+    }
+
+    return uuid;
+}
+function initverimg() {
+    uuid = generateRandomUUID();
+    fetch('http://api.seekerer.com/captcha?uuid=' + uuid, {
+        method: 'GET'
+    })
+        .then(response => {
+            // 获取图片的blob数据
+            return response.blob();
+        })
+        .then(blob => {
+            // 创建一个本地URL用于图片
+            const imageUrl = URL.createObjectURL(blob);
+            // 设置<img>标签的src属性来显示验证码
+            document.getElementById('varify-key').src = imageUrl;
+        })
+        .catch(error => {
+            console.error('Fetching captcha failed:', error);
+        });
+
+}
+
+
 
 function closePop() {
     // 获取弹出窗口元素
