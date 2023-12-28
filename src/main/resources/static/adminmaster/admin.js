@@ -14,6 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const teaManage = document.getElementById("teaManage");
 
     document.getElementById("stuColll").onchange = initaddMaj();//改变学院选择框
+    document.getElementById("Bindidentity").onchange = function () {
+        if (document.getElementById("Bindidentity").value === "3") {
+            document.getElementById("BindidentityColl").style.display = "none";
+            document.getElementById("BindidentityCollDes").style.display = "none";
+        }
+        else {
+            document.getElementById("BindidentityColl").style.display = "unset";
+            document.getElementById("BindidentityCollDes").style.display = "unset";
+        }
+    }
+    document.getElementById("majColl").onchange = function () { getAllStaffForCollege(); }//改变学院选择框
 
     //TODO:完成各个页面逻辑
     // stuManage.addEventListener("click", function () {
@@ -40,7 +51,30 @@ function clearAll() {
     });
 }
 
-
+function getAllStaffForCollege() {
+    let college = document.getElementById("majColl").value;
+    fetch("http://api.seekerer.com/api/admin/getSepStaff?ColId=" + college, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            console.log(response);
+            if (response.code === 200) {
+                const admin = document.getElementById("majAdmin");
+                while (admin.hasChildNodes()) {
+                    admin.removeChild(admin.firstChild);
+                }
+                response.data.forEach(element => {
+                    const option = document.createElement("option");
+                    option.innerHTML = element.name;
+                    option.value = element.account_id;
+                    admin.appendChild(option);
+                });
+            }
+            else {
+                alert("获取职工列表失败");
+            }
+        });
+}
 
 //初始化学生表格
 function initializeStuTable() {
@@ -100,8 +134,6 @@ function initializeStaTable() {
     while (staTable.hasChildNodes()) {
         staTable.removeChild(staTable.firstChild);
     }
-
-    //TODO:在这里加一个foreach循环
     fetch("http://api.seekerer.com/api/admin/getStaffInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
@@ -122,13 +154,26 @@ function initializeStaTable() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情";
+                button1.innerHTML = "绑定身份";
                 button1.onclick = function () {
                     //记得补充交互逻辑
-                    popDiv(6, "职工详情");
+                    // popDiv(6, "职工详情");
+                    popDiv(3, '绑定身份');
+                    const bindIdenID = document.getElementById("bindIdenID");
+                    bindIdenID.value = element.account_id;
 
                 }
+                const button2 = document.createElement("button");
+                button2.className = "Button001";
+                button2.innerHTML = "删除账号";
+                button2.onclick = function () {
+                    //记得补充交互逻辑
+                    window.alert("功能正在开发中");
+
+                }
+
                 action.appendChild(button1);
+                action.appendChild(button2);
                 table.appendChild(name);
                 table.appendChild(id);
                 table.appendChild(sex);
@@ -146,7 +191,6 @@ function initializetsaTable() {
     while (tsaTable.hasChildNodes()) {
         tsaTable.removeChild(tsaTable.firstChild);
     }
-
     fetch("http://api.seekerer.com/api/admin/getAcaAdminInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
@@ -155,6 +199,7 @@ function initializetsaTable() {
                 tsaTable.removeChild(tsaTable.firstChild);
             }
             response.data.forEach(element => {
+                let userid = element.account_id;
                 const table = document.createElement("tr");
                 const name = document.createElement("td");
                 name.innerHTML = element.name;
@@ -171,6 +216,9 @@ function initializetsaTable() {
                 button1.className = "Button001";
                 button1.innerHTML = "查看详情,也许可以改成解绑?";
                 button1.onclick = function () {
+
+
+
                     //记得补充交互逻辑
 
                 }
@@ -193,7 +241,6 @@ function initializeTeaTable() {
     while (teaTable.hasChildNodes()) {
         teaTable.removeChild(teaTable.firstChild);
     }
-    //TODO:在这里加一个foreach循环
     fetch("http://api.seekerer.com/api/admin/getTeacherInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
@@ -277,14 +324,17 @@ function popDiv(page, title) {
             addSTA.style.display = "unset";
             break;
         case 3:
-            popTitle.innerHTML = "绑定教务身份";
+            popTitle.innerHTML = "绑定身份";
             bindTSA.style.display = "unset";
+            initbindIdenColl();
             break;
         case 4:
+            //unsed
             popTitle.innerHTML = "绑定教师身份";
             bindTEA.style.display = "unset";
             break;
         case 5:
+
             popTitle.innerHTML = "学生详情";
             stuInfo.style.display = "unset";
 
@@ -296,10 +346,12 @@ function popDiv(page, title) {
         case 7:
             popTitle.innerHTML = "添加学院";
             addCol.style.display = "unset";
+            initaddCol();
             break;
         case 8:
             popTitle.innerHTML = "添加专业";
             addMaj.style.display = "unset";
+            initAddMajor();
             break;
         case 9:
             break;
@@ -314,7 +366,55 @@ function popDiv(page, title) {
     popBox.style.display = "block";
     document.body.classList.add('popup-active');
 }
+//添加专业,初始化学院列表
+function initAddMajor() {
+    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
 
+                const college = document.getElementById("majColl");
+                while (college.hasChildNodes()) {
+                    college.removeChild(college.firstChild);
+                }
+                response.data.forEach(element => {
+                    const option = document.createElement("option");
+                    option.innerHTML = element.college_name;
+                    option.value = element.college_id;
+                    college.appendChild(option);
+                });
+                // initaddMaj();
+                getAllStaffForCollege();
+            }
+        });
+}
+//添加添加学院,初始化职工列表
+function initaddCol() {
+    fetch("http://api.seekerer.com/api/admin/getEmptyStaff", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                const admin = document.getElementById("colAdmin");
+                while (admin.hasChildNodes()) {
+                    admin.removeChild(admin.firstChild);
+                }
+                response.data.forEach(element => {
+                    const option = document.createElement("option");
+                    option.innerHTML = element.name;
+                    option.value = element.account_id;
+                    admin.appendChild(option);
+                });
+            }
+            else {
+                alert("获取职工列表失败");
+            }
+        });
+}
+
+//添加学生,初始化学院列表
 function initaddStu() {
     fetch('http://api.seekerer.com/api/admin/getCollegeList', {
         method: 'GET'
@@ -322,6 +422,7 @@ function initaddStu() {
         .then(response => { return response.json(); })
         .then(response => {
             if (response.code === 200) {
+
                 const college = document.getElementById("stuColll");
                 while (college.hasChildNodes()) {
                     college.removeChild(college.firstChild);
@@ -341,6 +442,7 @@ function initaddStu() {
 
 }
 
+//添加学生,初始化学院列表
 function initaddMaj() {
     console.log("initaddMaj");
     let college = document.getElementById("stuColll").value;
@@ -370,6 +472,34 @@ function initaddMaj() {
             }
         });
 
+
+}
+
+//初始化绑定省份页面,初始化学院列表
+function initbindIdenColl() {
+    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+
+                const college = document.getElementById("BindidentityColl");
+                while (college.hasChildNodes()) {
+                    college.removeChild(college.firstChild);
+                }
+                response.data.forEach(element => {
+                    const option = document.createElement("option");
+                    option.innerHTML = element.college_name;
+                    option.value = element.college_id;
+                    college.appendChild(option);
+                });
+                //initaddMaj();
+            }
+            else {
+                alert("获取学院列表失败");
+            }
+        });
 
 }
 
@@ -627,6 +757,9 @@ function initMajorManTable() {
     }).then(response => { return response.json(); })
         .then(response => {
             if (response.code === 200) {
+                while (majorManTable.hasChildNodes()) {
+                    majorManTable.removeChild(majorManTable.firstChild);
+                }
                 response.data.forEach(element => {
                     const table = document.createElement("tr");
                     const majorid = document.createElement("td");

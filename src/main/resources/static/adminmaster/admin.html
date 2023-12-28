@@ -50,8 +50,8 @@
                     <div id="Link2Droupdown" class="dropdown-content">
                         <a onclick="LoadPage22()">账号管理</a>
                         <a onclick="LoadPage21()">学生账号管理</a>
-                        <a onclick="LoadPage23()">教务身份绑定</a>
-                        <a onclick="LoadPage24()">教师身份绑定</a>
+                        <a onclick="LoadPage23()">教务身份管理</a>
+                        <a onclick="LoadPage24()">教师身份管理</a>
                     </div>
                 </li>
                 <li id="link3"><a>课程管理</a></li>
@@ -160,9 +160,9 @@
                 <div>
                     有空添加一个高级搜索功能
 
-                    <button class="Button002" style="display: block; margin: auto;"
+                    <!-- <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(3, '绑定教务身份');">绑定教务</button>
-                    <br>
+                    <br> -->
                     <table class="TableComm">
                         <thead>
                             <tr>
@@ -183,9 +183,9 @@
             <div id="teaManageDisplay" style="display: unset">
                 <div>
                     有空添加一个高级搜索功能
-                    <button class="Button002" style="display: block; margin: auto;"
+                    <!-- <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(4, '绑定教师身份');">绑定教师</button>
-                    <br>
+                    <br> -->
                     <table class="TableComm">
                         <thead>
                             <tr>
@@ -323,7 +323,11 @@
                         <option value="2">测绘工程</option> -->
                     </select>
                     <label for="stuSex">性别:</label>
-                    <input type="text" id="stuSex" name="stuGender" placeholder="请输入性别">
+                    <!-- <input type="text" id="stuSex" name="stuGender" placeholder="请输入性别"> -->
+                    <select id="stuSex" name="stuGender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
                     <label for="stuPhone">电话:</label>
                     <input type="text" id="stuPhone" name="stuPhone" placeholder="请输入电话">
                     <labal for="email">邮箱</labal>
@@ -343,7 +347,11 @@
                     <label for="staID">工号:</label>
                     <input type="text" id="staID" name="accId" placeholder="请输入工号">
                     <label for="staSex">性别:</label>
-                    <input type="text" id="staSex" name="staffGender" placeholder="请输入性别">
+                    <!-- <input type="text" id="staSex" name="staffGender" placeholder="请输入性别"> -->
+                    <select id="staSex" name="staffGender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
                     <label for="staPhone">电话:</label>
                     <input type="text" id="staPhone" name="staffPhone" placeholder="请输入电话">
                     <label for="staEmail">邮箱:</label>
@@ -355,7 +363,24 @@
                 </form>
             </div>
             <div id="bindTSA" style="display : none">
-                在这里绑定教务信息(列表)
+                <!-- 在这里绑定教务信息(列表) -->
+                <form action="http://api.seekerer.com/api/admin/BindIdentity" method="post">
+                    <input type="text" id="bindIdenID" name="accId" placeholder="请输入工号" style="display:none">
+                    <label for="Bindidentity">身份</label>
+                    <select id="Bindidentity" name="identity">
+                        <!-- <option value="1">学生</option> -->
+                        <option value="2">教务管理员</option>
+                        <option value="3">管理员</option>
+                        <option value="4">教师</option>
+                    </select>
+                    <label for="BindidentityColl" id="BindidentityCollDes">学院</label>
+                    <select id="BindidentityColl" name="collegeId">
+                        <!-- <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option> -->
+                    </select>
+                    <input type="submit" value="提交">
+
+                </form>
             </div>
             <div id="bindTEA" style="display : none">
                 在这里绑定教师信息(列表)
@@ -367,15 +392,19 @@
                 在这里编辑职工信息
             </div>
             <div id="addCol" style="display : none">
-                <form>
+                <form action="http://api.seekerer.com/api/admin/addCollege" method="post">
                     <label for="colID">学院编号:</label>
-                    <input type="text" id="colID" name="colID" placeholder="请输入学院编号">
+                    <input type="text" id="colID" name="collegeId" placeholder="请输入学院编号">
                     <label for="colName">学院名称:</label>
-                    <input type="text" id="colName" name="colName" placeholder="请输入学院名称">
+                    <input type="text" id="colName" name="collegeName" placeholder="请输入学院名称">
                     <label for="colAdmin">学院负责人:</label>
-                    <input type="text" id="colAdmin" name="colAdmin" placeholder="请输入学院负责人">
+                    <!-- <input type="text" id="colAdmin" name="colAdmin" placeholder="请输入学院负责人"> -->
+                    <select id="colAdmin" name="collegeHeadId">
+                        <!-- <option value="1">张三</option>
+                        <option value="2">李四</option> -->
+                    </select>
                     <label for="colRemark">备注:</label>
-                    <input type="text" id="colRemark" name="colRemark" placeholder="请输入备注">
+                    <input type="text" id="colRemark" name="collegeRemarks" placeholder="请输入备注">
                     <input type="submit" value="提交">
                 </form>
             </div>
@@ -386,9 +415,17 @@
                     <label for="majName">专业名称:</label>
                     <input type="text" id="majName" name="majName" placeholder="请输入专业名称">
                     <label for="majColl">所属学院:</label>
-                    <input type="text" id="majColl" name="majColl" placeholder="请输入所属学院">
+                    <!-- <input type="text" id="majColl" name="majColl" placeholder="请输入所属学院"> -->
+                    <select id="majColl" name="collegeId">
+                        <!-- <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option> -->
+                    </select>
                     <label for="majAdmin">专业负责人:</label>
-                    <input type="text" id="majAdmin" name="majAdmin" placeholder="请输入专业负责人">
+                    <!-- <input type="text" id="majAdmin" name="majAdmin" placeholder="请输入专业负责人"> -->
+                    <select id="majAdmin" name="majorHeadId">
+                        <!-- <option value="1">张三</option>
+                        <option value="2">李四</option> -->
+                    </select>
                     <label for="majRemark">备注:</label>
                     <input type="text" id="majRemark" name="majRemark" placeholder="请输入备注">
                     <input type="submit" value="提交">

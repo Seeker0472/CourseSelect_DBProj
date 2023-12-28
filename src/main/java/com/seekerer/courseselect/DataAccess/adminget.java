@@ -50,6 +50,11 @@ public interface adminget {
     @Select("select * from teacher_Info")
     public List<Map<String,Object>> getTeacherInfo();
 
+    @Select("select * from staff\n" +
+            "where account_id not in (select distinct(account_id)from identities) and account_id not in(select head_id from colleges);")
+    public List<Map<String,Object>> getEmptyStaff();
 
+    @Select("CALL getSepStaff(#{collegeId,jdbcType=CHAR,mode=IN})")
+    public List<Map<String,Object>> getSepStaff(String collegeId);
 
 }

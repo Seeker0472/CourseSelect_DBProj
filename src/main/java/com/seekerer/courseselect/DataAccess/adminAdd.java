@@ -20,4 +20,14 @@ public interface adminAdd {
             "#{insertStat, jdbcType=INTEGER,mode=OUT})")
     @Options(statementType = StatementType.CALLABLE)
     public void addStaff(Map<String,Object> staffInfo);
+
+    @Select("CALL bindIdentity(#{accId, jdbcType=VARCHAR,mode=IN},#{identity, jdbcType=VARCHAR,mode=IN}," +
+            "#{collegeId,jdbcType=CHAR,mode=IN},#{insertStat, jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void bindIdentity(Map<String,Object> bindInfo);
+
+    @Select("CALL addCollege(#{collegeId, jdbcType=CHAR,mode=IN},#{collegeName, jdbcType=VARCHAR,mode=IN},#{collegeHeadId, jdbcType=VARCHAR,mode=IN}," +
+            "#{collegeRemarks, jdbcType=VARCHAR,mode=IN},#{addStat, jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void addCollege(Map<String,Object> colInfo);
 }

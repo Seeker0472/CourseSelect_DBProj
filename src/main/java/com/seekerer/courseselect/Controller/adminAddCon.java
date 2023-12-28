@@ -31,5 +31,32 @@ public class adminAddCon {
 
         return Result.success();
     }
+    @RequestMapping("/api/admin/BindIdentity")
+    public Object BindIdentity(@RequestParam Map<String,Object> bindInfo) {
+        if(bindInfo.get("accId")==null)
+            return Result.error(400,"账号不能为空");
+        if(bindInfo.get("identity")==null)
+            return Result.error(400,"身份不能为空");
+        if(bindInfo.get("collegeId")==null&&!(bindInfo.get("identity").equals((Object)3)))
+            return Result.error(400,"学院不能为空");
+        //TODO: 加上检测数据合法性
+        AdminAdd.bindIdentity(bindInfo);
+
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/addCollege")
+    public Object addCollege(@RequestParam Map<String,Object> collegeInfo){
+        if(collegeInfo.get("collegeId")==null)
+            return Result.error(400,"学院编号不能为空");
+        if(collegeInfo.get("collegeName")==null)
+            return Result.error(400,"学院名称不能为空");
+        if(collegeInfo.get("collegeHeadId")==null)
+            return Result.error(400,"学院负责人不能为空");
+        AdminAdd.addCollege(collegeInfo);
+        //TODO: 加上检测是否返回成功
+        return Result.success();
+
+    }
 
 }
