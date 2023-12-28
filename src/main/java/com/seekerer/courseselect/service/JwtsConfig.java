@@ -4,13 +4,14 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+@Service
 public class JwtsConfig {
-    @Bean
+
     public String genJwt(String username){
         Map<String,Object> map=new HashMap<>();
         map.put("username",username);
@@ -22,7 +23,7 @@ public class JwtsConfig {
                 .compact();
         return jwt;
     }
-    @Bean
+
     public boolean isJwtOK(String jwt) {
         try{
             Claims claims=Jwts.parser()

@@ -7,17 +7,13 @@ import com.seekerer.courseselect.Classes.stuScore;
 import com.seekerer.courseselect.service.stuClassSelectList;
 import com.seekerer.courseselect.service.stuScoreList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+@CrossOrigin
 @RestController
-
 public class StuCon {
     @Autowired
     private stuClassSelectList stuClassSelectList;

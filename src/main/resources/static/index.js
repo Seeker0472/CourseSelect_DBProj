@@ -23,16 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(event.target);
         formData.append("uuid", uuid)
-        fetch("./login", {
+        fetch("http://api.seekerer.com/login", {
             method: 'POST',
             body: formData
         }).then(response => { return response.json(); })
             .then(response => {
                 if (response.code === 200) {
-                    if (response.redirectTo = 1)
+                    if (response.data.redirectTo === 1)
                         window.location.href = "./home/home.html";
-                    else if (response.redirectTo = 2)
+                    else if (response.data.redirectTo === 2)
                         window.location.href = "./adminPage/admin.html";
+                    else if (response.data.redirectTo === 3)
+                        window.location.href = "./adminmaster/admin.html"
+                    else
+                        throw new Error("未知的用户类型");
                 } else {
                     // 登录失败，处理错误
                     alert("登录失败");

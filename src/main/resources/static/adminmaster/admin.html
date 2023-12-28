@@ -48,8 +48,8 @@
                 <li id="link2" class="dropdown">
                     <a>账号管理</a>
                     <div id="Link2Droupdown" class="dropdown-content">
+                        <a onclick="LoadPage22()">账号管理</a>
                         <a onclick="LoadPage21()">学生账号管理</a>
-                        <a onclick="LoadPage22()">职工账号管理</a>
                         <a onclick="LoadPage23()">教务身份绑定</a>
                         <a onclick="LoadPage24()">教师身份绑定</a>
                     </div>
@@ -226,6 +226,8 @@
 
             <div id="collAdmin">
                 有空添加一个搜索功能
+                <button class="Button002" style="display: block; margin: auto;"
+                    onclick="popDiv(7, '添加学院');">添加学院</button>
                 <form>
                     <label for="collID">学院编号:</label>
                     <input type="text" id="collID" name="collID" placeholder="请输入要搜索的学院编号">
@@ -252,6 +254,8 @@
             </div>
             <div id="majorAdmin">
                 有空添加一个搜索功能
+                <button class="Button002" style="display: block; margin: auto;"
+                    onclick="popDiv(8, '添加专业');">添加专业</button>
                 <form>
                     <label for="majorID">专业编号:</label>
                     <input type="text" id="majorID" name="majorID" placeholder="请输入要搜索的专业编号">
@@ -301,10 +305,54 @@
         </div>
         <div id="popMain">
             <div id="addStu" style="display : none">
-                在这里填写学生信息
+                <form action="http://api.seekerer.com/api/admin/AddStu" method="post" target="Out">
+                    <label for="stuName">姓名:</label>
+                    <input type="text" id="stuName" name="stuName" placeholder="请输入姓名">
+                    <label for="stuID">学号:</label>
+                    <input type="text" id="stuID" name="accId" placeholder="请输入学号">
+                    <label for="stuColl">学院:</label>
+                    <!-- <input type="text" id="stuColl" name="stuColl" placeholder="请输入学院"> -->
+                    <select id="stuColll" name="collId">
+                        <!-- <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option> -->
+                    </select>
+                    <label for="stuMajor">专业:</label>
+                    <!-- <input type="text" id="stuMajor" name="majId" placeholder="请输入专业"> -->
+                    <select id="stuMajorSel" name="majId">
+                        <!-- <option value="1">信息工程</option>
+                        <option value="2">测绘工程</option> -->
+                    </select>
+                    <label for="stuSex">性别:</label>
+                    <input type="text" id="stuSex" name="stuGender" placeholder="请输入性别">
+                    <label for="stuPhone">电话:</label>
+                    <input type="text" id="stuPhone" name="stuPhone" placeholder="请输入电话">
+                    <labal for="email">邮箱</labal>
+                    <input type="text" id="email" name="stuEmail" placeholder="请输入邮箱">
+                    <label for="entryYear">入学年份:</label>
+                    <input type="date" id="entryYear" name="stuEnrollDate" placeholder="请输入入学年份">
+                    <label for="stuPassword">密码:</label>
+                    <input type="text" id="stuPassword" name="passWd" placeholder="请输入密码">
+                    <input type="submit" value="提交">
+                    <iframe name="Out"></iframe>
+                </form>
             </div>
             <div id="addSTA" style="display : none">
-                在这里填写职工信息
+                <form action="http://api.seekerer.com/api/admin/AddStaff" method="post" target="Out1">
+                    <label for="staName">姓名:</label>
+                    <input type="text" id="staName" name="staffName" placeholder="请输入姓名">
+                    <label for="staID">工号:</label>
+                    <input type="text" id="staID" name="accId" placeholder="请输入工号">
+                    <label for="staSex">性别:</label>
+                    <input type="text" id="staSex" name="staffGender" placeholder="请输入性别">
+                    <label for="staPhone">电话:</label>
+                    <input type="text" id="staPhone" name="staffPhone" placeholder="请输入电话">
+                    <label for="staEmail">邮箱:</label>
+                    <input type="text" id="staEmail" name="staffEmail" placeholder="请输入邮箱">
+                    <label for="staPassword">密码:</label>
+                    <input type="text" id="staPassword" name="passWd" placeholder="请输入密码">
+                    <input type="submit" value="提交">
+                    <iframe name="Out1"></iframe>
+                </form>
             </div>
             <div id="bindTSA" style="display : none">
                 在这里绑定教务信息(列表)
@@ -317,6 +365,34 @@
             </div>
             <div id="staInfo" style="display : none">
                 在这里编辑职工信息
+            </div>
+            <div id="addCol" style="display : none">
+                <form>
+                    <label for="colID">学院编号:</label>
+                    <input type="text" id="colID" name="colID" placeholder="请输入学院编号">
+                    <label for="colName">学院名称:</label>
+                    <input type="text" id="colName" name="colName" placeholder="请输入学院名称">
+                    <label for="colAdmin">学院负责人:</label>
+                    <input type="text" id="colAdmin" name="colAdmin" placeholder="请输入学院负责人">
+                    <label for="colRemark">备注:</label>
+                    <input type="text" id="colRemark" name="colRemark" placeholder="请输入备注">
+                    <input type="submit" value="提交">
+                </form>
+            </div>
+            <div id="addMaj" style="display : none">
+                <form>
+                    <label for="majID">专业编号:</label>
+                    <input type="text" id="majID" name="majID" placeholder="请输入专业编号">
+                    <label for="majName">专业名称:</label>
+                    <input type="text" id="majName" name="majName" placeholder="请输入专业名称">
+                    <label for="majColl">所属学院:</label>
+                    <input type="text" id="majColl" name="majColl" placeholder="请输入所属学院">
+                    <label for="majAdmin">专业负责人:</label>
+                    <input type="text" id="majAdmin" name="majAdmin" placeholder="请输入专业负责人">
+                    <label for="majRemark">备注:</label>
+                    <input type="text" id="majRemark" name="majRemark" placeholder="请输入备注">
+                    <input type="submit" value="提交">
+                </form>
             </div>
         </div>
     </div>
