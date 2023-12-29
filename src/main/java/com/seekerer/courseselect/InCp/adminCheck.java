@@ -16,6 +16,9 @@ public class adminCheck implements HandlerInterceptor {
     @Autowired
     private com.seekerer.courseselect.service.JwtsConfig jwtsConfig;
 
+    @Autowired
+    private com.seekerer.courseselect.DataAccess.IsIdentityOk isIdentityOk;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("preHandle: 请求前调用");
@@ -33,6 +36,8 @@ public class adminCheck implements HandlerInterceptor {
                     .setSigningKey("seekerer")
                     .parseClaimsJws(jwt)
                     .getBody();
+            if(isIdentityOk.isAdmin(claims.get("username").toString())==0)
+                return false;
         }catch (Exception e){
             return false;
         }

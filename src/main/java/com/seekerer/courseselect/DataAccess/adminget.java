@@ -1,9 +1,6 @@
 package com.seekerer.courseselect.DataAccess;
 
-import com.seekerer.courseselect.Classes.MajorInfo;
-import com.seekerer.courseselect.Classes.collegeInfo;
-import com.seekerer.courseselect.Classes.StuInfo;
-import com.seekerer.courseselect.Classes.staffInfo;
+import com.seekerer.courseselect.Classes.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -56,5 +53,8 @@ public interface adminget {
 
     @Select("CALL getSepStaff(#{collegeId,jdbcType=CHAR,mode=IN})")
     public List<Map<String,Object>> getSepStaff(String collegeId);
+
+    @Select("select * from staff_identity where account_id=#{accountId}")
+    public List<staffIdentityInfo> getIdentity(String accountId);
 
 }

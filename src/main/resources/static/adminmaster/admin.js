@@ -823,7 +823,51 @@ function loadPage5() {
 }
 //第一次加载
 function firstload() {
+    const url = window.location.href;
+    const urlObj = new URL(url);
+    const account = urlObj.searchParams.get('account');
+    const identitySwitchContent = document.getElementById("identityDrop");
+    const name = document.getElementById("userName");
     popDiv();
+    let account_id = 'Adm';
+    fetch("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                response.data.forEach(element => {
+                    name.innerHTML = element.name;
+                    switch (element.identity) {
+                        case '1':
+                            //学生,目前应该不会出现这种情况
+                            break;
+                        case '2':
+                            let identity = document.createElement("a");
+                            identity.innerHTML = element.college_name + "的教务管理员";
+                            identity.href = "./adminPage/admin.html?account=" + element.account_id + "&college=" + element.college_id;
+                            identitySwitchContent.appendChild(identity);
+                            //教务管理员
+                            break;
+                        case '3':
+                            //管理员
+                            let identity1 = document.createElement("a");
+                            identity1.innerHTML = "管理员";
+                            identity1.href = "/adminmaster/admin.html?account=" + element.account_id;
+                            identitySwitchContent.appendChild(identity1);
+                            break;
+                        case '4':
+                            //教师,目前不跳转
+                            let identity2 = document.createElement("a");
+                            identity2.innerHTML = element.college_name + "的教师";
+                            identitySwitchContent.appendChild(identity2);
+
+                            break;
+                    }
+                });
+
+            }
+        });
+
 }
 function addStudent() {
     const addForm = document.getElementById("addStu");

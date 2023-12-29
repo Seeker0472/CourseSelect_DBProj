@@ -58,7 +58,10 @@ public class AdminGet {
         return Result.success(adminget.getSepStaff(ColId));
     }
 
-
+    @RequestMapping("/api/admin/getIdentity")
+    public Object getIdentity(@RequestParam String accountId){
+        return Result.success(adminget.getIdentity(accountId));
+    }
 
 
 

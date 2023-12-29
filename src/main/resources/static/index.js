@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("LoginForm").addEventListener("submit", function (event) {
         event.preventDefault();
+        let account = document.getElementById("usernameInput").value;
+        console.log(account);
 
         const formData = new FormData(event.target);
         formData.append("uuid", uuid)
@@ -33,11 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 if (response.code === 200) {
                     if (response.data.redirectTo === 1)
-                        window.location.href = "./home/home.html";
+                        window.location.href = "./home/home.html?account=" + account;
                     else if (response.data.redirectTo === 2)
-                        window.location.href = "./adminPage/admin.html";
+                        window.location.href = "./adminPage/admin.html?account=" + account;
                     else if (response.data.redirectTo === 3)
-                        window.location.href = "./adminmaster/admin.html"
+                        window.location.href = "./adminmaster/admin.html?account=" + account;
                     else
                         throw new Error("未知的用户类型");
                 } else {
