@@ -16,7 +16,8 @@ import java.util.Map;
 public class login {
     @Autowired
     private com.seekerer.courseselect.DataAccess.LoginAndRegister loginAndRegister;
-    @Autowired com.seekerer.courseselect.service.JwtsConfig jwtsConfig;
+    @Autowired
+    private com.seekerer.courseselect.service.JwtsConfig jwtsConfig;
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
     public Object loginMe(String username, String password,String uuid,String code){

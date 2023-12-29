@@ -1,3 +1,4 @@
+// import { fetchWithAuth } from '../jwtRequest.js'
 
 const main = document.querySelector("main");
 
@@ -53,7 +54,7 @@ function clearAll() {
 
 function getAllStaffForCollege() {
     let college = document.getElementById("majColl").value;
-    fetch("http://api.seekerer.com/api/admin/getSepStaff?ColId=" + college, {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + college, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -81,7 +82,7 @@ function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    fetch("http://api.seekerer.com/api/admin/getAllStuInfo", {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getAllStuInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -134,7 +135,7 @@ function initializeStaTable() {
     while (staTable.hasChildNodes()) {
         staTable.removeChild(staTable.firstChild);
     }
-    fetch("http://api.seekerer.com/api/admin/getStaffInfo", {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getStaffInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -191,7 +192,7 @@ function initializetsaTable() {
     while (tsaTable.hasChildNodes()) {
         tsaTable.removeChild(tsaTable.firstChild);
     }
-    fetch("http://api.seekerer.com/api/admin/getAcaAdminInfo", {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getAcaAdminInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -241,7 +242,7 @@ function initializeTeaTable() {
     while (teaTable.hasChildNodes()) {
         teaTable.removeChild(teaTable.firstChild);
     }
-    fetch("http://api.seekerer.com/api/admin/getTeacherInfo", {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getTeacherInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -368,7 +369,7 @@ function popDiv(page, title) {
 }
 //添加专业,初始化学院列表
 function initAddMajor() {
-    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -392,7 +393,7 @@ function initAddMajor() {
 }
 //添加添加学院,初始化职工列表
 function initaddCol() {
-    fetch("http://api.seekerer.com/api/admin/getEmptyStaff", {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getEmptyStaff", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -416,7 +417,7 @@ function initaddCol() {
 
 //添加学生,初始化学院列表
 function initaddStu() {
-    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -450,7 +451,7 @@ function initaddMaj() {
     if (college === "") {
         return;
     }
-    fetch('http://api.seekerer.com/api/admin/getSepMajorList?ColId=' + college, {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getSepMajorList?ColId=' + college, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -477,7 +478,7 @@ function initaddMaj() {
 
 //初始化绑定省份页面,初始化学院列表
 function initbindIdenColl() {
-    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -699,7 +700,7 @@ function initCollManTable() {
         collManTable.removeChild(collManTable.firstChild);
     }
 
-    fetch('http://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -752,7 +753,7 @@ function initMajorManTable() {
 
     }
     //TODO:在这里加一个foreach循环
-    fetch('http://api.seekerer.com/api/admin/getMajorList', {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getMajorList', {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {

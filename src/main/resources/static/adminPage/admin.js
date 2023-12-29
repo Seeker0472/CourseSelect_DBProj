@@ -1,3 +1,4 @@
+import { fetchWithAuth } from '../jwtRequest.js'
 
 const ClassBody = document.getElementById("ClassBody");
 const appliancesBody = document.getElementById("appliances");

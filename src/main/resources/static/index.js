@@ -23,11 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(event.target);
         formData.append("uuid", uuid)
-        fetch("http://api.seekerer.com/login", {
+        fetch("https://api.seekerer.com/login", {
             method: 'POST',
             body: formData
         }).then(response => { return response.json(); })
             .then(response => {
+                if (response.data.jwt) {
+                    localStorage.setItem('jwt', response.data.jwt); // 存储JWT
+                }
                 if (response.code === 200) {
                     if (response.data.redirectTo === 1)
                         window.location.href = "./home/home.html";
@@ -62,7 +65,7 @@ function generateRandomUUID() {
 }
 function initverimg() {
     uuid = generateRandomUUID();
-    fetch('http://api.seekerer.com/captcha?uuid=' + uuid, {
+    fetch('https://api.seekerer.com/captcha?uuid=' + uuid, {
         method: 'GET'
     })
         .then(response => {
