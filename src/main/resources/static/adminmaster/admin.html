@@ -54,7 +54,7 @@
                         <a onclick="LoadPage24()">教师身份管理</a>
                     </div>
                 </li>
-                <li id="link3"><a>课程管理</a></li>
+                <li id="link3"><a>课程类别</a></li>
                 <!-- <li id="link4"><a>学院管理</a></li> -->
                 <li id="link4" class="dropdown">
                     <a>学院管理</a>
@@ -364,7 +364,7 @@
             </div>
             <div id="bindTSA" style="display : none">
                 <!-- 在这里绑定教务信息(列表) -->
-                <form action="http://api.seekerer.com/api/admin/BindIdentity" method="post">
+                <form action="http://api.seekerer.com/api/admin/BindIdentity" method="post" target="Out2">
                     <input type="text" id="bindIdenID" name="accId" placeholder="请输入工号" style="display:none">
                     <label for="Bindidentity">身份</label>
                     <select id="Bindidentity" name="identity">
@@ -379,6 +379,7 @@
                         <option value="2">测绘与空间信息工程学院</option> -->
                     </select>
                     <input type="submit" value="提交">
+                    <iframe name="Out2"></iframe>
 
                 </form>
             </div>
@@ -392,7 +393,7 @@
                 在这里编辑职工信息
             </div>
             <div id="addCol" style="display : none">
-                <form action="http://api.seekerer.com/api/admin/addCollege" method="post">
+                <form action="http://api.seekerer.com/api/admin/addCollege" method="post" target="Out3">
                     <label for="colID">学院编号:</label>
                     <input type="text" id="colID" name="collegeId" placeholder="请输入学院编号">
                     <label for="colName">学院名称:</label>
@@ -406,14 +407,15 @@
                     <label for="colRemark">备注:</label>
                     <input type="text" id="colRemark" name="collegeRemarks" placeholder="请输入备注">
                     <input type="submit" value="提交">
+                    <iframe name="Out3"></iframe>
                 </form>
             </div>
             <div id="addMaj" style="display : none">
-                <form>
+                <form action="http://api.seekerer.com/api/admin/addMajor" method="post" target="Out4">
                     <label for="majID">专业编号:</label>
-                    <input type="text" id="majID" name="majID" placeholder="请输入专业编号">
+                    <input type="text" id="majID" name="majorId" placeholder="请输入专业编号">
                     <label for="majName">专业名称:</label>
-                    <input type="text" id="majName" name="majName" placeholder="请输入专业名称">
+                    <input type="text" id="majName" name="majorName" placeholder="请输入专业名称">
                     <label for="majColl">所属学院:</label>
                     <!-- <input type="text" id="majColl" name="majColl" placeholder="请输入所属学院"> -->
                     <select id="majColl" name="collegeId">
@@ -428,7 +430,10 @@
                     </select>
                     <label for="majRemark">备注:</label>
                     <input type="text" id="majRemark" name="majRemark" placeholder="请输入备注">
+                    <label for="creditLimit">学分上限:</label>
+                    <input type="number" id="creditLimit" name="majorCreditLimit" placeholder="请输入学分上限">
                     <input type="submit" value="提交">
+                    <iframe name="Out4"></iframe>
                 </form>
             </div>
         </div>

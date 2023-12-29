@@ -58,5 +58,21 @@ public class adminAddCon {
         return Result.success();
 
     }
+    @RequestMapping("/api/admin/addMajor")
+    public Object addMajor(@RequestParam Map<String,Object> majorInfo) {
+        if (majorInfo.get("collegeId") == null)
+            return Result.error(400, "学院编号不能为空");
+        if (majorInfo.get("majorId") == null)
+            return Result.error(400, "专业编号不能为空");
+        if (majorInfo.get("majorName") == null)
+            return Result.error(400, "专业名称不能为空");
+        if (majorInfo.get("majorHeadId") == null)
+            return Result.error(400, "专业负责人不能为空");
+        if (majorInfo.get("majorCreditLimit") == null)
+            return Result.error(400, "专业学分上限不能为空");
+        AdminAdd.addMajor(majorInfo);
+        //TODO: 加上检测是否返回成功
+        return Result.success();
+    }
 
 }

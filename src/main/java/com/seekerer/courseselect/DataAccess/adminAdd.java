@@ -30,4 +30,10 @@ public interface adminAdd {
             "#{collegeRemarks, jdbcType=VARCHAR,mode=IN},#{addStat, jdbcType=INTEGER,mode=OUT})")
     @Options(statementType = StatementType.CALLABLE)
     public void addCollege(Map<String,Object> colInfo);
+
+    @Select("CALL addMajor(#{collegeId, jdbcType=CHAR,mode=IN},#{majorId, jdbcType=CHAR,mode=IN},#{majorName, jdbcType=VARCHAR,mode=IN},#{majorHeadId, jdbcType=VARCHAR,mode=IN}," +
+            "#{majorRemarks, jdbcType=VARCHAR,mode=IN},#{majorCreditLimit, jdbcType=INTEGER,mode=IN}," +
+            "#{addStat, jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void addMajor(Map<String,Object> majInfo);
 }

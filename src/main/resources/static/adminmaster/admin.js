@@ -799,15 +799,6 @@ function initMajorManTable() {
 }
 
 
-
-
-
-
-
-
-
-
-
 //加载页面是执行的函数
 function loadPage1() {
 
