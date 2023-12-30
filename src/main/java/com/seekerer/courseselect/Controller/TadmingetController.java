@@ -40,5 +40,10 @@ public class TadmingetController {
         return Result.success(Tadminget.getAllTerms());
     }
 
+    @RequestMapping("/api/acaAdmin/getAllCoursedeliver")
+    public Object getAllCourseDeliver(@RequestHeader("college_id")String college_id){
+        return Result.success(Tadminget.getAllCourseDeliver(college_id));
+    }
+
 
 }

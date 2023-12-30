@@ -264,7 +264,7 @@
             </div>
             <div id="offerCourse">
                 在这里补上开设课程的表单,还没搞完!
-                <form>
+                <form action="https://api.seekerer.com/api/acaadmin/addCourseDeliver" method="post" target="Out1">
                     <label for="course_id">课程:</label>
                     <select id="course_id" name="course_id">
                         <!-- <option value="all">全部</option>
@@ -276,11 +276,11 @@
                     <input type="text" id="courseName" name="course_name" placeholder="请输入要搜索的课程名称"> -->
                     <label for="professor_id">教授</label>
                     <!-- <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授"> -->
-                    <select id="professor_id" name="professor_id">
+                    <select id="professor_id" name="teacher_id">
                     </select>
                     <label for="terms">学期:</label>
                     <!-- <input type="text" id="semester" name="semester"><br> -->
-                    <select id="terms" name="terms">
+                    <select id="terms" name="term_id">
                         <!-- <option value="1">第一学期</option>
                         <option value="2">第二学期</option>
                         <option value="3">第三学期</option>
@@ -294,7 +294,7 @@
                     <!-- <label for="courseTime">上课时间:</label>
                     <input type="text" id="courseTime" name="courseTime"><br> -->
                     <label for="courseWeekStart">上课开始周:</label>
-                    <select id="courseWeekStart" name="courseWeekStart">
+                    <select id="courseWeekStart" name="start_week">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -317,7 +317,7 @@
                         <option value="20">20</option>
                     </select>
                     <label for="courseWeekEnd">上课结束周:</label>
-                    <select id="courseWeekEnd" name="courseWeekEnd">
+                    <select id="courseWeekEnd" name="end_week">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -350,7 +350,7 @@
                         <option value="2">周日</option>
                     </select>
                     <label for="courseTimeStart">上课开始时间:</label>
-                    <select id="courseTimeStart" name="courseTimeStart">
+                    <select id="courseTimeStart" name="start_time">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -363,7 +363,7 @@
                         <option value="10">10</option>
                     </select><br>
                     <label for="courseTimeEnd">上课结束时间:</label>
-                    <select id="courseTimeEnd" name="courseTimeEnd">
+                    <select id="courseTimeEnd" name="end_time">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -376,12 +376,13 @@
                         <option value="10">10</option>
                     </select><br>
                     <label for="coursePlace">上课地点:</label>
-                    <input type="text" id="coursePlace" name="coursePlace"><br>
+                    <input type="text" id="coursePlace" name="location"><br>
                     <label for="courseCapacity">课程容量:</label>
-                    <input type="number" id="courseCapacity" name="courseCapacity"><br>
-                    <label for="courseIntroduction">课程简介:</label>
-                    <input type="text" id="courseIntroduction" name="courseIntroduction"><br>
+                    <input type="number" id="courseCapacity" name="max_enrollment"><br>
+                    <!-- <label for="courseIntroduction">课程简介:</label>
+                    <input type="text" id="courseIntroduction" name="courseIntroduction"><br> -->
                     <input type="submit" value="提交">
+                    <iframe name="Out1"></iframe>
                 </form>
             </div>
             <div id="overlay"></div>

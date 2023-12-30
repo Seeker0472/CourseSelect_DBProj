@@ -55,53 +55,61 @@ function initializeClassBody() {
         ClassBody.removeChild(ClassBody.firstChild);
     }
     //TODO:等后端完成之后在这里加一个foreach循环
-    {
-        const table = document.createElement("tr");
-        const classnum = document.createElement("td");
-        classnum.innerHTML = "课程号";
-        const classname = document.createElement("td");
-        classname.innerHTML = "课程名";
-        const credits = document.createElement("td");
-        credits.innerHTML = "学分";
-        const teacherId = document.createElement("td");
-        teacherId.innerHTML = "教师编号";
-        const teacherName = document.createElement("td");
-        teacherName.innerHTML = "教师";
-        const TargetMajor = document.createElement("td");
-        TargetMajor.innerHTML = "面向专业";
-        const action = document.createElement("td");
-        const button1 = document.createElement("button");
-        button1.className = "Button001";
-        button1.innerHTML = "查看详情";
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCoursedeliver", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (ClassBody.hasChildNodes()) {
+                ClassBody.removeChild(ClassBody.firstChild);
+            }
+            response.data.forEach(element => {
+                const table = document.createElement("tr");
+                const classnum = document.createElement("td");
+                classnum.innerHTML = element.course_id;
+                const classname = document.createElement("td");
+                classname.innerHTML = element.course_name;
+                const credits = document.createElement("td");
+                credits.innerHTML = element.credits;
+                const teacherId = document.createElement("td");
+                teacherId.innerHTML = element.teacher_id;
+                const teacherName = document.createElement("td");
+                teacherName.innerHTML = element.name;
+                const TargetMajor = document.createElement("td");
+                TargetMajor.innerHTML = element.major_name;
+                const action = document.createElement("td");
+                const button1 = document.createElement("button");
+                button1.className = "Button001";
+                button1.innerHTML = "查看详情";
 
-        const button2 = document.createElement("button");
-        button2.innerHTML = "删除课程";
-        const button3 = document.createElement("button");
-        button3.innerHTML = "修改信息";
+                const button2 = document.createElement("button");
+                button2.innerHTML = "删除课程";
+                const button3 = document.createElement("button");
+                button3.innerHTML = "修改信息";
 
-        //Test
-        button1.onclick = function () {
-            popDiv(2);
-        }
-        button2.onclick = function () {
-            //记得补充交互逻辑
-        }
-        button3.onclick = function () {
-            popDiv(3);
+                //Test
+                button1.onclick = function () {
+                    popDiv(2);
+                }
+                button2.onclick = function () {
+                    //记得补充交互逻辑
+                }
+                button3.onclick = function () {
+                    popDiv(3);
 
-        }
-        action.appendChild(button1);
-        action.appendChild(button2);
-        action.appendChild(button3);
-        table.appendChild(classnum);
-        table.appendChild(classname);
-        table.appendChild(credits);
-        table.appendChild(teacherId);
-        table.appendChild(teacherName);
-        table.appendChild(TargetMajor);
-        table.appendChild(action);
-        ClassBody.appendChild(table);
-    }
+                }
+                action.appendChild(button1);
+                action.appendChild(button2);
+                action.appendChild(button3);
+                table.appendChild(classnum);
+                table.appendChild(classname);
+                table.appendChild(credits);
+                table.appendChild(teacherId);
+                table.appendChild(teacherName);
+                table.appendChild(TargetMajor);
+                table.appendChild(action);
+                ClassBody.appendChild(table);
+            });
+        });
 
 
 

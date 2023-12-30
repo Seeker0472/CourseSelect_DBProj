@@ -17,4 +17,12 @@ public class TadminAddController {
         return Result.success();
     }
 
+    //TODO:需要完成数据约束,和维护class_hours,course_status
+    @RequestMapping("/api/acaadmin/addCourseDeliver")
+    public Object addCourseDeliver(@RequestParam String course_id, @RequestParam String teacher_id, @RequestParam int start_week, @RequestParam int end_week, @RequestParam int start_time,
+                                   @RequestParam int end_time, String location, @RequestParam int term_id,@RequestParam int max_enrollment){
+        TadminAdd.addCourseDeliver(course_id, teacher_id, start_week, end_week, start_time, end_time, location, 0, term_id, max_enrollment, null);
+        return Result.success();
+    }
+
 }

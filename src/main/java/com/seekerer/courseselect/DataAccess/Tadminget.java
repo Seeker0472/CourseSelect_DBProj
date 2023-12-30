@@ -31,6 +31,12 @@ public interface Tadminget {
     @Select("select * from terms")
     public List<Map<String,Object>> getAllTerms();
 
+    @Select("select * from course_detail where course_id=#{course_id} and college_id=#{college_id}")
+    public List<Map<String,Object>> getCourseDetail(String course_id,String college_id);
+
+    @Select("select * from course_detail_simplified where college_id=#{college_id}")
+    public List<Map<String,Object>> getAllCourseDeliver(String college_id);
+
 
 
 
