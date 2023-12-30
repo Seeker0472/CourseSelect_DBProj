@@ -5,9 +5,15 @@ function getJWT() {
 function fetchWithAuth(url, options = {}) {
     const jwt = getJWT();
     const headers = new Headers(options.headers || {});
+    const urlObject = new URL(window.location.href);
+    const college_id = urlObject.searchParams.get('college_id');
+
 
     if (jwt) {
         headers.append('Authorization', `Bearer ${jwt}`);
+    }
+    if (college_id) {
+        headers.append('college_id', college_id);
     }
 
     // return fetch(url, Object.assign({}, options, { headers: headers }));

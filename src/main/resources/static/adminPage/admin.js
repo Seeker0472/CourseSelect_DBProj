@@ -75,6 +75,56 @@ function initializeClassBody() {
 
 }
 
+function initCourseTable() {
+    const courseTable = document.getElementById("CoursesTable");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCourses", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (courseTable.hasChildNodes()) {
+                courseTable.removeChild(courseTable.firstChild);
+            }
+            response.data.forEach(element => {
+                const table = document.createElement("tr");
+                const classnum = document.createElement("td");
+                classnum.innerHTML = element.course_id;
+                const classname = document.createElement("td");
+                classname.innerHTML = element.course_name;
+                const credits = document.createElement("td");
+                credits.innerHTML = element.credits;
+                const category = document.createElement("td");
+                category.innerHTML = element.category_name;
+                const mandatory = document.createElement("td");
+                mandatory.innerHTML = element.is_mandatory ? "必修" : "选修";
+
+                const action = document.createElement("td");
+
+                const button2 = document.createElement("button");
+                button2.innerHTML = "删除课程";
+                const button3 = document.createElement("button");
+                button3.innerHTML = "修改信息";
+
+                button2.onclick = function () {
+                    //记得补充交互逻辑
+                }
+                button3.onclick = function () {
+                    popDiv(3);
+
+                }
+                action.appendChild(button2);
+                action.appendChild(button3);
+                table.appendChild(classnum);
+                table.appendChild(classname);
+                table.appendChild(credits);
+                table.appendChild(category);
+                table.appendChild(mandatory);
+                table.appendChild(action);
+                courseTable.appendChild(table);
+            });
+
+        });
+}
+
 
 //TODO:修改为选课管理表格逻辑
 //初始化申请表格
@@ -119,16 +169,20 @@ function initializeCheckBody() {
 }
 
 
+
 //初始化学生表格
 //TODO:要实现按学院查询,只能查询该学院的学生
 function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    fetch("https://api.seekerer.com/api/acaAdmin/getAllStuInfo", {
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllStuInfo", {
         method: 'POST'
     }).then(response => { return response.json(); })
         .then(responces => {
+            while (stuTable.hasChildNodes()) {
+                stuTable.removeChild(stuTable.firstChild);
+            }
             responces.data.forEach(element => {
                 let studentId = element.account_id;
                 const table = document.createElement("tr");
@@ -219,12 +273,55 @@ function popDiv(page) {
         case 6:
             popTitle.innerHTML = "添加课程";
             addCourse.style = "display:block;";
+            initCourseCategory();
+            getCollegeNow();
             break;
 
     }
 
     // 控制两个div的显示与隐藏
     popBox.style.display = "block";
+}
+
+function getCollegeNow() {
+    //学院编号已经在header里面了
+    const url = new URL(window.location.href);
+    const college_id = url.searchParams.get('college_id');
+    const major_id = document.getElementById("major_id");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getMajors", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (major_id.hasChildNodes()) {
+                major_id.removeChild(major_id.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.major_id;
+                option.innerHTML = element.major_name;
+                major_id.appendChild(option);
+            });
+
+        });
+}
+
+function initCourseCategory() {
+    const courseCategory = document.getElementById("category");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCategories", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (courseCategory.hasChildNodes()) {
+                courseCategory.removeChild(courseCategory.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.category_id;
+                option.innerHTML = element.category_name;
+                courseCategory.appendChild(option);
+            });
+
+        });
 }
 
 function closePop() {
@@ -300,6 +397,8 @@ function loadPage21() {
 
 function loadPage22() {
     editPageParam2(2);
+    initCourseTable();
+
     const Link2Display = document.getElementById("Link2Display");
     for (Object of Link2Display.children) {
         Object.style = "display:none;";
@@ -373,11 +472,24 @@ function firstload() {
     const name = document.getElementById("userName");
     popDiv();
     let account_id = 'Adm';
-    fetch("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
             if (response.code === 200) {
+                if (response.data.length === 0) {
+                    window.location.href = "/login.html";
+                }
+                while (identitySwitchContent.hasChildNodes()) {
+                    identitySwitchContent.removeChild(identitySwitchContent.firstChild);
+                }
+                //TODO:这个是为什么?
+                // const URL = new URL(window.location.href);
+                const params = urlObj.searchParams;
+                params.set("college_id", response.data[0].college_id);
+                const newUrl = urlObj.href;
+                history.pushState(null, null, newUrl);
+
                 response.data.forEach(element => {
                     name.innerHTML = element.name;
                     switch (element.identity) {

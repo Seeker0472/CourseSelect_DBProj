@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../PopWin.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../HeaderSlider.css">
+    <script src="../jwtRequest.js"></script>
     <script src="admin.js" defer></script>
     <script src="../slider.js" defer></script>
 </head>
@@ -41,8 +42,8 @@
                 <li id="link2" class="dropdown">
                     <a>课程管理</a>
                     <div id="Link2Droupdown" class="dropdown-content" style="display: none; opacity: 0;">
-                        <a onclick="loadPage21()">课程信息</a>
-                        <a onclick="loadPage22()">开设课程</a>
+                        <a onclick="loadPage21()">开设课程</a>
+                        <a onclick="loadPage22()">课程信息</a>
                     </div>
                 </li>
                 <li id="link3" class="dropdown">
@@ -95,7 +96,7 @@
                             <input type="submit" value="搜索">
                         </form>
                     </div>
-                    <button onclick="popDiv(6)" class="Button002" style="display: block; margin: auto;">添加开课信息</button>
+                    <button onclick="popDiv(1)" class="Button002" style="display: block; margin: auto;">添加开课信息</button>
                     <!--            <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>-->
                     <br>
                     <table class="thead">
@@ -117,17 +118,19 @@
                 </div>
             </div>
             <div id="Link22">
-                <button onclick="popDiv(1)" class="Button002" style="display: block; margin: auto;">添加课程信息</button>
+                <button onclick="popDiv(6)" class="Button002" style="display: block; margin: auto;">添加课程信息</button>
                 <table class="thead">
                     <thead>
                         <tr>
                             <th scope="col">课程编号</th>
                             <th scope="col">课程名称</th>
                             <th scope="col">学分</th>
+                            <th scope="col">课程类别</th>
+                            <th scope="col">是否必修</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
-                    <tbody id="ClassBody2">
+                    <tbody id="CoursesTable">
 
                     </tbody>
                 </table>
@@ -213,6 +216,38 @@
         <div id="popMain">
             <div id="addCourse">
                 在这里补上添加课程信息的表单
+                <form action="https://api.seekerer.com/api/acaadmin/addCourse" method="post" target="Out">
+                    <label for="classID">课程代码:</label>
+                    <input type="text" id="classID" name="course_id" placeholder="请输入要搜索的课程代码">
+                    <label for="courseName">课程名称:</label>
+                    <input type="text" id="courseName" name="course_name" placeholder="请输入要搜索的课程名称">
+                    <label for="courseCredit">学分:</label>
+                    <input type="number" id="courseCredit" name="credits">
+                    <label for="category">课程类别</label>
+                    <select id="category" name="category_id">
+                        <!-- <option value="all">全部</option>
+                        <option value="required">必修</option>
+                        <option value="elective">选修</option> -->
+                    </select>
+                    <label for="major_id">开设专业:</label>
+                    <select type="text" id="major_id" name="major_id">
+
+                    </select>
+                    <!-- <select id="college_id" name="college_id">
+                        <option value="all">全部</option>
+                        <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option>
+                    </select> -->
+                    <label for="ismanadatory">是否必修:</label>
+                    <select id="ismanadatory" name="is_mandatory">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                    <label for="courseIntroduction">课程简介:</label>
+                    <input type="text" id="courseIntroduction" name="Intro">
+                    <input type="submit" value="提交">
+                    <iframe name="Out"></iframe>
+                </form>
             </div>
             <div id="showDetail">
                 在这里补上显示课程详细信息的表单
@@ -228,7 +263,26 @@
                 要求能够指派选课信息
             </div>
             <div id="offerCourse">
-                在这里补上开设课程的表单
+                在这里补上开设课程的表单,还没搞完!
+                <form>
+                    <label for="classID">课程代码:</label>
+                    <input type="text" id="classID" name="course_id" placeholder="请输入要搜索的课程代码">
+                    <label for="courseName">课程名称:</label>
+                    <input type="text" id="courseName" name="course_name" placeholder="请输入要搜索的课程名称">
+                    <label for="professor">教授</label>
+                    <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授">
+                    <label for="semester">学期:</label>
+                    <input type="text" id="semester" name="semester"><br>
+                    <label for="courseTime">上课时间:</label>
+                    <input type="text" id="courseTime" name="courseTime"><br>
+                    <label for="coursePlace">上课地点:</label>
+                    <input type="text" id="coursePlace" name="coursePlace"><br>
+                    <label for="courseCapacity">课程容量:</label>
+                    <input type="text" id="courseCapacity" name="courseCapacity"><br>
+                    <label for="courseIntroduction">课程简介:</label>
+                    <input type="text" id="courseIntroduction" name="courseIntroduction"><br>
+                    <input type="submit" value="提交">
+                </form>
             </div>
             <div id="overlay"></div>
         </div>
