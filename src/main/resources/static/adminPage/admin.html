@@ -265,20 +265,120 @@
             <div id="offerCourse">
                 在这里补上开设课程的表单,还没搞完!
                 <form>
-                    <label for="classID">课程代码:</label>
-                    <input type="text" id="classID" name="course_id" placeholder="请输入要搜索的课程代码">
-                    <label for="courseName">课程名称:</label>
-                    <input type="text" id="courseName" name="course_name" placeholder="请输入要搜索的课程名称">
-                    <label for="professor">教授</label>
-                    <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授">
-                    <label for="semester">学期:</label>
-                    <input type="text" id="semester" name="semester"><br>
-                    <label for="courseTime">上课时间:</label>
-                    <input type="text" id="courseTime" name="courseTime"><br>
+                    <label for="course_id">课程:</label>
+                    <select id="course_id" name="course_id">
+                        <!-- <option value="all">全部</option>
+                        <option value="required">必修</option>
+                        <option value="elective">选修</option> -->
+                    </select>
+                    <!-- <input type="text" id="classID" name="course_id" placeholder="请输入要搜索的课程代码"> -->
+                    <!-- <label for="courseName">课程名称:</label>
+                    <input type="text" id="courseName" name="course_name" placeholder="请输入要搜索的课程名称"> -->
+                    <label for="professor_id">教授</label>
+                    <!-- <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授"> -->
+                    <select id="professor_id" name="professor_id">
+                    </select>
+                    <label for="terms">学期:</label>
+                    <!-- <input type="text" id="semester" name="semester"><br> -->
+                    <select id="terms" name="terms">
+                        <!-- <option value="1">第一学期</option>
+                        <option value="2">第二学期</option>
+                        <option value="3">第三学期</option>
+                        <option value="4">第四学期</option>
+                        <option value="5">第五学期</option>
+                        <option value="6">第六学期</option>
+                        <option value="7">第七学期</option>
+                        <option value="8">第八学期</option> -->
+                    </select>
+                    <a>上课时间:</a>
+                    <!-- <label for="courseTime">上课时间:</label>
+                    <input type="text" id="courseTime" name="courseTime"><br> -->
+                    <label for="courseWeekStart">上课开始周:</label>
+                    <select id="courseWeekStart" name="courseWeekStart">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <label for="courseWeekEnd">上课结束周:</label>
+                    <select id="courseWeekEnd" name="courseWeekEnd">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select><br>
+                    <label for="courseDay">上课日:</label>
+                    <select id="courseDay" name="courseDay">
+                        <option value="1">周一</option>
+                        <option value="2">周二</option>
+                        <option value="2">周三</option>
+                        <option value="2">周四</option>
+                        <option value="2">周五</option>
+                        <option value="2">周六</option>
+                        <option value="2">周日</option>
+                    </select>
+                    <label for="courseTimeStart">上课开始时间:</label>
+                    <select id="courseTimeStart" name="courseTimeStart">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br>
+                    <label for="courseTimeEnd">上课结束时间:</label>
+                    <select id="courseTimeEnd" name="courseTimeEnd">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br>
                     <label for="coursePlace">上课地点:</label>
                     <input type="text" id="coursePlace" name="coursePlace"><br>
                     <label for="courseCapacity">课程容量:</label>
-                    <input type="text" id="courseCapacity" name="courseCapacity"><br>
+                    <input type="number" id="courseCapacity" name="courseCapacity"><br>
                     <label for="courseIntroduction">课程简介:</label>
                     <input type="text" id="courseIntroduction" name="courseIntroduction"><br>
                     <input type="submit" value="提交">

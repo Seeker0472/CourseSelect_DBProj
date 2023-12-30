@@ -22,6 +22,15 @@ public interface Tadminget {
     @Select("SELECT * FROM majors where college_id=#{college_id}")
     public List<Map<String,Object>> getAllMajors(String college_id);
 
+    @Select("select * from staff\n" +
+            "    join identities\n" +
+            "on staff.account_id=identities.account_id\n" +
+            "where identity=2 and college_id=#{college_id}")
+    public List<Map<String,Object>> getAllTeachers(String college_id);
+
+    @Select("select * from terms")
+    public List<Map<String,Object>> getAllTerms();
+
 
 
 

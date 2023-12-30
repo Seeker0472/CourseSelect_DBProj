@@ -14,6 +14,38 @@ function clearAll() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const courseWeekStart = document.getElementById("courseWeekStart");
+    const courseWeekEnd = document.getElementById("courseWeekEnd");
+    const courseTimeStart = document.getElementById("courseTimeStart");
+    const courseTimeEnd = document.getElementById("courseTimeEnd");
+
+    courseWeekStart.onchange = function () {
+        console.log(courseWeekStart.value);
+        while (courseWeekEnd.hasChildNodes()) {
+            courseWeekEnd.removeChild(courseWeekEnd.firstChild);
+        }
+        for (let i = courseWeekStart.value; i <= 20; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            courseWeekEnd.appendChild(option);
+        }
+    }
+
+    courseTimeStart.onchange = function () {
+        console.log(courseTimeStart.value);
+        while (courseTimeEnd.hasChildNodes()) {
+            courseTimeEnd.removeChild(courseTimeEnd.firstChild);
+        }
+        for (let i = courseTimeStart.value; i <= 10; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            courseTimeEnd.appendChild(option);
+        }
+    }
+});
 
 
 
@@ -253,6 +285,7 @@ function popDiv(page) {
         case 1:
             popTitle.innerHTML = "添加开课信息";
             offerCourse.style = "display:block;";
+            getCourseProfessorAndTerm();
             break;
         case 2:
             popTitle.innerHTML = "课程详情";
@@ -281,6 +314,59 @@ function popDiv(page) {
 
     // 控制两个div的显示与隐藏
     popBox.style.display = "block";
+}
+
+function getCourseProfessorAndTerm() {
+    const course_id = document.getElementById("course_id");
+    const professor_id = document.getElementById("professor_id");
+
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCourses", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (course_id.hasChildNodes()) {
+                course_id.removeChild(course_id.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.course_id;
+                option.innerHTML = element.course_name;
+                course_id.appendChild(option);
+            });
+
+
+        });
+
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getteachers", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (professor_id.hasChildNodes()) {
+                professor_id.removeChild(professor_id.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.account_id;
+                option.innerHTML = element.name;
+                professor_id.appendChild(option);
+            });
+        });
+
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllTerms", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            const term = document.getElementById("terms");
+            while (term.hasChildNodes()) {
+                term.removeChild(term.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.term_id;
+                option.innerHTML = element.term_name;
+                term.appendChild(option);
+            });
+        });
 }
 
 function getCollegeNow() {

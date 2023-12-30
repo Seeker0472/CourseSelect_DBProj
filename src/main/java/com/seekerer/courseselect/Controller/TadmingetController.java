@@ -30,5 +30,15 @@ public class TadmingetController {
         return Result.success(Tadminget.getAllMajors(college_id));
     }
 
+    @RequestMapping("/api/acaAdmin/getteachers")
+    public Object getAllTeachers(@RequestHeader("college_id")String college_id){
+        return Result.success(Tadminget.getAllTeachers(college_id));
+    }
+
+    @RequestMapping("/api/acaAdmin/getAllTerms")
+    public Object getAllTerms(){
+        return Result.success(Tadminget.getAllTerms());
+    }
+
 
 }
