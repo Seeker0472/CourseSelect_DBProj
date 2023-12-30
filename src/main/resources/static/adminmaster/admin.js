@@ -844,7 +844,7 @@ function firstload() {
                         case '2':
                             let identity = document.createElement("a");
                             identity.innerHTML = element.college_name + "的教务管理员";
-                            identity.href = "./adminPage/admin.html?account=" + element.account_id + "&college=" + element.college_id;
+                            identity.href = "/adminPage/admin.html?account=" + element.account_id + "&college=" + element.college_id;
                             identitySwitchContent.appendChild(identity);
                             //教务管理员
                             break;

@@ -25,10 +25,10 @@
                 </div>
             </div>
             <div id="identityDroupDownCointainer" class="identityDropDownCointainer" style="display: none; opacity: 0;">
-                <div class="dropDownContent">
-                    <a>信息工程学院:教务管理员</a>
+                <div class="dropDownContent" id="identityDrop">
+                    <!-- <a>信息工程学院:教务管理员</a>
                     <a>测绘与空间信息工程学院:教务管理员</a>
-                    <a>退出</a>
+                    <a>退出</a> -->
                 </div>
             </div>
         </div>
@@ -38,10 +38,16 @@
         <nav>
             <ul>
                 <li id="link1"><a>首页</a></li>
-                <li id="link2"><a>课程管理</a></li>
+                <li id="link2" class="dropdown">
+                    <a>课程管理</a>
+                    <div id="Link2Droupdown" class="dropdown-content" style="display: none; opacity: 0;">
+                        <a onclick="loadPage21()">课程信息</a>
+                        <a onclick="loadPage22()">开设课程</a>
+                    </div>
+                </li>
                 <li id="link3" class="dropdown">
                     <a>信息审核</a>
-                    <div id="Link3Droupdown" class="dropdown-content">
+                    <div id="Link3Droupdown" class="dropdown-content" style="display: none; opacity: 0;">
                         <a onclick="loadPage31()">选课结果审核</a>
                         <a onclick="loadPage32()">其他信息审核</a>
                     </div>
@@ -58,57 +64,76 @@
         </div>
         <!--课程管理-->
         <div id="Link2Display" style="display: none">
-            <div>
-                <button id="advancedSearch" onclick="showadvs()">高级搜索</button>
-                <div id="advSear" style="display: block">
-                    <form action="/submit_course_selection" method="post">
-                        课程代码单独搜索,删掉教师编号,添加时间地点<br>
-                        <label for="classID">课程代码:</label>
-                        <input type="text" id="classID" name="classID" placeholder="请输入要搜索的课程代码">
+            <div id="Link21">
+                <div>
+                    <button id="advancedSearch" onclick="showadvs()">高级搜索</button>
+                    <div id="advSear" style="display: block">
+                        <form action="/submit_course_selection" method="post">
+                            课程代码单独搜索,删掉教师编号,添加时间地点<br>
+                            <label for="classID">课程代码:</label>
+                            <input type="text" id="classID" name="classID" placeholder="请输入要搜索的课程代码">
 
-                        <label for="empty">选择课程:</label>
-                        <select id="empty" name="empty" required>
-                            <option value="all">全部</option>
-                            <option value="yes">有余量</option>
-                            <option value="no">无余量</option>
-                        </select><br>
-                        <label for="selected">课程状态:</label>
-                        <select id="selected" name="empty" required>
-                            <option value="all">全部</option>
-                            <option value="yes">已选</option>
-                            <option value="no">未选</option>
-                        </select>
-                        <label for="semester">学期:</label>
-                        <input type="text" id="semester" name="semester"><br>
-                        <label for="courseName">课程名称:</label>
-                        <input type="text" id="courseName" name="courseName" placeholder="请输入要搜索的课程名称">
-                        <label for="professor">教授</label>
-                        <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授">
-                        <!-- <button>搜索</button> -->
-                        <input type="submit" value="搜索">
-                    </form>
+                            <label for="empty">选择课程:</label>
+                            <select id="empty" name="empty" required>
+                                <option value="all">全部</option>
+                                <option value="yes">有余量</option>
+                                <option value="no">无余量</option>
+                            </select><br>
+                            <label for="selected">课程状态:</label>
+                            <select id="selected" name="empty" required>
+                                <option value="all">全部</option>
+                                <option value="yes">已选</option>
+                                <option value="no">未选</option>
+                            </select>
+                            <label for="semester">学期:</label>
+                            <input type="text" id="semester" name="semester"><br>
+                            <label for="courseName">课程名称:</label>
+                            <input type="text" id="courseName" name="courseName" placeholder="请输入要搜索的课程名称">
+                            <label for="professor">教授</label>
+                            <input type="text" id="professor" name="professor" placeholder="请输入要搜索的教授">
+                            <!-- <button>搜索</button> -->
+                            <input type="submit" value="搜索">
+                        </form>
+                    </div>
+                    <button onclick="popDiv(6)" class="Button002" style="display: block; margin: auto;">添加开课信息</button>
+                    <!--            <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>-->
+                    <br>
+                    <table class="thead">
+                        <thead>
+                            <tr>
+                                <th scope="col">课程编号</th>
+                                <th scope="col">名称</th>
+                                <th scope="col">学分</th>
+                                <th scope="col">教师编号</th>
+                                <th scope="col">教师姓名</th>
+                                <th scope="col">面向专业</th>
+
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ClassBody">
+                        </tbody>
+                    </table>
                 </div>
-                <button onclick="popDiv(1)" class="Button002" style="display: block; margin: auto;">添加课程</button>
-                <!--            <button id="AddStaff" class="Button002" style="display: block; margin: auto;">添加教师</button>-->
-                <br>
+            </div>
+            <div id="Link22">
+                <button onclick="popDiv(1)" class="Button002" style="display: block; margin: auto;">添加课程信息</button>
                 <table class="thead">
                     <thead>
                         <tr>
                             <th scope="col">课程编号</th>
-                            <th scope="col">名称</th>
+                            <th scope="col">课程名称</th>
                             <th scope="col">学分</th>
-                            <th scope="col">教师编号</th>
-                            <th scope="col">教师姓名</th>
-                            <th scope="col">面向专业</th>
-
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
-                    <tbody id="ClassBody">
+                    <tbody id="ClassBody2">
+
                     </tbody>
                 </table>
             </div>
         </div>
+
         <div id="Link3Display" style="display: none">
             <div id="Link31">
                 Link31
@@ -200,11 +225,13 @@
             </div>
             <div id="stuInfo">
                 在这里补上学生信息的表单
-
+                要求能够指派选课信息
             </div>
+            <div id="offerCourse">
+                在这里补上开设课程的表单
+            </div>
+            <div id="overlay"></div>
         </div>
-        <div id="overlay"></div>
-    </div>
 </body>
 
 </html>

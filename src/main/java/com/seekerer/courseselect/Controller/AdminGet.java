@@ -57,7 +57,7 @@ public class AdminGet {
     public Object getSepStaff(@RequestParam String ColId){
         return Result.success(adminget.getSepStaff(ColId));
     }
-
+    //返回职工身份列表
     @RequestMapping("/api/admin/getIdentity")
     public Object getIdentity(@RequestParam String accountId){
         return Result.success(adminget.getIdentity(accountId));

@@ -10,6 +10,7 @@ const Link3Display = document.getElementById("Link3Display");
 const Link4Display = document.getElementById("Link4Display");
 const Link5Display = document.getElementById("Link5Display");
 const Link2Droupdown = document.getElementById("Link2Droupdown");
+const Link3Droupdown = document.getElementById("Link3Droupdown");
 const Link4Droupdown = document.getElementById("Link4Droupdown");
 const user = document.getElementById("user");
 const userDroupdown = document.getElementById("userDroupdown");
@@ -160,6 +161,12 @@ document.addEventListener("DOMContentLoaded", function () {
     link3.addEventListener("mouseenter",
         (event) => {
             slider.style.transform = 'translateX(' + transfrompos * 2 + 'px)';
+            if (Link3Droupdown != null) {
+                Link3Droupdown.style.display = "block";
+                setTimeout(function () {
+                    Link3Droupdown.style.opacity = "1";
+                }, 1);
+            }
         });
     link4.addEventListener("mouseenter",
         (event) => {
@@ -181,7 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
     link2.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
         if (Link2Droupdown != null) {
-            //定时执行
             setTimeout(function () {
                 Link2Droupdown.style.display = "none";
             }, 300);
@@ -191,11 +197,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     link3.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
+        if (Link3Droupdown != null) {
+            setTimeout(function () {
+                Link3Droupdown.style.display = "none";
+            }, 300);
+            // Link2Droupdown.style.display = "none";
+            Link3Droupdown.style.opacity = "0";
+        }
     });
     link4.addEventListener("mouseleave", (event) => {
         slider.style.transform = 'translateX(' + defaultpos + 'px)';
         if (Link4Droupdown != null) {
-            //定时执行
             setTimeout(function () {
                 Link4Droupdown.style.display = "none";
             }, 300);
