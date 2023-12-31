@@ -8,24 +8,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LectureInfo {
-    private String Name;
-    private String id;
-    private String Teacher;
-    private Integer day;
-    private  Integer startTime;
-    private  Integer endTime;
-    private  Integer beginWeek;
-    private  Integer endWeek;
-    private  Boolean selected;
-    private  Integer selectedNum;
-    private Integer maxNum;
+    private Integer deliverId;
+    private String course_name;
+    //private String id;
+    private String teacher_name;
+    private Integer course_id;
+    private Integer course_day;
+    private  Integer start_time;
+    private  Integer end_time;
+    private  Integer start_week;
+    private  Integer end_week;
+    private  Boolean isSelected;
+    private  Integer selected;
+    private Integer max_enrollment;
 
-    private String semesterId;
-    private String semesterName;
+//    private String semesterId;
+    private String term_name;
 
-    private Double credit;
+    private Double credits;
 
-    private String place;
+    private String location;
+
+    private String category_name;
 
 
 }

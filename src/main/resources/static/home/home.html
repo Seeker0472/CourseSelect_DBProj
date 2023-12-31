@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../HeaderSlider.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="../SideClassTable.css">
-
+    <script src="../jwtRequest.js"></script>
     <script src="home.js" defer></script>
     <script src="../courseTable.js" defer></script>
     <script src="../slider.js" defer></script>
@@ -24,7 +24,7 @@
                     <div class="dropDownContent">
                         <a id="personalInfo">个人信息</a>
                         <a id="identityTransform">身份切换</a>
-                        <a id="exit">退出</a>
+                        <a id="exit" onclick="exitAccountSafely()">退出</a>
                     </div>
                 </div>
                 <div id="identityDroupDownCointainer" class="identityDropDownCointainer"
@@ -245,7 +245,6 @@
                         <tr>
                             <th scope="col">课程名称</th>
                             <th scope="col">课程代码</th>
-                            <th scope="col">学年</th>
                             <th scope="col">学期</th>
                             <th scope="col">课程性质</th>
                             <th scope="col">学分</th>
@@ -263,18 +262,13 @@
         </div>
 
         <div id="Link4Display" style="display: none">
-            <label for="CourseSemester">学年:</label>
-            <select id="CourseSemester" name="CourseSemester" required>
-                <option value="all" selected="selected">全部</option>
-
-            </select>
             <label for="Term">学期:</label>
-            <select id="Term" name="Term" required>
-                <option value="all" selected="selected">全部</option>
+            <select id="TermSelect" name="Term" required>
+                <!-- <option value="all" selected="selected">全部</option>
                 <option value="1">第一学期</option>
-                <option value="2">第二学期</option>
+                <option value="2">第二学期</option> -->
             </select>
-            <button onclick="getCourseTable()">查询</button>
+            <!-- <button onclick="getCourseTable()">查询</button> -->
             <div id="CourseTable">
                 <table class="courseTable">
                     <thead>

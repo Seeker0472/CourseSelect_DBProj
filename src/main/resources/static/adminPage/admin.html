@@ -22,7 +22,7 @@
                 <div class="dropDownContent">
                     <a id="personalInfo">个人信息</a>
                     <a id="identityTransform">身份切换</a>
-                    <a id="exit">退出</a>
+                    <a id="exit" onclick="exitAccountSafely()">退出</a>
                 </div>
             </div>
             <div id="identityDroupDownCointainer" class="identityDropDownCointainer" style="display: none; opacity: 0;">
@@ -340,7 +340,7 @@
                         <option value="20">20</option>
                     </select><br>
                     <label for="courseDay">上课日:</label>
-                    <select id="courseDay" name="courseDay">
+                    <select id="courseDay" name="course_day">
                         <option value="1">周一</option>
                         <option value="2">周二</option>
                         <option value="2">周三</option>

@@ -7,13 +7,17 @@ function fetchWithAuth(url, options = {}) {
     const headers = new Headers(options.headers || {});
     const urlObject = new URL(window.location.href);
     const college_id = urlObject.searchParams.get('college_id');
+    const account = urlObject.searchParams.get('account');
 
-
+    headers.append('Content-Type', 'application/json');
     if (jwt) {
         headers.append('Authorization', `Bearer ${jwt}`);
     }
     if (college_id) {
         headers.append('college_id', college_id);
+    }
+    if (account) {
+        headers.append('account', account);
     }
 
     // return fetch(url, Object.assign({}, options, { headers: headers }));

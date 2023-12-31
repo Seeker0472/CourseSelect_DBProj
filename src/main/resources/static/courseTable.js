@@ -1,82 +1,21 @@
-//调用已选课程列表接口返回的数据
-let response = {
+//调用已选课程列表接口返回的数据me
+let courseTable = {
     "body": [
         {
             "name": "高等数学",
             "id": "1",
             "courseTeacher": "张三",
-            "day": 1,
-            "startTime": 1,
-            "endTime": 2,
-            "beginWeek": 1,
-            "endWeek": 16,
+            "course_day": 1,
+            "start_time": 1,
+            "end_time": 2,
+            "start_week": 1,
+            "end_week": 16,
             "coursePlace": "教学楼A101",
             "credit": 4,
             "semesterName": "大一上学期",
             "semesterid": "1",
             "Teacher": "1",
-        },
-        {
-            "name": "线性代数",
-            "id": "2",
-            "courseTeacher": "李四",
-            "day": 1,
-            "startTime": 3,
-            "endTime": 4,
-            "beginWeek": 1,
-            "endWeek": 16,
-            "coursePlace": "教学楼A101",
-            "credit": 4,
-            "semesterName": "大一上学期",
-            "semesterid": "1",
-            "Teacher": "2",
-        },
-        {
-            "name": "大学物理",
-            "id": "3",
-            "courseTeacher": "王五",
-            "day": 1,
-            "startTime": 5,
-            "endTime": 6,
-            "beginWeek": 1,
-            "endWeek": 16,
-            "coursePlace": "教学楼A101",
-            "credit": 4,
-            "semesterName": "大一上学期",
-            "semesterid": "1",
-            "Teacher": "3",
-        },
-        {
-            "name": "大学物理",
-            "id": "3",
-            "courseTeacher": "王五",
-            "day": 2,
-            "startTime": 5,
-            "endTime": 6,
-            "beginWeek": 1,
-            "endWeek": 16,
-            "coursePlace": "教学楼A101",
-            "credit": 4,
-            "semesterName": "大一上学期",
-            "semesterid": "1",
-            "Teacher": "3",
-        },
-        {
-            "name": "大学物理",
-            "id": "3",
-            "courseTeacher": "王五",
-            "day": 2,
-            "startTime": 5,
-            "endTime": 6,
-            "beginWeek": 19,
-            "endWeek": 20,
-            "coursePlace": "教学楼A101",
-            "credit": 4,
-            "semesterName": "大一上学期",
-            "semesterid": "1",
-            "Teacher": "3",
-        },
-
+        }
     ]
 
 
@@ -84,17 +23,30 @@ let response = {
 
 var timeout;
 
+// let term_id = 1;
+
 const Days = [document.getElementById("Day1"), document.getElementById("Day2"), document.getElementById("Day3"), document.getElementById("Day4"), document.getElementById("Day5"), document.getElementById("Day6"), document.getElementById("Day7")];
+
+function DrawClassTable() {
+    fetchWithAuth('https://api.seekerer.com/api/stu/GetAllSelectedClass?term_id=' + term_id, {
+        method: 'GET',
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(classes => { renderClassTable(classes.data) });
+}
 
 // Todo:有空加上显示课程详细信息的逻辑
 //TODO:以后加上后端请求逻辑
 // 这个函数要实现加载课程表,目前打算实现比较直观地显示每一周的课程情况
 // classBox放置一个时间段的课程,如果为空则是classBoxEmpty,满则为classBoxFilled
-function renderClassTable() {
+function renderClassTable(classes) {
     clearALLCourse();
     for (let i = 1; i <= 7; i++) {
         for (let j = 1; j <= 10; j++) {
-            let classes = response.body;
 
             console.log(classes)
 
@@ -108,14 +60,14 @@ function renderClassTable() {
                 let min = 21, minend = 21;
                 let classDetail = null;
                 classes.forEach(cla => {
-                    if (cla.day === i && (cla.startTime <= j && cla.endTime >= j)) {
-                        if (cla.beginWeek < min && cla.beginWeek >= start) {
-                            min = cla.beginWeek;//min是start(当前时间段是有课的)或者start之后的最小开始时间(当前时间段是空的)
+                    if (cla.course_day === i && (cla.start_time <= j && cla.end_time >= j)) {
+                        if (cla.start_week < min && cla.start_week >= start) {
+                            min = cla.start_week;//min是start(当前时间段是有课的)或者start之后的最小开始时间(当前时间段是空的)
                             if (min != start) {
                                 minend = min - 1;//minend是start之后的最小开始时间-1(当前时间段是空的)
                             }
                             else {
-                                minend = cla.endWeek;//minend是start之后的最小开始时间-1(当前时间段是有课的)
+                                minend = cla.end_week;//minend是start之后的最小开始时间-1(当前时间段是有课的)
                                 classDetail = cla;
 
                             }
@@ -133,13 +85,13 @@ function renderClassTable() {
                             showTextTimeOut('恭喜你,第' + start + '周到第' + 20 + '周的礼拜' + i + '的第' + j + '节课没课!', 1000);
 
                         });
-                        clas.onclick = showHideDesc('TODO:补上逻辑');
+                        // clas.onclick = showHideDesc();
                         box.appendChild(clas);
                     }
                 } else {
                     //渲染
                     if (min === start) {//渲染有课的时间段
-                        let showmsg = '第' + start + '周到第' + minend + '周的礼拜' + i + '的第' + j + '节课是:' + classDetail.name;
+                        let showmsg = '第' + start + '周到第' + minend + '周的礼拜' + i + '的第' + j + '节课是:' + classDetail.course_name;
                         let clas = document.createElement("span");
                         clas.className = "classBoxFilled";
                         clas.style.width = (8) * (minend - min + 1) + "px";
@@ -207,7 +159,7 @@ function showHideDesc(text) {
 function showTextTimeOut(text, time) {
     const floatDesc = document.getElementById("float-desc");
     const floatContent = document.getElementById("float-desc-inner");
-    if (floatDesc.style.display === "none") {
+    if (floatDesc.style.display === "none" || floatDesc.style.display === "") {
         clearTimeout(timeout);
         floatDesc.style.display = "unset";
         if (text === null) {

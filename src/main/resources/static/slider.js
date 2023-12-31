@@ -20,6 +20,11 @@ const personalInfo = document.getElementById("personalInfo");
 const exit = document.getElementById("exit");
 let timer = null;
 
+function exitAccountSafely() {
+    localStorage.removeItem("jwt");
+    window.location.href = "../index.html";
+}
+
 
 //每次屏幕大小变化时，重新计算transform的值
 window.onresize = function () {
