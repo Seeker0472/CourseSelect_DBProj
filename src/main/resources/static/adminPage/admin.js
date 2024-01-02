@@ -152,6 +152,8 @@ function initializeClassBody() {
                 //Test
                 button1.onclick = function () {
                     popDiv(2);
+                    initializeSelectedClassBody(element.deliverId);
+
                 }
                 button2.onclick = function () {
                     //记得补充交互逻辑
@@ -162,7 +164,7 @@ function initializeClassBody() {
                 }
                 action.appendChild(button1);
                 action.appendChild(button2);
-                action.appendChild(button3);
+                //action.appendChild(button3);
                 table.appendChild(classnum);
                 table.appendChild(classname);
                 table.appendChild(credits);
@@ -178,6 +180,46 @@ function initializeClassBody() {
 
 }
 
+//初始化已选课程表格
+function initializeSelectedClassBody(deliver_id) {
+    console.log(deliver_id);
+    const SelectedClassBody = document.getElementById("SelectedClassBody");
+    while (SelectedClassBody.hasChildNodes()) {
+        SelectedClassBody.removeChild(SelectedClassBody.firstChild);
+    }
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getCourseSelectedStu?deliver_id=" + deliver_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            while (SelectedClassBody.hasChildNodes()) {
+                SelectedClassBody.removeChild(SelectedClassBody.firstChild);
+            }
+            response.data.forEach(element => {
+                const table = document.createElement("tr");
+                const stuid = document.createElement("td");
+                stuid.innerHTML = element.student_id;
+                const stuname = document.createElement("td");
+                stuname.innerHTML = element.student_name;
+                const action = document.createElement("td");
+                const button1 = document.createElement("button");
+                button1.className = "Button001";
+                button1.innerHTML = "删除";
+                button1.onclick = function () {
+                    //记得补充交互逻辑
+                    popDiv(5);
+                }
+                action.appendChild(button1);
+                table.appendChild(stuid);
+                table.appendChild(stuname);
+                table.appendChild(action);
+                SelectedClassBody.appendChild(table);
+            });
+        });
+}
+
+
+
+//初始化课程表格
 function initCourseTable() {
     const courseTable = document.getElementById("CoursesTable");
     fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCourses", {
@@ -302,10 +344,11 @@ function initializeStuTable() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情";
+                button1.innerHTML = "选课信息";
                 button1.onclick = function () {
                     //记得补充交互逻辑
                     popDiv(5);
+                    initselectedTable(studentId)
 
 
                 }
@@ -322,6 +365,80 @@ function initializeStuTable() {
         });
 }
 
+function initselectedTable(stuId) {
+    let defaultTermId = 0;
+    const term = document.getElementById("stu_terms");
+    fetchWithAuth("https://api.seekerer.com/api/all/getTerms", {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+
+            while (term.hasChildNodes()) {
+                term.removeChild(term.firstChild);
+            }
+            response.data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.term_id;
+                option.innerHTML = element.term_name;
+                if (element.stat === 1) { option.selected = true; defaultTermId = element.term_id; }
+                term.appendChild(option);
+
+            });
+        }).then(() => { getStuCourse(stuId, defaultTermId) });
+    term.onchange = function () {
+        getStuCourse(stuId, term.value);
+    }
+
+}
+
+function getStuCourse(stuId, term_id) {
+    const stuInfoBody = document.getElementById("stuInfoBody");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getStuCourseSimp?student_id=" + stuId + "&term_id=" + term_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                throw new Error("获取学生课程失败");
+            while (stuInfoBody.hasChildNodes()) {
+                stuInfoBody.removeChild(stuInfoBody.firstChild);
+            }
+            response.data.forEach(element => {
+                const table = document.createElement("tr");
+                const classnum = document.createElement("td");
+                classnum.innerHTML = element.course_id;
+                const classname = document.createElement("td");
+                classname.innerHTML = element.course_name;
+                const action = document.createElement("td");
+                const button1 = document.createElement("button");
+                button1.className = "Button001";
+                button1.innerHTML = "推选";
+                button1.onclick = function () {
+                    if (window.confirm("确定推选该课程吗?"))
+                        cancelCourse(element.deliver_id, stuId);
+                }
+                table.appendChild(classnum);
+                table.appendChild(classname);
+                action.appendChild(button1);
+                table.appendChild(action);
+                stuInfoBody.appendChild(table);
+
+            })
+        });
+
+}
+
+function cancelCourse(deliver_id, stu_id) {
+    fetchWithAuth("https://api.seekerer.com/api/acaadmin/cancelCourse?deliver_id=" + deliver_id + "&student_id=" + stu_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                throw new Error("退课失败");
+            alert("退课成功");
+        });
+
+}
 
 
 

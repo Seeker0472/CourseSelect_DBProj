@@ -37,6 +37,14 @@ public interface Tadminget {
     @Select("select * from course_detail_simplified where college_id=#{college_id}")
     public List<Map<String,Object>> getAllCourseDeliver(String college_id);
 
+    @Select("    select student_id,student_name,deliver_id from course_scores join students\n" +
+            "on course_scores.student_id=students.account_id" +
+            " where course_scores.deliver_id=#{deliver_id}")
+    public List<Map<String,Object>> getCourseSelectedStu(String deliver_id);
+
+    @Select("select  * from stu_course_simp where student_id=#{student_id} and term_id=#{term_id}")
+    public List<Map<String,Object>> getStuCourseSimp(String student_id,Integer term_id);
+
 
 
 

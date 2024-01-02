@@ -1,7 +1,9 @@
 package com.seekerer.courseselect.DataAccess;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.StatementType;
+
+import java.util.Map;
 
 @Mapper
 public interface TadminAdd {
@@ -11,4 +13,13 @@ public interface TadminAdd {
     //TODO:不能重复,最好做成一个存储过程什么的
     @Insert("insert into course_deliver (course_id, teacher_id, start_week, end_week, start_time, end_time, location, class_hours, term_id, max_enrollment, course_status) VALUES (#{course_id}, #{teacher_id}, #{start_week}, #{end_week}, #{start_time}, #{end_time}, #{location}, #{class_hours}, #{term_id}, #{max_enrollment}, #{course_status})")
     public void addCourseDeliver(String course_id, String teacher_id, int start_week, int end_week, int start_time, int end_time, String location, int class_hours, int term_id, int max_enrollment, String course_status);
+
+    @Delete("delete from course_scores where deliver_id=#{deliver_id} and student_id=#{student_id}")
+    public void cancelCourse(String student_id,Integer deliver_id);
+
+    @Select("call delete_staff(#{id,jdbcType=VARCHAR,mode=IN},#{result,jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void deleteStaff(Map<String,Object> maps);
+
+
 }

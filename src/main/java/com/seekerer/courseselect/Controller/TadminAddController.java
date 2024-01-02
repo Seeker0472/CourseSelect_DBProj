@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class TadminAddController {
     @Autowired
@@ -23,6 +25,25 @@ public class TadminAddController {
                                    @RequestParam int end_time, String location, @RequestParam int term_id,@RequestParam int max_enrollment){
         TadminAdd.addCourseDeliver(course_id, teacher_id, start_week, end_week, start_time, end_time, location, 0, term_id, max_enrollment, null);
         return Result.success();
+    }
+
+    @RequestMapping("/api/acaadmin/cancelCourse")
+    public Object cancelCourse(@RequestParam String student_id,@RequestParam Integer deliver_id){
+        TadminAdd.cancelCourse(student_id,deliver_id);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/acaadmin/deleteStaff")
+    public Object deleteStaff(@RequestParam String id){
+        Map<String,Object> result = new java.util.HashMap<>();
+        result.put("id",id);
+        TadminAdd.deleteStaff(result);
+        if(result.get("result") == (Object) 3){
+            return Result.success();
+        }
+        else{
+            return Result.error(500,"删除失败,请检查是否有相关的身份信息");
+        }
     }
 
 

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tsaManage = document.getElementById("tsaManage");
     const teaManage = document.getElementById("teaManage");
 
-    document.getElementById("stuColll").onchange = initaddMaj();//改变学院选择框
+    document.getElementById("stuColll").onchange = function () { initaddMaj(); }//改变学院选择框
     document.getElementById("Bindidentity").onchange = function () {
         if (document.getElementById("Bindidentity").value === "3") {
             document.getElementById("BindidentityColl").style.display = "none";
@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     document.getElementById("majColl").onchange = function () { getAllStaffForCollege(); }//改变学院选择框
-
     //TODO:完成各个页面逻辑
     // stuManage.addEventListener("click", function () {
     //     slider.style.transform = 'translateX(0)';
@@ -157,15 +156,27 @@ function initializeStuTable() {
                 phone.innerHTML = element.phone;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
+                const button2 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情";
+                button1.innerHTML = "修改学生信息";
+                button2.innerHTML = "删除学生";
+                let account_id = element.account_id;
                 button1.onclick = function () {
                     //TODO:记得补充交互逻辑
                     popDiv(5, "学生详情");
+                    updateStuInfo(account_id);
 
 
                 }
+                button2.onclick = function () {
+                    //记得补充交互逻辑
+                    // window.alert("功能正在开发中");
+                    if (window.confirm("确定要删除嘛"))
+                        deleteStu(account_id);
+
+                }
                 action.appendChild(button1);
+                action.appendChild(button2);
                 table.appendChild(stuname);
                 table.appendChild(stuid);
                 table.appendChild(college);
@@ -180,6 +191,99 @@ function initializeStuTable() {
         );
 
 }
+
+function deleteStu(stuID) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/deleteStudent?account_id=" + stuID, {
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("删除成功");
+                initializeStuTable();
+            }
+            else {
+                alert("删除失败");
+            }
+        });
+}
+
+//初始化单个学生详情
+function updateStuInfo(stuId) {
+    const UpstuInfo = document.getElementById("UpstuInfo");
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStuInfo?studentId=" + stuId, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取学生信息失败");
+            const data = response.data;
+            UpstuInfo.UpstuName.value = data.student_name;
+            UpstuInfo.UpstuID.value = data.account_id;
+            major_id = data.major_id;
+            college_id = data.college_id;
+            UpstuInfo.UpstuSex.value = data.gender;
+            UpstuInfo.UpstuPhone.value = data.phone;
+            UpstuInfo.UpstuEmail.value = data.email;
+            UpstuInfo.UpentryYear.value = data.enrollment_time;
+            return {
+                major_id: major_id,
+                college_id: college_id
+            };
+
+        }).then(Info => {
+            fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+                method: 'GET'
+            })
+                .then(response => { return response.json(); })
+                .then(response => {
+                    if (response.code !== 200)
+                        throw new Error("获取学院列表失败");
+                    const college = document.getElementById("UpstuColl");
+                    while (college.hasChildNodes()) {
+                        college.removeChild(college.firstChild);
+                    }
+                    response.data.forEach(element => {
+                        const option = document.createElement("option");
+                        option.innerHTML = element.college_name;
+                        option.value = element.college_id;
+                        if (element.college_id === Info.college_id)
+                            option.selected = true;
+                        college.appendChild(option);
+                    });
+                })
+
+            getSepCol(Info.college_id, Info.major_id);
+            document.getElementById("UpstuColl").onchange = function () { getSepCol(document.getElementById("UpstuColl").value); };
+
+
+
+
+        })
+
+}
+//初始化单个学生详情的专业部分
+function getSepCol(college_id, major_id) {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getSepMajorList?ColId=' + college_id, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取专业列表失败");
+            const major = document.getElementById("UpstuMajor");
+            while (major.hasChildNodes()) {
+                major.removeChild(major.firstChild);
+            }
+            response.data.forEach(element => {
+                const option = document.createElement("option");
+                option.innerHTML = element.major_name;
+                option.value = element.major_id;
+                if (element.major_id === major_id)
+                    option.selected = true;
+                major.appendChild(option);
+            });
+        });
+}
+
 
 //初始化员工表格
 function initializeStaTable() {
@@ -221,11 +325,24 @@ function initializeStaTable() {
                 button2.innerHTML = "删除账号";
                 button2.onclick = function () {
                     //记得补充交互逻辑
-                    window.alert("功能正在开发中");
+                    if (window.confirm("确定要删除嘛"))
+                        delstaff(element.account_id);
+
+                }
+                const button3 = document.createElement("button");
+                button3.className = "Button001";
+                button3.innerHTML = "修改信息";
+                let account_id = element.account_id;
+                button3.onclick = function () {
+                    //记得补充交互逻辑
+                    // window.alert("功能正在开发中");
+                    popDiv(6, "职工详情");
+                    initUpStaffInfo(account_id);
 
                 }
 
                 action.appendChild(button1);
+                action.appendChild(button3);
                 action.appendChild(button2);
                 table.appendChild(name);
                 table.appendChild(id);
@@ -236,6 +353,43 @@ function initializeStaTable() {
 
             })
         });
+}
+
+function delstaff(id) {
+    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteStaff?id=" + id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("删除成功");
+                initializeStaTable();
+            }
+            else {
+                alert('删除失败:' + response.msg);
+            }
+        });
+
+}
+
+function initUpStaffInfo(account_id) {
+    const UpStaffInfo = document.getElementById("UpStaffInfo");
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaffInfo?accountId=" + account_id, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取职工信息失败");
+            const data = response.data;
+            UpStaffInfo.UpstaName.value = data.name;
+            UpStaffInfo.UpstaID.value = data.account_id;
+            UpStaffInfo.UpstaSex.value = data.gender;
+            UpStaffInfo.UpstaPhone.value = data.phone;
+            UpStaffInfo.UpstaEmail.value = data.email;
+
+
+        })
+
 }
 
 //初始化教务表格
@@ -358,6 +512,10 @@ function popDiv(page, title) {
     const staInfo = document.getElementById("staInfo");
     const addCol = document.getElementById("addCol");
     const addMaj = document.getElementById("addMaj");
+    const editCollInfo = document.getElementById("editCollInfo");
+    const UpMajorInfo = document.getElementById("UpMajorInfo");
+    const addCourseCategory = document.getElementById("addCourseCategory");
+    const editCourseCatInfo = document.getElementById("editCourseCatInfo");
 
     // popMain.forEach((div) => {
     //     div.style = "display:none;";
@@ -407,8 +565,20 @@ function popDiv(page, title) {
             initAddMajor();
             break;
         case 9:
+            popTitle.innerHTML = "学院信息";
+            editCollInfo.style.display = "unset";
             break;
-
+        case 10:
+            popTitle.innerHTML = "修改专业信息";
+            UpMajorInfo.style.display = "unset";
+            break;
+        case 11:
+            popTitle.innerHTML = "添加课程类别";
+            addCourseCategory.style.display = "unset";
+        case 12:
+            popTitle.innerHTML = "修改课程类别";
+            editCourseCatInfo.style.display = "unset";
+            break;
         default:
             console.log("POPDIV:page Parameter Not Found");
             break;
@@ -661,33 +831,45 @@ function initcourseMangeTasble() {
     while (courseManageTable.hasChildNodes()) {
         courseManageTable.removeChild(courseManageTable.firstChild);
     }
-    //TODO:在这里加一个foreach循环
-    {
-        const table = document.createElement("tr");
-        const classid = document.createElement("td");
-        classid.innerHTML = "课程号";
-        const classname = document.createElement("td");
-        classname.innerHTML = "课程名";
-        const credits = document.createElement("td");
-        credits.innerHTML = "课程备注";
-        const action = document.createElement("td");
-        const button1 = document.createElement("button");
-        button1.className = "Button001";
-        button1.innerHTML = "查看详情";
-        button1.onclick = function () {
-            //记得补充交互逻辑
-
-        }
-        action.appendChild(button1);
-        table.appendChild(classid);
-        table.appendChild(classname);
-        table.appendChild(credits);
-        table.appendChild(action);
-        courseManageTable.appendChild(table);
 
 
-    }
+    fetchWithAuth("https://api.seekerer.com/api/admin/getAllCourseCategories", {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取课程列表失败");
+            response.data.forEach(element => {
+                const table = document.createElement("tr");
+                const classid = document.createElement("td");
+                classid.innerHTML = element.category_id;
+                const classname = document.createElement("td");
+                classname.innerHTML = element.category_name;
+                const action = document.createElement("td");
+                const button1 = document.createElement("button");
+                button1.className = "Button001";
+                button1.innerHTML = "修改";
+                let category_id = element.category_id;
+                let category_name = element.category_name;
+                button1.onclick = function () {
+                    popDiv(12, "修改课程类别");
+                    //记得补充交互逻辑
+                    document.getElementById("UpCourseCatInfo").UpcourseCategoryID.value = category_id;
+                    document.getElementById("UpCourseCatInfo").UpcourseCategoryName.value = category_name;
+
+                }
+                action.appendChild(button1);
+                table.appendChild(classid);
+                table.appendChild(classname);
+                table.appendChild(action);
+                courseManageTable.appendChild(table);
+
+
+            });
+
+        });
 }
+
 function editPageParm4(pagenum) {
     const url = new URL(window.location.href);
     const params = url.searchParams;
@@ -776,9 +958,12 @@ function initCollManTable() {
                     const button1 = document.createElement("button");
                     button1.className = "Button001";
                     button1.innerHTML = "查看详情";
+                    let collId = element.college_id;
                     button1.onclick = function () {
                         //记得补充交互逻辑
-                        window.alert("功能正在开发中");
+                        // window.alert("功能正在开发中11111");
+                        popDiv(9, "学院信息");
+                        initeditCollTable(collId);
 
                     }
                     action.appendChild(button1);
@@ -794,6 +979,52 @@ function initCollManTable() {
                 alert("获取学院列表失败");
             }
         });
+
+}
+//初始化修改学院详情
+function initeditCollTable(collId) {
+    fetchWithAuth('https://api.seekerer.com/api/admin/getSepCollegeInfo?collegeId=' + collId, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取学院信息失败");
+            const data = response.data;
+            const UpCollInfo = document.getElementById("UpCollInfo");
+            UpCollInfo.UpcollName.value = data.college_name;
+            UpCollInfo.UpcollID.value = data.college_id;
+            data.name;
+            UpCollInfo.UpcollRemark.value = data.remarks;
+            return {
+                headId: data.head_id,
+                CollId: data.college_id
+            }
+        }).then(ret => {
+            initUpCollHeadSelect(ret.headId, ret.CollId);
+        })
+}
+
+function initUpCollHeadSelect(headId, collId) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + collId, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取职工列表失败");
+            const admin = document.getElementById("UpcollAdmin");
+            while (admin.hasChildNodes()) {
+                admin.removeChild(admin.firstChild);
+            }
+            response.data.forEach(element => {
+                const option = document.createElement("option");
+                option.innerHTML = element.name;
+                option.value = element.account_id;
+                if (element.account_id === headId)
+                    option.selected = true;
+                admin.appendChild(option);
+            });
+        })
 
 }
 
@@ -828,9 +1059,12 @@ function initMajorManTable() {
                     const action = document.createElement("td");
                     const button1 = document.createElement("button");
                     button1.className = "Button001";
-                    button1.innerHTML = "查看详情";
+                    button1.innerHTML = "修改专业信息";
+                    let majorId = element.major_id;
                     button1.onclick = function () {
+                        popDiv(10, "修改专业信息");
                         //记得补充交互逻辑
+                        initUpMajorInfo(majorId);
 
                     }
                     action.appendChild(button1);
@@ -849,6 +1083,65 @@ function initMajorManTable() {
                 alert("获取专业列表失败");
             }
         });
+}
+
+
+//初始化修改专业详情
+function initUpMajorInfo(majorId) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepMajorInfo?major_id=" + majorId, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取专业信息失败");
+            const data = response.data;
+            const UpMajorInfo = document.getElementById("UpMajInfo");
+            // while (UpMajorInfo.hasChildNodes()) {
+            //     UpMajorInfo.removeChild(UpMajorInfo.firstChild);
+            // }
+            UpMajorInfo.UpmajName.value = data.major_name;
+            UpMajorInfo.UpmajID.value = data.major_id;
+            const option = document.createElement("option");
+            option.innerHTML = data.college_name;
+            option.value = data.college_id;
+            while (UpMajorInfo.UpmajColl.hasChildNodes()) {
+                UpMajorInfo.UpmajColl.removeChild(UpMajorInfo.UpmajColl.firstChild);
+            }
+            UpMajorInfo.UpmajColl.appendChild(option);
+            UpMajorInfo.UpmajRemark.value = data.remarks;
+            UpMajorInfo.UpcreditLimit.value = data.credit_limit;
+            return {
+                headId: data.head_id,
+                CollId: data.college_id
+            }
+        }).then(ret => {
+            initUpMajorHeadSelect(ret.headId, ret.CollId);
+        })
+}
+
+function initUpMajorHeadSelect(headId, collId) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + collId, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code !== 200)
+                throw new Error("获取职工列表失败");
+            const admin = document.getElementById("UpmajAdmin");
+            while (admin.hasChildNodes()) {
+                admin.removeChild(admin.firstChild);
+            }
+
+            response.data.forEach(element => {
+                const option = document.createElement("option");
+                option.innerHTML = element.name;
+                option.value = element.account_id;
+                if (element.account_id === headId)
+                    option.selected = true;
+                admin.appendChild(option);
+            });
+        })
+
 }
 
 

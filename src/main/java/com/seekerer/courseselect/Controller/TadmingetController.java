@@ -4,6 +4,7 @@ import com.seekerer.courseselect.Classes.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -43,6 +44,16 @@ public class TadmingetController {
     @RequestMapping("/api/acaAdmin/getAllCoursedeliver")
     public Object getAllCourseDeliver(@RequestHeader("college_id")String college_id){
         return Result.success(Tadminget.getAllCourseDeliver(college_id));
+    }
+
+    @RequestMapping("/api/acaAdmin/getCourseSelectedStu")
+    public Object getCourseSelectedStu(@RequestParam String deliver_id){
+        return Result.success(Tadminget.getCourseSelectedStu(deliver_id));
+    }
+
+    @RequestMapping("/api/acaAdmin/getStuCourseSimp")
+    public Object getStuCourseSimp(@RequestParam String student_id,@RequestParam int term_id){
+        return Result.success(Tadminget.getStuCourseSimp(student_id,term_id));
     }
 
 

@@ -206,13 +206,15 @@
         </div>
         <!--TODO:完成课程管理部分-->
         <div id="Link3Display" style="display: none">
+            <button class="Button002" style="display: block; margin: auto;"
+                onclick="popDiv(11, '添加课程类别');">添加课程类别</button>
             <div>
                 <table class="TableComm">
                     <thead>
                         <tr>
-                            <th scope="col">课程编号</th>
-                            <th scope="col">课程名称</th>
-                            <th scope="col">课程备注</th>
+                            <th scope="col">课程类别编号</th>
+                            <th scope="col">课程类别名称</th>
+                            <!-- <th scope="col">课程备注</th> -->
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
@@ -388,9 +390,61 @@
             </div>
             <div id="stuInfo" style="display : none">
                 在这里编辑学生信息
+                <form id="UpstuInfo" action="https://api.seekerer.com/api/admin/updateStuInfo" method="post"
+                    target="Outttt">
+                    <label for="stuName">姓名:</label>
+                    <input type="text" id="UpstuName" name="name" placeholder="姓名">
+                    <label for="stuID">学号:</label>
+                    <input type="text" id="UpstuID" name="account_id" style="display:none" placeholder="学号">
+                    <label for="stuColl">学院:</label>
+                    <select id="UpstuColl" name="stuColl">
+                        <!-- <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option> -->
+                    </select>
+                    <label for="stuMajor">专业:</label>
+                    <select id="UpstuMajor" name="stuMajor">
+                        <!-- <option value="1">信息工程</option>
+                        <option value="2">测绘工程</option> -->
+                    </select>
+                    <label for="stuSex">性别:</label>
+                    <select id="UpstuSex" name="gender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                    <label for="stuPhone">电话:</label>
+                    <input type="text" id="UpstuPhone" name="phone" placeholder="电话">
+                    <label for="stuEmail">邮箱:</label>
+                    <input type="text" id="UpstuEmail" name="email" placeholder="邮箱">
+                    <label for="entryYear">入学年份:</label>
+                    <input type="date" id="UpentryYear" name="time" placeholder="入学年份">
+                    <label for="stuPassword">密码:</label>
+                    <input type="text" id="UpstuPassword" name="password" placeholder="密码">
+                    <input type="submit" value="提交">
+                    <iframe name="Outttt"></iframe>
+                </form>
             </div>
             <div id="staInfo" style="display : none">
                 在这里编辑职工信息
+                <form id="UpStaffInfo" action="https://api.seekerer.com/api/admin/updateStaffInfo" method="post"
+                    target="out11">
+                    <label for="staName">姓名:</label>
+                    <input type="text" id="UpstaName" name="name" placeholder="姓名">
+                    <label for="staID">工号:</label>
+                    <input type="text" id="UpstaID" name="account_id" style="display:none" placeholder="工号">
+                    <label for="staSex">性别:</label>
+                    <select id="UpstaSex" name="gender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                    <label for="staPhone">电话:</label>
+                    <input type="text" id="UpstaPhone" name="phone" placeholder="电话">
+                    <label for="staEmail">邮箱:</label>
+                    <input type="text" id="UpstaEmail" name="email" placeholder="邮箱">
+                    <label for="staPassword">密码:</label>
+                    <input type="text" id="UpstaPassword" name="password" placeholder="密码">
+                    <input type="submit" value="提交11">
+                    <iframe name="out11"></iframe>
+                </form>
             </div>
             <div id="addCol" style="display : none">
                 <form action="https://api.seekerer.com/api/admin/addCollege" method="post" target="Out3">
@@ -435,6 +489,71 @@
                     <input type="submit" value="提交">
                     <iframe name="Out4"></iframe>
                 </form>
+            </div>
+            <div id="editCollInfo" style="display: none;">
+                <form id="UpCollInfo" action="https://api.seekerer.com/api/admin/updateCollegeInfo" target="out6">
+                    <label for="UpcollID">学院编号:</label>
+                    <input type="text" id="UpcollID" name="college_id" placeholder="请输入学院编号" style="display:none;">
+                    <label for="UpcollName">学院名称:</label>
+                    <input type="text" id="UpcollName" name="college_name" placeholder="请输入学院名称">
+                    <label for="UpcollAdmin">学院负责人:</label>
+                    <select id="UpcollAdmin" name="head_id">
+                        <!-- <option value="1">张三</option>
+                        <option value="2">李四</option> -->
+                    </select>
+                    <label for="UpcollRemark">备注:</label>
+                    <input type="text" id="UpcollRemark" name="remarks" placeholder="请输入备注">
+                    <input type="submit" value="提交">
+                    <iframe name="out6"></iframe>
+                </form>
+
+            </div>
+            <div id="UpMajorInfo" style="display: none;">
+                <form id="UpMajInfo" action="https://api.seekerer.com/api/admin/updateMajorInfo" method="post"
+                    target="Out45">
+                    <label for="UpmajID">专业编号:</label>
+                    <input type="text" style="display: none;" id="UpmajID" name="major_id" placeholder="请输入专业编号">
+                    <label for="UpmajName">专业名称:</label>
+                    <input type="text" id="UpmajName" name="major_name" placeholder="请输入专业名称">
+                    <label for="UpmajColl">所属学院:</label>
+                    <select id="UpmajColl" disabled="true" name="UpmajColl">
+                        <!-- <option value="1">信息工程学院</option>
+                        <option value="2">测绘与空间信息工程学院</option> -->
+                    </select>
+                    <label for="UpmajAdmin">专业负责人:</label>
+                    <select id="UpmajAdmin" name="head_id">
+                        <!-- <option value="1">张三</option>
+                        <option value="2">李四</option> -->
+                    </select>
+                    <label for="UpmajRemark">备注:</label>
+                    <input type="text" id="UpmajRemark" name="remarks" placeholder="请输入备注">
+                    <label for="UpcreditLimit">学分上限:</label>
+                    <input type="number" id="UpcreditLimit" name="credit_limit" placeholder="请输入学分上限">
+                    <input type="submit" value="提交">
+                    <iframe name="Out45"></iframe>
+                </form>
+            </div>
+            <div id="addCourseCategory" style="display: none;">
+                <form action="https://api.seekerer.com/api/admin/addCategory" method="post" target="Out46">
+                    <label for="courseCategoryID">课程类别编号:</label>
+                    <input type="number" id="courseCategoryID" name="category_id" placeholder="请输入课程类别编号">
+                    <label for="courseCategoryName">课程类别名称:</label>
+                    <input type="text" id="courseCategoryName" name="category_name" placeholder="请输入课程类别名称">
+                    <input type="submit" value="提交">
+                    <iframe name="Out46"></iframe>
+                </form>
+            </div>
+            <div id="editCourseCatInfo" style="display: none;">
+                在这里修改课程类别信息
+                <form id="UpCourseCatInfo" action="https://api.seekerer.com/api/admin/updateCategoryInfo" method="post"
+                    target="Out47">
+                    <label for="UpcourseCategoryID">课程类别编号:</label>
+                    <input type="number" id="UpcourseCategoryID" name="category_id" placeholder="请输入课程类别编号"
+                        style="display:none;">
+                    <label for="UpcourseCategoryName">课程类别名称:</label>
+                    <input type="text" id="UpcourseCategoryName" name="category_name" placeholder="请输入课程类别名称">
+                    <input type="submit" value="提交">
+                    <iframe name="Out47"></iframe>
             </div>
         </div>
     </div>

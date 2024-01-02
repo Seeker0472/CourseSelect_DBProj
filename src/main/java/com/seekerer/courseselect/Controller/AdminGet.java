@@ -63,6 +63,32 @@ public class AdminGet {
         return Result.success(adminget.getIdentity(accountId));
     }
 
+    @RequestMapping("/api/admin/getSepStuInfo")
+    public Object getSepStuInfo(@RequestParam String studentId){
+        return Result.success(adminget.getSepStuInfo(studentId));
+    }
+
+    @RequestMapping("/api/admin/getSepStaffInfo")
+    public Object getSepStaffInfo(@RequestParam String accountId){
+        return Result.success(adminget.getSepStaffInfo(accountId));
+    }
+
+    @RequestMapping("/api/admin/getSepCollegeInfo")
+    public Object getSepCollegeInfo(@RequestParam String collegeId){
+        return Result.success(adminget.getSepCollegeInfo(collegeId));
+    }
+
+    @RequestMapping("/api/admin/getSepMajorInfo")
+    public Object getSepMajorInfo(@RequestParam String major_id){
+        return Result.success(adminget.getSepMajorInfo(major_id));
+    }
+
+    @RequestMapping("/api/admin/getAllCourseCategories")
+    public Object getAllCourseCategories(){
+        return Result.success(adminget.getAllCategories());
+    }
+
+
 
 
 }

@@ -57,4 +57,21 @@ public interface adminget {
     @Select("select * from staff_identity where account_id=#{accountId}")
     public List<staffIdentityInfo> getIdentity(String accountId);
 
+    @Select("select * from student_info where account_id=#{studentId}")
+    public StuInfo getSepStuInfo(String studentId);
+
+    @Select("select * from staff where account_id=#{accountId}")
+    public staffInfo getSepStaffInfo(String accountId);
+
+    @Select("select * from colleges where college_id=#{collegeId}")
+    public Map<String,Object> getSepCollegeInfo(String collegeId);
+
+    @Select("select majors.major_id,major_name,majors.college_id,college_name,majors.head_id,majors.remarks,credit_limit from majors join colleges on majors.college_id=colleges.college_id\n" +
+            "join identities on account_id = majors.head_id\n" +
+            "where majors.major_id=#{major_id}\n")
+    public Map<String,Object> getSepMajorInfo(String major_id);
+
+    @Select("select * from course_categories")
+    public List<Map<String,Object>> getAllCategories();
+
 }

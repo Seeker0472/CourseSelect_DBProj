@@ -251,6 +251,19 @@
             </div>
             <div id="showDetail">
                 在这里补上显示课程详细信息的表单
+
+                已选学生信息:
+                <table class="thead">
+                    <thead>
+                        <tr>
+                            <th scope="col">学号</th>
+                            <th scope="col">姓名</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SelectedClassBody">
+                    </tbody>
+                </table>
             </div>
             <div id="editInfo">
                 在这里补上修改课程信息的表单
@@ -260,7 +273,20 @@
             </div>
             <div id="stuInfo">
                 在这里补上学生信息的表单
-                要求能够指派选课信息
+                <label for="stu_terms">学期</label>
+                <select id="stu_terms">
+                </select>
+                <table class="thead">
+                    <thead>
+                        <tr>
+                            <th scope="col">课程ID</th>
+                            <th scope="col">课程名</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stuInfoBody">
+                    </tbody>
+                </table>
             </div>
             <div id="offerCourse">
                 在这里补上开设课程的表单,还没搞完!

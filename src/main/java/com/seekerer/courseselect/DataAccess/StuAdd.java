@@ -3,6 +3,7 @@ package com.seekerer.courseselect.DataAccess;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Map;
 
@@ -13,4 +14,6 @@ public interface StuAdd {
 
     @Delete("delete from course_scores where deliver_id=#{deliver_id} and student_id=#{student_id}")
     public void cancelCourse(String student_id,Integer deliver_id);
+
+
 }

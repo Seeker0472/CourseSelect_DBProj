@@ -75,4 +75,89 @@ public class adminAddCon {
         return Result.success();
     }
 
+    @RequestMapping("/api/admin/updateStaffInfo")
+    public Object upstaInfo(@RequestParam Map<String,Object> info)
+    {
+        if(info.get("account_id")==null)
+            return Result.error(400,"账号不能为空");
+        if(info.get("name")==null)
+            return Result.error(400,"姓名不能为空");
+        if(info.get("gender")==null)
+            return Result.error(400,"性别不能为空");
+        if(info.get("phone")==null)
+            return Result.error(400,"电话不能为空");
+        if(info.get("email")==null)
+            return Result.error(400,"邮箱不能为空");
+        AdminAdd.updateStaffInfo(info);
+        if(info.get("password")!=null)
+            AdminAdd.updatePassword(info);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/updateStuInfo")
+    public Object upStuInfo(@RequestParam Map<String,Object> Info)
+    {
+        if(Info.get("account_id")==null)
+            return Result.error(400,"账号不能为空");
+        if(Info.get("name")==null)
+            return Result.error(400,"姓名不能为空");
+        if(Info.get("gender")==null)
+            return Result.error(400,"性别不能为空");
+        if(Info.get("email")==null)
+            return Result.error(400,"邮箱不能为空");
+        if(Info.get("time")==null)
+            return Result.error(400,"入学时间不能为空");
+        AdminAdd.updateStuInfo(Info);
+        if(Info.get("password")!=null)
+            AdminAdd.updatePassword(Info);
+        if(Info.get("major_id")!=null)
+            AdminAdd.updateStuMajor(Info);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/updateCollegeInfo")
+    public Object upColInfo(@RequestParam Map<String,Object> Info)
+    {
+        if(Info.get("college_id")==null)
+            return Result.error(400,"学院编号不能为空");
+        if(Info.get("college_name")==null)
+            return Result.error(400,"学院名称不能为空");
+        if(Info.get("head_id")==null)
+            return Result.error(400,"学院负责人不能为空");
+        AdminAdd.updateCollegeInfo(Info);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/updateMajorInfo")
+    public Object upMajInfo(@RequestParam Map<String,Object> Info)
+    {
+        if(Info.get("major_id")==null)
+            return Result.error(400,"专业编号不能为空");
+        if(Info.get("major_name")==null)
+            return Result.error(400,"专业名称不能为空");
+        if(Info.get("head_id")==null)
+            return Result.error(400,"专业负责人不能为空");
+        if(Info.get("credit_limit")==null)
+            return Result.error(400,"专业学分上限不能为空");
+        AdminAdd.updateMajorInfo(Info);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/addCategory")
+    public Object addCategory(@RequestParam Integer category_id,@RequestParam String category_name){
+        AdminAdd.addCategory(category_id,category_name);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/updateCategoryInfo")
+    public Object updateCategoryInfo(@RequestParam Integer category_id,@RequestParam String category_name){
+        AdminAdd.updateCategoryInfo(category_id,category_name);
+        return Result.success();
+    }
+    @RequestMapping("/api/admin/deleteStudent")
+    public Object deleteStudent(@RequestParam String account_id){
+        AdminAdd.deleteStudent(account_id);
+        return Result.success();
+    }
+
 }
