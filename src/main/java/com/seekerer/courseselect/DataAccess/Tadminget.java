@@ -45,6 +45,12 @@ public interface Tadminget {
     @Select("select  * from stu_course_simp where student_id=#{student_id} and term_id=#{term_id}")
     public List<Map<String,Object>> getStuCourseSimp(String student_id,Integer term_id);
 
+    @Select("select * from courses where course_id=#{course_id}")
+    public Map<String,Object> getCourseInfo(String course_id);
+
+    @Select("select * from course_deliver where deliverId=#{deliver_id}")
+    public Map<String,Object> getCourseDeliverInfo(String deliver_id);
+
 
 
 

@@ -46,6 +46,18 @@ public class TadminAddController {
         }
     }
 
+    @RequestMapping("/api/acaadmin/UpdateCourseInfo")
+    public Object UpdateCourseInfo(@RequestParam String course_id,@RequestParam String course_name,@RequestParam int credits,@RequestParam String category_id,@RequestParam boolean is_mandatory,@RequestParam String Intro){
+        TadminAdd.UpdateCourseInfo(course_id,course_name,credits,category_id,is_mandatory,Intro);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/acaadmin/UpdateCourseDeliver")
+    public Object UpdateCourseDeliver(@RequestParam String deliver_id,@RequestParam String teacher_id,@RequestParam int start_week,@RequestParam int end_week,@RequestParam int start_time,@RequestParam int end_time,@RequestParam String location,@RequestParam int term_id,@RequestParam int max_enrollment,@RequestParam String course_day){
+        TadminAdd.UpdateCourseDeliver(deliver_id,teacher_id,start_week,end_week,start_time,end_time,location,term_id,max_enrollment,course_day);
+        return Result.success();
+    }
+
 
 
 }

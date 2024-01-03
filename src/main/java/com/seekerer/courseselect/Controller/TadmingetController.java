@@ -56,5 +56,15 @@ public class TadmingetController {
         return Result.success(Tadminget.getStuCourseSimp(student_id,term_id));
     }
 
+    @RequestMapping("/api/acaAdmin/getSepCourseInfo")
+    public Object getSepCourseInfo(@RequestParam String course_id){
+        return Result.success(Tadminget.getCourseInfo(course_id));
+    }
+
+    @RequestMapping("/api/acaAdmin/getSepCourseDeliverInfo")
+    public Object getSepCourseDeliverInfo(@RequestParam String deliver_id){
+        return Result.success(Tadminget.getCourseDeliverInfo(deliver_id));
+    }
+
 
 }

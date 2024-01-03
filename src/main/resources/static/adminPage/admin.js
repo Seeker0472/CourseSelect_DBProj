@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const courseWeekEnd = document.getElementById("courseWeekEnd");
     const courseTimeStart = document.getElementById("courseTimeStart");
     const courseTimeEnd = document.getElementById("courseTimeEnd");
+    const Upend_week = document.getElementById("Upend_week");
+    const Upstart_week = document.getElementById("Upstart_week");
+    const Upstart_time = document.getElementById("Upstart_time");
+    const Upend_time = document.getElementById("Upend_time");
 
     courseWeekStart.onchange = function () {
         console.log(courseWeekStart.value);
@@ -45,6 +49,30 @@ document.addEventListener('DOMContentLoaded', function () {
             courseTimeEnd.appendChild(option);
         }
     }
+    Upstart_week.onchange = function () {
+        console.log(Upstart_week.value);
+        while (Upend_week.hasChildNodes()) {
+            Upend_week.removeChild(Upend_week.firstChild);
+        }
+        for (let i = Upstart_week.value; i <= 20; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            Upend_week.appendChild(option);
+        }
+    }
+    Upstart_time.onchange = function () {
+        console.log(Upstart_time.value);
+        while (Upend_time.hasChildNodes()) {
+            Upend_time.removeChild(Upend_time.firstChild);
+        }
+        for (let i = Upstart_time.value; i <= 10; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            Upend_time.appendChild(option);
+        }
+    }
 
 
     {
@@ -62,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.code === 200) {
                     if (response.data.length === 0) {
-                        window.location.href = "/login.html";
+                        window.location.href = "../login.html";
                     }
                     while (identitySwitchContent.hasChildNodes()) {
                         identitySwitchContent.removeChild(identitySwitchContent.firstChild);
@@ -83,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             case '2':
                                 let identity = document.createElement("a");
                                 identity.innerHTML = element.college_name + "的教务管理员";
-                                identity.href = "/adminPage/admin.html?account=" + element.account_id + "&college=" + element.college_id;
+                                identity.href = "../adminPage/admin.html?account=" + element.account_id + "&college=" + element.college_id;
                                 identitySwitchContent.appendChild(identity);
                                 //教务管理员
                                 break;
@@ -91,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 //管理员
                                 let identity1 = document.createElement("a");
                                 identity1.innerHTML = "管理员";
-                                identity1.href = "/adminmaster/admin.html?account=" + element.account_id;
+                                identity1.href = "../adminmaster/admin.html?account=" + element.account_id;
                                 identitySwitchContent.appendChild(identity1);
                                 break;
                             case '4':
@@ -142,7 +170,7 @@ function initializeClassBody() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情";
+                button1.innerHTML = "查看已选";
 
                 const button2 = document.createElement("button");
                 button2.innerHTML = "删除课程";
@@ -159,12 +187,13 @@ function initializeClassBody() {
                     //记得补充交互逻辑
                 }
                 button3.onclick = function () {
-                    popDiv(3);
+                    popDiv(7);
+                    initUpdateCourse_DeliverInfo(element.deliverId);
 
                 }
                 action.appendChild(button1);
                 action.appendChild(button2);
-                //action.appendChild(button3);
+                action.appendChild(button3);
                 table.appendChild(classnum);
                 table.appendChild(classname);
                 table.appendChild(credits);
@@ -177,6 +206,67 @@ function initializeClassBody() {
         });
 
 
+
+}
+
+function initUpdateCourse_DeliverInfo(deliver_id) {
+    const upform = document.getElementById("UpCourseDeliver_info");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getSepCourseDeliverInfo?deliver_id=" + deliver_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                throw new Error("获取开课信息失败");
+
+            upform.UpCourse_diliver_id.value = response.data.deliverId;
+            upform.Upstart_week.value = response.data.start_week;
+            upform.Upend_week.value = response.data.end_week;
+            upform.Upstart_time.value = response.data.start_time;
+            upform.Upend_time.value = response.data.end_time;
+            upform.Upcourse_day.value = response.data.course_day;
+            upform.Uplocation.value = response.data.location;
+            upform.Upmax_enrollment.value = response.data.max_enrollment;
+
+            return {
+                term_id: response.data.term_id,
+                teacher_id: response.data.teacher_id,
+            }
+        }).then(data => {
+            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllTerms", {
+                method: 'GET'
+            }).then(response => { return response.json(); })
+                .then(response => {
+                    if (response.code != 200)
+                        throw new Error("获取学期信息失败");
+                    while (upform.Upterm_id.hasChildNodes()) {
+                        upform.Upterm_id.removeChild(upform.Upterm_id.firstChild);
+                    }
+                    response.data.forEach(element => {
+                        let option = document.createElement("option");
+                        option.value = element.term_id;
+                        option.innerHTML = element.term_name;
+                        if (element.term_id === data.term_id) option.selected = true;
+                        upform.Upterm_id.appendChild(option);
+                    });
+                });
+            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getteachers", {
+                method: 'GET'
+            }).then(response => { return response.json(); })
+                .then(response => {
+                    if (response.code != 200)
+                        throw new Error("获取教师信息失败");
+                    while (upform.UPteacher_id.hasChildNodes()) {
+                        upform.UPteacher_id.removeChild(upform.UPteacher_id.firstChild);
+                    }
+                    response.data.forEach(element => {
+                        let option = document.createElement("option");
+                        option.value = element.account_id;
+                        option.innerHTML = element.name;
+                        if (element.account_id === data.teacher_id) option.selected = true;
+                        upform.UPteacher_id.appendChild(option);
+                    });
+                });
+        })
 
 }
 
@@ -254,6 +344,8 @@ function initCourseTable() {
                 }
                 button3.onclick = function () {
                     popDiv(3);
+                    initUpdateCourseInfo(element.course_id);
+
 
                 }
                 action.appendChild(button2);
@@ -465,6 +557,7 @@ function popDiv(page) {
     const applyCheck = document.getElementById("applyCheck");
     const stuInfo = document.getElementById("stuInfo");
     const offerCourse = document.getElementById("offerCourse");
+    const UpdateCourse_diliver_info = document.getElementById("UpdateCourse_diliver_info");
 
     for (Object of popMain.children) {
         Object.style = "display:none;";
@@ -480,7 +573,7 @@ function popDiv(page) {
             showDetail.style = "display:block;";
             break;
         case 3:
-            popTitle.innerHTML = "修改信息";
+            popTitle.innerHTML = "修改课程信息";
             editInfo.style = "display:block;";
             break;
         case 4:
@@ -497,6 +590,10 @@ function popDiv(page) {
             initCourseCategory();
             getCollegeNow();
             break;
+        case 7:
+            popTitle.innerHTML = "修改开课信息";
+            UpdateCourse_diliver_info.style = "display:block;";
+            break;
 
     }
 
@@ -504,6 +601,53 @@ function popDiv(page) {
     popBox.style.display = "block";
 }
 
+//获取课程信息,用来初始化修改课程信息页面
+function initUpdateCourseInfo(course_id) {
+    const upform = document.getElementById("UpCourse_info");
+    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getSepCourseInfo?course_id=" + course_id, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                throw new Error("获取课程信息失败");
+            upform.UpCourse_id.value = response.data.course_id;
+            upform.UpCourse_name.value = response.data.course_name;
+            upform.UpCourse_credit.value = response.data.credits;
+            //upform.category.value = response.data.category_id;
+            upform.Upis_mandatory.value = response.data.is_mandatory ? 1 : 0;
+            if (!typeof (response.data.Intro) === "undefined")
+                upform.UpCourse_Intro.value = response.data.Intro;
+            else
+                response.data.Intro = "";
+            return {
+                major_id: response.data.major_id,
+                category_id: response.data.category_id
+            }
+        }).then(data => {
+            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCategories", {
+                method: 'GET'
+            })
+                .then(response => { return response.json(); })
+                .then(response => {
+                    if (response.code != 200)
+                        throw new Error("获取课程信息失败");
+                    while (upform.UpCourse_category.hasChildNodes())
+                        upform.UpCourse_category.removeChild(upform.UpCourse_category.firstChild);
+                    response.data.forEach(element => {
+                        let option = document.createElement("option");
+                        option.value = element.category_id;
+                        option.innerHTML = element.category_name;
+                        if (element.category_id === data.category_id) option.selected = true;
+                        upform.UpCourse_category.appendChild(option);
+                    });
+                });
+        })
+
+}
+
+
+//获取课程,教师,学期信息,用来初始化下拉框
 function getCourseProfessorAndTerm() {
     const course_id = document.getElementById("course_id");
     const professor_id = document.getElementById("professor_id");

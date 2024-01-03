@@ -160,4 +160,41 @@ public class adminAddCon {
         return Result.success();
     }
 
+    @RequestMapping("/api/admin/deleteCollege")
+    public Object deleteCollege(@RequestParam String college_id){
+        Map<String,Object> result = new java.util.HashMap<>();
+        result.put("college_id",college_id);
+        AdminAdd.deleteCollege(result);
+        if(result.get("result") == (Object) 1){
+            return Result.success();
+        }
+        else{
+            return Result.error(500,"删除失败,请检查是否有相关的学院信息");
+        }
+    }
+    @RequestMapping("/api/admin/deleteMajor")
+    public Object deleteMajor(@RequestParam String major_id){
+        Map<String,Object> result = new java.util.HashMap<>();
+        result.put("major_id",major_id);
+        AdminAdd.deleteMajor(result);
+        if(result.get("result") == (Object) 1){
+            return Result.success();
+        }
+        else{
+            return Result.error(500,"删除失败,请检查是否有相关的专业信息");
+        }
+    }
+
+    @RequestMapping("/api/admin/unbindTAdmin")
+    public Object unbindTAdmin(@RequestParam String account_id,@RequestParam String college_id){
+        AdminAdd.unbindTAdmin(account_id,college_id);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/admin/unbindTeacher")
+    public Object unbindTeacher(@RequestParam String account_id,@RequestParam String college_id){
+        AdminAdd.unbindTeacher(account_id,college_id);
+        return Result.success();
+    }
+
 }

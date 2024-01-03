@@ -61,4 +61,18 @@ public interface adminAdd {
 
     @Delete("delete from students where account_id = #{account_id}")
     public void deleteStudent(String account_id);
+
+    @Delete("call delete_college(#{college_id,jdbcType=CHAR,mode=IN},#{result,jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void deleteCollege(Map<String,Object> maps);
+
+    @Delete("call delete_major(#{major_id,jdbcType=CHAR,mode=IN},#{result,jdbcType=INTEGER,mode=OUT})")
+    @Options(statementType = StatementType.CALLABLE)
+    public void deleteMajor(Map<String,Object> maps);
+
+    @Delete("delete from identities where account_id = #{account_id} and college_id=#{college_id} and identity = 2")
+    public void unbindTAdmin(String account_id,String college_id);
+
+    @Delete("delete from identities where account_id = #{account_id} and college_id=#{college_id} and identity = 4")
+    public void unbindTeacher(String account_id,String college_id);
 }

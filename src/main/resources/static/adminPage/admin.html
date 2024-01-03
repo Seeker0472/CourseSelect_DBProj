@@ -267,6 +267,29 @@
             </div>
             <div id="editInfo">
                 在这里补上修改课程信息的表单
+                <form id="UpCourse_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseInfo" method="post"
+                    target="Out123">
+                    <input type="text" style="display: none" id="UpCourse_id" name="course_id">
+                    <label for="UpCourse_name">课程名称:</label>
+                    <input type="text" id="UpCourse_name" name="course_name" placeholder="请输入要搜索的课程名称">
+                    <label for="UpCourse_credit">学分:</label>
+                    <input type="number" id="UpCourse_credit" name="credits">
+                    <label for="UpCourse_category">课程类别</label>
+                    <select id="UpCourse_category" name="category_id">
+                        <!-- <option value="all">全部</option>
+                        <option value="required">必修</option>
+                        <option value="elective">选修</option> -->
+                    </select>
+                    <label for="Upis_mandatory">是否必修:</label>
+                    <select id="Upis_mandatory" name="is_mandatory">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                    <label for="UpCourse_Intro">课程简介:</label>
+                    <input type="text" id="UpCourse_Intro" name="Intro">
+                    <input type="submit" value="提交">
+                    <iframe name="Out123"></iframe>
+                </form>
             </div>
             <div id="applyCheck">
                 在这里补上审核申请的表单
@@ -369,11 +392,11 @@
                     <select id="courseDay" name="course_day">
                         <option value="1">周一</option>
                         <option value="2">周二</option>
-                        <option value="2">周三</option>
-                        <option value="2">周四</option>
-                        <option value="2">周五</option>
-                        <option value="2">周六</option>
-                        <option value="2">周日</option>
+                        <option value="3">周三</option>
+                        <option value="4">周四</option>
+                        <option value="5">周五</option>
+                        <option value="6">周六</option>
+                        <option value="7">周日</option>
                     </select>
                     <label for="courseTimeStart">上课开始时间:</label>
                     <select id="courseTimeStart" name="start_time">
@@ -410,6 +433,123 @@
                     <input type="submit" value="提交">
                     <iframe name="Out1"></iframe>
                 </form>
+            </div>
+            <div id="UpdateCourse_diliver_info">
+                在这里修改开课信息
+                <form id="UpCourseDeliver_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseDeliver"
+                    target="Out1232">
+                    <input type="text" style="display: none;" id="UpCourse_diliver_id" name="deliver_id">
+                    <label for="Upteacher_id">教师:</label>
+                    <select id="UPteacher_id" name="teacher_id">
+                        <!-- <option value="all">全部</option>
+                        <option value="required">必修</option>
+                        <option value="elective">选修</option> -->
+                    </select>
+                    <label for="Upterm_id">学期:</label>
+                    <select id="Upterm_id" name="term_id">
+                        <!-- <option value="1">第一学期</option>
+                        <option value="2">第二学期</option>
+                        <option value="3">第三学期</option>
+                        <option value="4">第四学期</option>
+                        <option value="5">第五学期</option>
+                        <option value="6">第六学期</option>
+                        <option value="7">第七学期</option>
+                        <option value="8">第八学期</option> -->
+                    </select>
+                    <a>上课时间:</a>
+                    <!-- <label for="courseTime">上课时间:</label>-->
+                    <label for="Upstart_week">上课开始周:</label>
+                    <select id="Upstart_week" name="start_week">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <label for="Upend_week">上课结束周:</label>
+                    <select id="Upend_week" name="end_week">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <label for="Upcourse_day">上课日:</label>
+                    <select id="Upcourse_day" name="course_day">
+                        <option value="1">周一</option>
+                        <option value="2">周二</option>
+                        <option value="3">周三</option>
+                        <option value="4">周四</option>
+                        <option value="5">周五</option>
+                        <option value="6">周六</option>
+                        <option value="7">周日</option>
+                    </select>
+                    <label for="Upstart_time">上课开始时间:</label>
+                    <select id="Upstart_time" name="start_time">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label for="Upend_time">上课结束时间:</label>
+                    <select id="Upend_time" name="end_time">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br>
+                    <label for="Uplocation">上课地点:</label>
+                    <input type="text" id="Uplocation" name="location"><br>
+                    <label for="Upmax_enrollment">课程容量:</label>
+                    <input type="number" id="Upmax_enrollment" name="max_enrollment"><br>
+                    <!-- <label for="courseIntroduction">课程简介:</label>
+                    <input type="text" id="courseIntroduction" name="courseIntroduction"><br> -->
+                    <input type="submit" value="提交">
+                    <iframe name="Out1232"></iframe>
+                </form>
+
             </div>
             <div id="overlay"></div>
         </div>

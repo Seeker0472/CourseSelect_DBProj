@@ -421,9 +421,10 @@ function initializetsaTable() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情,也许可以改成解绑?";
+                button1.innerHTML = "解绑教务身份";
                 button1.onclick = function () {
-
+                    if (window.confirm("确定要解绑嘛"))
+                        unBindTSA(element.account_id, element.college_id);
 
 
                     //记得补充交互逻辑
@@ -440,6 +441,22 @@ function initializetsaTable() {
                 tsaTable.appendChild(table);
             });
         });
+}
+
+function unBindTSA(userid, collegeid) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/unbindTAdmin?account_id=" + userid + "&college_id=" + collegeid, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("解绑成功");
+                initializetsaTable();
+            }
+            else {
+                alert("解绑失败");
+            }
+        });
+
 }
 
 //初始化教师表格
@@ -470,10 +487,11 @@ function initializeTeaTable() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 button1.className = "Button001";
-                button1.innerHTML = "查看详情,也许可以改成解绑?";
+                button1.innerHTML = "解绑教师身份";
                 button1.onclick = function () {
                     //记得补充交互逻辑
-
+                    if (window.confirm("确定要解绑嘛"))
+                        unbindTeacher(element.account_id, element.college_id);
                 }
                 action.appendChild(button1);
                 table.appendChild(name);
@@ -484,6 +502,22 @@ function initializeTeaTable() {
                 table.appendChild(action);
                 teaTable.appendChild(table);
             });
+        });
+
+}
+
+function unbindTeacher(userid, collegeid) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/unbindTeacher?account_id=" + userid + "&college_id=" + collegeid, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("解绑成功");
+                initializeTeaTable();
+            }
+            else {
+                alert("解绑失败");
+            }
         });
 }
 
@@ -575,6 +609,7 @@ function popDiv(page, title) {
         case 11:
             popTitle.innerHTML = "添加课程类别";
             addCourseCategory.style.display = "unset";
+            break;
         case 12:
             popTitle.innerHTML = "修改课程类别";
             editCourseCatInfo.style.display = "unset";
@@ -957,16 +992,28 @@ function initCollManTable() {
                     const action = document.createElement("td");
                     const button1 = document.createElement("button");
                     button1.className = "Button001";
-                    button1.innerHTML = "查看详情";
+                    button1.innerHTML = "修改学院信息";
                     let collId = element.college_id;
                     button1.onclick = function () {
-                        //记得补充交互逻辑
-                        // window.alert("功能正在开发中11111");
                         popDiv(9, "学院信息");
                         initeditCollTable(collId);
-
+                    }
+                    // const button2 = document.createElement("button");
+                    // button2.className = "Button001";
+                    // button2.innerHTML = "修改学院信息";
+                    // button2.onclick = function () {
+                    //     //TODO:记得补全逻辑
+                    // };
+                    const button3 = document.createElement("button");
+                    button3.className = "Button001";
+                    button3.innerHTML = "删除学院";
+                    button3.onclick = function () {
+                        if (window.confirm("确定要删除该学院吗?"))
+                            delCollege(element.college_id);
                     }
                     action.appendChild(button1);
+                    // action.appendChild(button2);
+                    action.appendChild(button3);
                     table.appendChild(collid);
                     table.appendChild(collname);
                     table.appendChild(admin);
@@ -979,8 +1026,24 @@ function initCollManTable() {
                 alert("获取学院列表失败");
             }
         });
+}
+
+function delCollege(CollId) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/deleteCollege?college_id=" + CollId, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("删除成功");
+                initCollManTable();
+            }
+            else {
+                alert("删除失败");
+            }
+        });
 
 }
+
 //初始化修改学院详情
 function initeditCollTable(collId) {
     fetchWithAuth('https://api.seekerer.com/api/admin/getSepCollegeInfo?collegeId=' + collId, {
@@ -1067,7 +1130,15 @@ function initMajorManTable() {
                         initUpMajorInfo(majorId);
 
                     }
+                    const button2 = document.createElement("button");
+                    button2.className = "Button001";
+                    button2.innerHTML = "删除专业";
+                    button2.onclick = function () {
+                        if (window.confirm("确定要删除该专业吗?"))
+                            delMajor(element.major_id);
+                    }
                     action.appendChild(button1);
+                    action.appendChild(button2);
                     table.appendChild(majorid);
                     table.appendChild(majorname);
                     table.appendChild(belong);
@@ -1081,6 +1152,22 @@ function initMajorManTable() {
             }
             else {
                 alert("获取专业列表失败");
+            }
+        });
+}
+
+function delMajor(majorId) {
+    fetchWithAuth("https://api.seekerer.com/api/admin/deleteMajor?major_id=" + majorId, {
+        method: 'GET'
+    })
+        .then(response => { return response.json(); })
+        .then(response => {
+            if (response.code === 200) {
+                alert("删除成功");
+                initMajorManTable();
+            }
+            else {
+                alert("删除失败");
             }
         });
 }
