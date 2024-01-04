@@ -1,8 +1,11 @@
 package com.seekerer.courseselect.DataAccess;
 
+import com.seekerer.courseselect.Classes.Course_select_info;
 import com.seekerer.courseselect.Classes.StuInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.mapping.StatementType;
 
 import java.util.List;
 import java.util.Map;
@@ -51,7 +54,10 @@ public interface Tadminget {
     @Select("select * from course_deliver where deliverId=#{deliver_id}")
     public Map<String,Object> getCourseDeliverInfo(String deliver_id);
 
+    @Select("select * from get_total_credits_this_term where college_id=#{college_id}")
+    public List<Map<String,Object>> getTotalCreditsInfo(String college_id);
 
-
-
+    @Select("call get_total_enrollments(#{deliver_id,jdbcType=INTEGER,mode=IN})")
+    @Options(statementType = StatementType.CALLABLE)
+    public List<Course_select_info> getTotalEnrollments(int deliver_id);
 }

@@ -74,4 +74,7 @@ public interface adminget {
     @Select("select * from course_categories")
     public List<Map<String,Object>> getAllCategories();
 
+    @Select("select * from get_total_credits_this_term")
+    public List<Map<String,Object>> getTotalCreditsInfo();
+
 }

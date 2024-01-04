@@ -136,9 +136,10 @@ function initializeCourseSelectPage() {
                     stuNumTotal.textContent = `/${course.max_enrollment}`;
                     stuNumTotal.style = "color:gray;";
                     selectbutton.id = "#course_selected_button" + course.deliverId;
+                    //let selected = ;
                     selectbutton.onclick = function () {
                         //这里记得补上交互逻辑
-                        if (!course.selected) {
+                        if (!course.isSelected) {
                             fetchWithAuth("https://api.seekerer.com/api/stu/SelectCourse", {
                                 method: 'post',
                                 body:

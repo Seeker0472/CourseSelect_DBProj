@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../PopWin.css">
     <link rel="stylesheet" href="../HeaderSlider.css">
     <link rel="stylesheet" href="admin.css">
+    <script src="../echarts.js"></script>
     <script src="../jwtRequest.js"></script>
     <script src="admin.js" defer></script>
     <script src="../slider.js" defer></script>
@@ -69,9 +70,10 @@
         </nav>
     </header>
     <main>
-        <!--TODO:在首页放数据可视化,-->
+        <!--在首页放数据可视化,-->
         <div id="Link1Display" style="display: none">
-            <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
+            <div id="container" style="height:80vh"></div>
+            <!-- <button id="test" class="Button002" style="display: block; margin: auto;">测试</button> -->
         </div>
         <div id="Link2Display" style="display: none">
             <!-- <nav>
@@ -281,9 +283,9 @@
             </div>
         </div>
         <div id="Link5Display" style="display: none">
-            加上账号安全(看看能不能调用百度地图的api显示登录地点)
+            <!-- 加上账号安全(看看能不能调用百度地图的api显示登录地点)
 
-            加上数据库管理(下载整个数据库,执行sql语句,下载key)
+            加上数据库管理(下载整个数据库,执行sql语句,下载key) -->
 
             <!-- <button id="changePassword" class="Button002" style="display: block; margin: auto;">修改密码</button><br>
             <button id="changeInfo" class="Button002" style="display: block; margin: auto;">修改信息</button><br>
@@ -382,10 +384,10 @@
                 </form>
             </div>
             <div id="bindTEA" style="display : none">
-                在这里绑定教师信息(列表)
+                <!-- 在这里绑定教师信息(列表) -->
             </div>
             <div id="stuInfo" style="display : none">
-                在这里编辑学生信息
+                <!-- 在这里编辑学生信息 -->
                 <form id="UpstuInfo" action="https://api.seekerer.com/api/admin/updateStuInfo" method="post"
                     target="Outttt">
                     <label for="stuName">姓名:</label>
@@ -420,7 +422,7 @@
                 </form>
             </div>
             <div id="staInfo" style="display : none">
-                在这里编辑职工信息
+                <!-- 在这里编辑职工信息 -->
                 <form id="UpStaffInfo" action="https://api.seekerer.com/api/admin/updateStaffInfo" method="post"
                     target="out11">
                     <label for="staName">姓名:</label>
@@ -540,7 +542,7 @@
                 </form>
             </div>
             <div id="editCourseCatInfo" style="display: none;">
-                在这里修改课程类别信息
+                <!-- 在这里修改课程类别信息 -->
                 <form id="UpCourseCatInfo" action="https://api.seekerer.com/api/admin/updateCategoryInfo" method="post"
                     target="Out47">
                     <label for="UpcourseCategoryID">课程类别编号:</label>

@@ -15,6 +15,12 @@ function clearAll() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    {
+        var script = document.createElement('script');
+        script.type = 'text/javaScript';
+        script.src = '../loadCharts.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
     const courseWeekStart = document.getElementById("courseWeekStart");
     const courseWeekEnd = document.getElementById("courseWeekEnd");
     const courseTimeStart = document.getElementById("courseTimeStart");
@@ -177,6 +183,15 @@ function initializeClassBody() {
                 const button3 = document.createElement("button");
                 button3.innerHTML = "修改信息";
                 button3.className = "ButtonEdit";
+                const button4 = document.createElement("button");
+                button4.innerHTML = "导出";
+                button4.className = "ButtonAdd";
+                button4.onclick = function () {
+                    //记得补充交互逻辑
+                    // popDiv(6);
+                    getExcel(element.deliverId);
+
+                }
 
                 //Test
                 button1.onclick = function () {
@@ -196,6 +211,7 @@ function initializeClassBody() {
                 action.appendChild(button1);
                 action.appendChild(button2);
                 action.appendChild(button3);
+                action.appendChild(button4);
                 table.appendChild(classnum);
                 table.appendChild(classname);
                 table.appendChild(credits);
@@ -209,6 +225,10 @@ function initializeClassBody() {
 
 
 
+}
+
+function getExcel(course_id) {
+    window.location.href = "https://api.seekerer.com/api/acaAdmin/getTotalEnrollments?deliver_id=" + course_id;
 }
 
 function deleteCourseDeliver(deliver_id) {

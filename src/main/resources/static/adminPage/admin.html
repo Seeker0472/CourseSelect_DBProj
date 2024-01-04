@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="../PopWin.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../HeaderSlider.css">
+    <script src="../echarts.js"></script>
     <script src="../jwtRequest.js"></script>
     <script src="admin.js" defer></script>
     <script src="../slider.js" defer></script>
+
 </head>
 
 <body>
@@ -61,7 +63,8 @@
     </header>
     <main>
         <div id="Link1Display" style="display: none">
-            <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
+            <!-- <button id="test" class="Button002" style="display: block; margin: auto;">测试</button> -->
+            <div id="container" style="height:80vh"></div>
         </div>
         <!--课程管理-->
         <div id="Link2Display" style="display: none">
@@ -197,7 +200,7 @@
             <button id="changeAvatar" class="Button002" style="display: block; margin: auto;">修改头像</button><br>
             <button id="changeEmail" class="Button002" style="display: block; margin: auto;">修改邮箱</button><br> -->
             <!-- <button id="exit" class="Button002" style="display: block; margin: auto;">退出</button> -->
-            加上账号安全(看看能不能调用百度地图的api显示登录地点)
+            <!-- 加上账号安全(看看能不能调用百度地图的api显示登录地点) -->
 
 
 
@@ -214,7 +217,7 @@
         </div>
         <div id="popMain">
             <div id="addCourse">
-                在这里补上添加课程信息的表单
+                <!-- 在这里补上添加课程信息的表单 -->
                 <form action="https://api.seekerer.com/api/acaadmin/addCourse" method="post" target="Out">
                     <label for="classID">课程代码:</label>
                     <input type="text" id="classID" name="course_id" placeholder="请输入要搜索的课程代码">
@@ -249,7 +252,7 @@
                 </form>
             </div>
             <div id="showDetail">
-                在这里补上显示课程详细信息的表单
+                <!-- 在这里补上显示课程详细信息的表单 -->
 
                 已选学生信息:
                 <table class="thead">
@@ -265,7 +268,7 @@
                 </table>
             </div>
             <div id="editInfo">
-                在这里补上修改课程信息的表单
+                <!-- 在这里补上修改课程信息的表单 -->
                 <form id="UpCourse_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseInfo" method="post"
                     target="Out123">
                     <input type="text" style="display: none" id="UpCourse_id" name="course_id">
@@ -291,10 +294,10 @@
                 </form>
             </div>
             <div id="applyCheck">
-                在这里补上审核申请的表单
+                <!-- 在这里补上审核申请的表单 -->
             </div>
             <div id="stuInfo">
-                在这里补上学生信息的表单
+                <!-- 在这里补上学生信息的表单 -->
                 <label for="stu_terms">学期</label>
                 <select id="stu_terms">
                 </select>
@@ -434,7 +437,7 @@
                 </form>
             </div>
             <div id="UpdateCourse_diliver_info">
-                在这里修改开课信息
+                <!-- 在这里修改开课信息 -->
                 <form id="UpCourseDeliver_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseDeliver"
                     target="Out1232">
                     <input type="text" style="display: none;" id="UpCourse_diliver_id" name="deliver_id">

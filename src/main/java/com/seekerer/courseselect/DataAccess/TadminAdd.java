@@ -33,4 +33,6 @@ public interface TadminAdd {
 
     @Delete("delete from courses where course_id=#{course_id}")
     public void deleteCourse(String course_id);
+
+
 }

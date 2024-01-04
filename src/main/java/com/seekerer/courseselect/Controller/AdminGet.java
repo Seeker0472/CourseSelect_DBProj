@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 @CrossOrigin
 @RestController
 public class AdminGet {
@@ -88,7 +91,28 @@ public class AdminGet {
         return Result.success(adminget.getAllCategories());
     }
 
-
+    @RequestMapping("/api/admin/getTotalCreditsInfo")
+    public Object getTotalCreditsInfo(){
+        //Map<String,Object> result = new java.util.HashMap<>();
+        List<Map<String,Object>> list = new java.util.ArrayList<>();
+        list=adminget.getTotalCreditsInfo();
+        List<Object> result=new java.util.ArrayList<>();
+        List<Object> item1=new java.util.ArrayList<>();
+        item1.add("student_id");
+        item1.add("student_name");
+        item1.add("total_credits");
+        item1.add("major_name");
+        result.add(item1);
+        list.forEach((Map<String,Object> map)->{
+            List<Object> item=new java.util.ArrayList<>();
+            item.add(map.get("student_id"));
+            item.add(map.get("student_name"));
+            item.add(map.get("total_credits"));
+            item.add(map.get("major_name"));
+            result.add(item);
+        });
+        return Result.success(result);
+    }
 
 
 }
