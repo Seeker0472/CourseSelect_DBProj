@@ -73,10 +73,6 @@
         <div id="Link1Display" style="display: none">
             <button id="test" class="Button002" style="display: block; margin: auto;">测试</button>
         </div>
-        <!--TODO:这里最好开会讨论-->
-        <!--TODO:在账号管理部分能不能像数据库一样把权限分配给角色,一个角色对应多个权限,一个用户分配多个角色,就相当于账号分为两种,职工和学生,职工分为教师和教务-->
-        <!--TODO:完成账号管理部分-->
-        <!--TODO:加上后端请求-->
         <div id="Link2Display" style="display: none">
             <!-- <nav>
                 <ul>
@@ -86,11 +82,11 @@
                     <div class="miniSlider" id="slider2"></div>
                 </ul>
             </nav> -->
-            <!--TODO:学生信息应该显示姓,学号,专业,学院,性别,电话,密码只能修改不能查看-->
+            <!--学生信息应该显示姓,学号,专业,学院,性别,电话,密码只能修改不能查看-->
             <div id="stuManageDisplay" style="display: unset">
                 <div>
-                    有空添加一个高级搜索功能
-                    <form>
+                    <!-- 有空添加一个高级搜索功能 -->
+                    <!-- <form>
                         <label for="stuID">学号:</label>
                         <input type="text" id="stuID" name="stuID" placeholder="请输入要搜索的学号">
                         <label for="stuName">姓名:</label>
@@ -102,7 +98,7 @@
                         <label for="stuMajor">电话:</label>
                         <input tyle="text" id="stuPhone" name="stuPhone" placeholder="请输入要搜索的电话">
                         <input type="submit" value="搜索">
-                    </form>
+                    </form> -->
                     <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(1, '添加学生')">添加学生</button>
                     <br>
@@ -126,8 +122,8 @@
             </div>
             <div id="staManageDisplay" style="display: unset">
                 <div>
-                    有空添加一个高级搜索功能
-                    <form>
+                    <!-- 有空添加一个高级搜索功能 -->
+                    <!-- <form>
                         <label for="tsaID">工号:</label>
                         <input type="text" id="tsaID" name="tsaID" placeholder="请输入要搜索的工号">
                         <label for="tsaName">姓名:</label>
@@ -136,7 +132,7 @@
                         <label for="tsaMajor">电话:</label>
                         <input tyle="text" id="tsaPhone" name="tsaPhone" placeholder="请输入要搜索的电话">
                         <input type="submit" value="搜索">
-                    </form>
+                    </form> -->
                     <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(2, '添加职工');">添加职工</button>
                     <br>
@@ -158,7 +154,7 @@
             </div>
             <div id="tsaManageDisplay" style="display: unset">
                 <div>
-                    有空添加一个高级搜索功能
+                    <!-- 有空添加一个高级搜索功能 -->
 
                     <!-- <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(3, '绑定教务身份');">绑定教务</button>
@@ -182,7 +178,7 @@
             </div>
             <div id="teaManageDisplay" style="display: unset">
                 <div>
-                    有空添加一个高级搜索功能
+                    <!-- 有空添加一个高级搜索功能 -->
                     <!-- <button class="Button002" style="display: block; margin: auto;"
                         onclick="popDiv(4, '绑定教师身份');">绑定教师</button>
                     <br> -->
@@ -223,14 +219,14 @@
                 </table>
             </div>
         </div>
-        <!--TODO:完成学院管理部分-->
+        <!--学院管理部分-->
         <div id="Link4Display" style="display: none">
 
             <div id="collAdmin">
-                有空添加一个搜索功能
+                <!-- 有空添加一个搜索功能 -->
                 <button class="Button002" style="display: block; margin: auto;"
                     onclick="popDiv(7, '添加学院');">添加学院</button>
-                <form>
+                <!-- <form>
                     <label for="collID">学院编号:</label>
                     <input type="text" id="collID" name="collID" placeholder="请输入要搜索的学院编号">
                     <label for="collName">学院名称:</label>
@@ -238,7 +234,7 @@
                     <label for="collAdminName">学院负责人:</label>
                     <input type="text" id="collAdminName" name="collAdmin" placeholder="请输入要搜索的学院负责人">
                     <input type="submit" value="搜索">
-                </form>
+                </form> -->
                 <table class="TableComm">
                     <thead>
                         <tr>
@@ -255,10 +251,10 @@
                 </table>
             </div>
             <div id="majorAdmin">
-                有空添加一个搜索功能
+                <!-- 有空添加一个搜索功能 -->
                 <button class="Button002" style="display: block; margin: auto;"
                     onclick="popDiv(8, '添加专业');">添加专业</button>
-                <form>
+                <!-- <form>
                     <label for="majorID">专业编号:</label>
                     <input type="text" id="majorID" name="majorID" placeholder="请输入要搜索的专业编号">
                     <label for="majorName">专业名称:</label>
@@ -266,7 +262,7 @@
                     <label for="majorAdminName">专业负责人:</label>
                     <input type="text" id="majorAdminName" name="majorAdmin" placeholder="请输入要搜索的专业负责人">
                     <input type="submit" value="搜索">
-                </form>
+                </form> -->
                 <table class="TableComm">
                     <thead>
                         <tr>

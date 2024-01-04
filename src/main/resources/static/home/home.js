@@ -53,7 +53,6 @@ function showadvs() {
         advs.style.display = "none";
 }
 
-//ToDo: 要修改!
 function initializeCourseSelectPage() {
     //到时候处理请求逻辑
     /*const responce={
@@ -260,7 +259,6 @@ function flushSelectedNum() {
 
 }
 
-//ToDo: 要修改!
 //初始化成绩表
 function initializeScoreTable() {
     const scoreTable = document.getElementById("stuTable");
@@ -386,6 +384,9 @@ function getTerms() {
             console.log(data);
             const terms = data.data;
             const termSelect = document.getElementById("TermSelect");
+            while (termSelect.firstChild) {
+                termSelect.removeChild(termSelect.firstChild);
+            }
             terms.forEach(term => {
                 const option = document.createElement("option");
                 option.value = term.term_id;

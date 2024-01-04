@@ -80,7 +80,6 @@ function renderClassTable(classes) {
                         let clas = document.createElement("span");
                         clas.className = "classBoxEmpty";
                         clas.style.width = (8) * (20 - start + 1) + "px";
-                        //TODO:完成当鼠标悬浮离开的时候显示课程详细信息
                         clas.addEventListener("mouseover", function () {
                             showTextTimeOut('恭喜你,第' + start + '周到第' + 20 + '周的礼拜' + i + '的第' + j + '节课没课!', 1000);
 
@@ -95,7 +94,6 @@ function renderClassTable(classes) {
                         let clas = document.createElement("span");
                         clas.className = "classBoxFilled";
                         clas.style.width = (8) * (minend - min + 1) + "px";
-                        //TODO:有空加上一个描述什么的
                         clas.addEventListener("mouseover", function () {
                             showTextTimeOut(showmsg, 1000);
 

@@ -28,4 +28,9 @@ public interface TadminAdd {
             "end_time=#{end_time},location=#{location},term_id=#{term_id},max_enrollment=#{max_enrollment},course_day=#{course_day} where deliverId=#{deliver_id}")
     public void UpdateCourseDeliver(String deliver_id,String teacher_id,int start_week,int end_week,int start_time,int end_time,String location,int term_id,int max_enrollment,String course_day);
 
+    @Delete("delete from course_deliver where deliverId=#{deliver_id}")
+    public void deleteCourseDeliver(String deliver_id);
+
+    @Delete("delete from courses where course_id=#{course_id}")
+    public void deleteCourse(String course_id);
 }

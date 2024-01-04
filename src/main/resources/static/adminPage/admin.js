@@ -145,7 +145,6 @@ function initializeClassBody() {
     while (ClassBody.hasChildNodes()) {
         ClassBody.removeChild(ClassBody.firstChild);
     }
-    //TODO:等后端完成之后在这里加一个foreach循环
     fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCoursedeliver", {
         method: 'GET'
     }).then(response => { return response.json(); })
@@ -169,13 +168,15 @@ function initializeClassBody() {
                 TargetMajor.innerHTML = element.major_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonEdit";
                 button1.innerHTML = "查看已选";
 
                 const button2 = document.createElement("button");
-                button2.innerHTML = "删除课程";
+                button2.innerHTML = "删除开课计划";
+                button2.className = "ButtonDelete";
                 const button3 = document.createElement("button");
                 button3.innerHTML = "修改信息";
+                button3.className = "ButtonEdit";
 
                 //Test
                 button1.onclick = function () {
@@ -185,6 +186,7 @@ function initializeClassBody() {
                 }
                 button2.onclick = function () {
                     //记得补充交互逻辑
+                    deleteCourseDeliver(element.deliverId);
                 }
                 button3.onclick = function () {
                     popDiv(7);
@@ -206,6 +208,19 @@ function initializeClassBody() {
         });
 
 
+
+}
+
+function deleteCourseDeliver(deliver_id) {
+    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteCourseDeliver?deliver_id=" + deliver_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                alert("删除失败");
+            else
+                alert("删除成功");
+        });
 
 }
 
@@ -292,7 +307,7 @@ function initializeSelectedClassBody(deliver_id) {
                 stuname.innerHTML = element.student_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonDelete";
                 button1.innerHTML = "删除";
                 button1.onclick = function () {
                     //记得补充交互逻辑
@@ -335,11 +350,14 @@ function initCourseTable() {
                 const action = document.createElement("td");
 
                 const button2 = document.createElement("button");
-                button2.innerHTML = "删除课程";
+                button2.className = "ButtonDelete";
+                button2.innerHTML = "删除课程信息";
                 const button3 = document.createElement("button");
                 button3.innerHTML = "修改信息";
+                button3.className = "ButtonEdit";
 
                 button2.onclick = function () {
+                    deleteCourse(element.course_id);
                     //记得补充交互逻辑
                 }
                 button3.onclick = function () {
@@ -360,6 +378,20 @@ function initCourseTable() {
             });
 
         });
+}
+
+function deleteCourse(course_id) {
+    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteCourse?course_id=" + course_id, {
+        method: 'GET'
+    }).then(response => { return response.json(); })
+        .then(response => {
+            if (response.code != 200)
+                alert("删除失败");
+            else
+                alert("删除成功");
+        });
+
+
 }
 
 
@@ -435,7 +467,7 @@ function initializeStuTable() {
                 major.innerHTML = element.major_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonEdit";
                 button1.innerHTML = "选课信息";
                 button1.onclick = function () {
                     //记得补充交互逻辑
@@ -503,7 +535,7 @@ function getStuCourse(stuId, term_id) {
                 classname.innerHTML = element.course_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonDelete";
                 button1.innerHTML = "推选";
                 button1.onclick = function () {
                     if (window.confirm("确定推选该课程吗?"))

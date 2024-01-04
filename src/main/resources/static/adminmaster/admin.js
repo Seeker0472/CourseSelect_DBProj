@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     document.getElementById("majColl").onchange = function () { getAllStaffForCollege(); }//改变学院选择框
-    //TODO:完成各个页面逻辑
+    //完成各个页面逻辑
     // stuManage.addEventListener("click", function () {
     //     slider.style.transform = 'translateX(0)';
     //     console.log("stuManage");
@@ -157,12 +157,12 @@ function initializeStuTable() {
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
                 const button2 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonEdit";
                 button1.innerHTML = "修改学生信息";
                 button2.innerHTML = "删除学生";
+                button2.className = "ButtonDelete";
                 let account_id = element.account_id;
                 button1.onclick = function () {
-                    //TODO:记得补充交互逻辑
                     popDiv(5, "学生详情");
                     updateStuInfo(account_id);
 
@@ -310,7 +310,7 @@ function initializeStaTable() {
                 phone.innerHTML = element.phone;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonAdd";
                 button1.innerHTML = "绑定身份";
                 button1.onclick = function () {
                     //记得补充交互逻辑
@@ -321,7 +321,7 @@ function initializeStaTable() {
 
                 }
                 const button2 = document.createElement("button");
-                button2.className = "Button001";
+                button2.className = "ButtonDelete";
                 button2.innerHTML = "删除账号";
                 button2.onclick = function () {
                     //记得补充交互逻辑
@@ -330,7 +330,7 @@ function initializeStaTable() {
 
                 }
                 const button3 = document.createElement("button");
-                button3.className = "Button001";
+                button3.className = "ButtonEdit";
                 button3.innerHTML = "修改信息";
                 let account_id = element.account_id;
                 button3.onclick = function () {
@@ -420,7 +420,7 @@ function initializetsaTable() {
                 college.innerHTML = element.college_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonDelete";
                 button1.innerHTML = "解绑教务身份";
                 button1.onclick = function () {
                     if (window.confirm("确定要解绑嘛"))
@@ -486,7 +486,7 @@ function initializeTeaTable() {
                 college.innerHTML = element.college_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonDelete";
                 button1.innerHTML = "解绑教师身份";
                 button1.onclick = function () {
                     //记得补充交互逻辑
@@ -768,7 +768,6 @@ function closePop() {
     popDiv.style.display = "none";
     document.body.classList.remove('popup-active');
 }
-//TODO:加上加载页面的逻辑和前后端交互
 function LoadPage21() {
     const page21 = document.getElementById("stuManageDisplay");
     console.log("LoadPage21");
@@ -779,7 +778,6 @@ function LoadPage21() {
     initializeStuTable();
 
 }
-//TODO:加上加载页面的逻辑和前后端交互
 
 function LoadPage22() {
     initializeStaTable();
@@ -792,7 +790,6 @@ function LoadPage22() {
 
 
 }
-//TODO:加上加载页面的逻辑和前后端交互
 
 function LoadPage23() {
     initializetsaTable();
@@ -804,7 +801,6 @@ function LoadPage23() {
 
 
 }
-//TODO:加上加载页面的逻辑和前后端交互
 function LoadPage24() {
     initializeTeaTable();
     const page24 = document.getElementById("teaManageDisplay");
@@ -882,7 +878,7 @@ function initcourseMangeTasble() {
                 classname.innerHTML = element.category_name;
                 const action = document.createElement("td");
                 const button1 = document.createElement("button");
-                button1.className = "Button001";
+                button1.className = "ButtonEdit";
                 button1.innerHTML = "修改";
                 let category_id = element.category_id;
                 let category_name = element.category_name;
@@ -991,7 +987,7 @@ function initCollManTable() {
                     appendx.innerHTML = element.remarks;
                     const action = document.createElement("td");
                     const button1 = document.createElement("button");
-                    button1.className = "Button001";
+                    button1.className = "ButtonEdit";
                     button1.innerHTML = "修改学院信息";
                     let collId = element.college_id;
                     button1.onclick = function () {
@@ -1002,10 +998,9 @@ function initCollManTable() {
                     // button2.className = "Button001";
                     // button2.innerHTML = "修改学院信息";
                     // button2.onclick = function () {
-                    //     //TODO:记得补全逻辑
                     // };
                     const button3 = document.createElement("button");
-                    button3.className = "Button001";
+                    button3.className = "ButtonDelete";
                     button3.innerHTML = "删除学院";
                     button3.onclick = function () {
                         if (window.confirm("确定要删除该学院吗?"))
@@ -1098,7 +1093,6 @@ function initMajorManTable() {
         majorManTable.removeChild(majorManTable.firstChild);
 
     }
-    //TODO:在这里加一个foreach循环
     fetchWithAuth('https://api.seekerer.com/api/admin/getMajorList', {
         method: 'GET'
     }).then(response => { return response.json(); })
@@ -1121,7 +1115,7 @@ function initMajorManTable() {
                     appendx.innerHTML = element.remarks;
                     const action = document.createElement("td");
                     const button1 = document.createElement("button");
-                    button1.className = "Button001";
+                    button1.className = "ButtonEdit";
                     button1.innerHTML = "修改专业信息";
                     let majorId = element.major_id;
                     button1.onclick = function () {
@@ -1131,7 +1125,7 @@ function initMajorManTable() {
 
                     }
                     const button2 = document.createElement("button");
-                    button2.className = "Button001";
+                    button2.className = "ButtonDelete";
                     button2.innerHTML = "删除专业";
                     button2.onclick = function () {
                         if (window.confirm("确定要删除该专业吗?"))

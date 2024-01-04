@@ -58,6 +58,18 @@ public class TadminAddController {
         return Result.success();
     }
 
+    @RequestMapping("/api/acaadmin/deleteCourseDeliver")
+    public Object deleteCourseDeliver(@RequestParam String deliver_id){
+        TadminAdd.deleteCourseDeliver(deliver_id);
+        return Result.success();
+    }
+
+    @RequestMapping("/api/acaadmin/deleteCourse")
+    public Object deleteCourse(@RequestParam String course_id){
+        TadminAdd.deleteCourse(course_id);
+        return Result.success();
+    }
+
 
 
 }

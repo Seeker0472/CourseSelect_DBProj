@@ -230,3 +230,75 @@ header .user {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+.ButtonEdit {
+    background: #77b55a;
+    border-radius: 4px;
+    border: unset;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.ButtonEdit:hover {
+    background: #72b352 linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+}
+
+.ButtonEdit:active {
+    position: relative;
+    top: 1px;
+}
+
+.ButtonDelete {
+    background: #ff0000;
+    border-radius: 4px;
+    border: unset;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.ButtonDelete:hover {
+    background: #ff0000 linear-gradient(to bottom, #ff0000 5%, #ff0000 100%);
+}
+
+.ButtonDelete:active {
+    position: relative;
+    top: 1px;
+}
+
+.ButtonAdd {
+    background: #2dabf9;
+    border-radius: 3px;
+    border: unset;
+    display: inline-block;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 15px;
+    padding: 4px 15px;
+    text-decoration: none;
+    margin-left: 5px;
+
+}
+
+.ButtonAdd:hover {
+    background: #0688fa;
+}
+
+.ButtonAdd:active {
+    position: relative;
+    top: 1px;
+}
