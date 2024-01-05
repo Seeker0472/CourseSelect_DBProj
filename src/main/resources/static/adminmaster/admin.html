@@ -307,35 +307,35 @@
             <div id="addStu" style="display : none">
                 <form action="https://api.seekerer.com/api/admin/AddStu" method="post" target="Out">
                     <label for="stuName">姓名:</label>
-                    <input type="text" id="stuName" name="stuName" placeholder="请输入姓名">
+                    <input type="text" id="stuName" name="stuName" placeholder="请输入姓名" required="required">
                     <label for="stuID">学号:</label>
-                    <input type="text" id="stuID" name="accId" placeholder="请输入学号">
+                    <input type="text" id="stuID" name="accId" placeholder="请输入学号" required="required">
                     <label for="stuColl">学院:</label>
                     <!-- <input type="text" id="stuColl" name="stuColl" placeholder="请输入学院"> -->
-                    <select id="stuColll" name="collId">
+                    <select id="stuColll" name="collId" required="required">
                         <!-- <option value="1">信息工程学院</option>
                         <option value="2">测绘与空间信息工程学院</option> -->
                     </select>
                     <label for="stuMajor">专业:</label>
                     <!-- <input type="text" id="stuMajor" name="majId" placeholder="请输入专业"> -->
-                    <select id="stuMajorSel" name="majId">
+                    <select id="stuMajorSel" name="majId" required="required">
                         <!-- <option value="1">信息工程</option>
                         <option value="2">测绘工程</option> -->
                     </select>
                     <label for="stuSex">性别:</label>
                     <!-- <input type="text" id="stuSex" name="stuGender" placeholder="请输入性别"> -->
-                    <select id="stuSex" name="stuGender">
+                    <select id="stuSex" name="stuGender" required="required">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                     <label for="stuPhone">电话:</label>
-                    <input type="text" id="stuPhone" name="stuPhone" placeholder="请输入电话">
+                    <input type="text" id="stuPhone" name="stuPhone" placeholder="请输入电话" required="required">
                     <labal for="email">邮箱</labal>
-                    <input type="text" id="email" name="stuEmail" placeholder="请输入邮箱">
+                    <input type="text" id="email" name="stuEmail" placeholder="请输入邮箱" required="required">
                     <label for="entryYear">入学年份:</label>
-                    <input type="date" id="entryYear" name="stuEnrollDate" placeholder="请输入入学年份">
+                    <input type="date" id="entryYear" name="stuEnrollDate" placeholder="请输入入学年份" required="required">
                     <label for="stuPassword">密码:</label>
-                    <input type="text" id="stuPassword" name="passWd" placeholder="请输入密码">
+                    <input type="text" id="stuPassword" name="passWd" placeholder="请输入密码" required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out"></iframe>
                 </form>
@@ -343,21 +343,21 @@
             <div id="addSTA" style="display : none">
                 <form action="https://api.seekerer.com/api/admin/AddStaff" method="post" target="Out1">
                     <label for="staName">姓名:</label>
-                    <input type="text" id="staName" name="staffName" placeholder="请输入姓名">
+                    <input type="text" id="staName" name="staffName" placeholder="请输入姓名" required="required">
                     <label for="staID">工号:</label>
-                    <input type="text" id="staID" name="accId" placeholder="请输入工号">
+                    <input type="text" id="staID" name="accId" placeholder="请输入工号" required="required">
                     <label for="staSex">性别:</label>
                     <!-- <input type="text" id="staSex" name="staffGender" placeholder="请输入性别"> -->
-                    <select id="staSex" name="staffGender">
+                    <select id="staSex" name="staffGender" required="required">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                     <label for="staPhone">电话:</label>
-                    <input type="text" id="staPhone" name="staffPhone" placeholder="请输入电话">
+                    <input type="text" id="staPhone" name="staffPhone" placeholder="请输入电话" required="required">
                     <label for="staEmail">邮箱:</label>
-                    <input type="text" id="staEmail" name="staffEmail" placeholder="请输入邮箱">
+                    <input type="text" id="staEmail" name="staffEmail" placeholder="请输入邮箱" required="required">
                     <label for="staPassword">密码:</label>
-                    <input type="text" id="staPassword" name="passWd" placeholder="请输入密码">
+                    <input type="text" id="staPassword" name="passWd" placeholder="请输入密码" required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out1"></iframe>
                 </form>
@@ -391,30 +391,31 @@
                 <form id="UpstuInfo" action="https://api.seekerer.com/api/admin/updateStuInfo" method="post"
                     target="Outttt">
                     <label for="stuName">姓名:</label>
-                    <input type="text" id="UpstuName" name="name" placeholder="姓名">
+                    <input type="text" id="UpstuName" name="name" placeholder="姓名" required="required">
                     <label for="stuID">学号:</label>
-                    <input type="text" id="UpstuID" name="account_id" style="display:none" placeholder="学号">
+                    <input type="text" id="UpstuID" name="account_id" style="display:none" placeholder="学号"
+                        required="required">
                     <label for="stuColl">学院:</label>
-                    <select id="UpstuColl" name="stuColl">
+                    <select id="UpstuColl" name="stuColl" required="required">
                         <!-- <option value="1">信息工程学院</option>
                         <option value="2">测绘与空间信息工程学院</option> -->
                     </select>
                     <label for="stuMajor">专业:</label>
-                    <select id="UpstuMajor" name="stuMajor">
+                    <select id="UpstuMajor" name="stuMajor" required="required">
                         <!-- <option value="1">信息工程</option>
                         <option value="2">测绘工程</option> -->
                     </select>
                     <label for="stuSex">性别:</label>
-                    <select id="UpstuSex" name="gender">
+                    <select id="UpstuSex" name="gender" required="required">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                     <label for="stuPhone">电话:</label>
-                    <input type="text" id="UpstuPhone" name="phone" placeholder="电话">
+                    <input type="text" id="UpstuPhone" name="phone" placeholder="电话" required="required">
                     <label for="stuEmail">邮箱:</label>
-                    <input type="text" id="UpstuEmail" name="email" placeholder="邮箱">
+                    <input type="text" id="UpstuEmail" name="email" placeholder="邮箱" required="required">
                     <label for="entryYear">入学年份:</label>
-                    <input type="date" id="UpentryYear" name="time" placeholder="入学年份">
+                    <input type="date" id="UpentryYear" name="time" placeholder="入学年份" required="required">
                     <label for="stuPassword">密码:</label>
                     <input type="text" id="UpstuPassword" name="password" placeholder="密码">
                     <input type="submit" value="提交">
@@ -426,18 +427,19 @@
                 <form id="UpStaffInfo" action="https://api.seekerer.com/api/admin/updateStaffInfo" method="post"
                     target="out11">
                     <label for="staName">姓名:</label>
-                    <input type="text" id="UpstaName" name="name" placeholder="姓名">
+                    <input type="text" id="UpstaName" name="name" placeholder="姓名" required="required">
                     <label for="staID">工号:</label>
-                    <input type="text" id="UpstaID" name="account_id" style="display:none" placeholder="工号">
+                    <input type="text" id="UpstaID" name="account_id" style="display:none" placeholder="工号"
+                        required="required">
                     <label for="staSex">性别:</label>
-                    <select id="UpstaSex" name="gender">
+                    <select id="UpstaSex" name="gender" required="required">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                     <label for="staPhone">电话:</label>
-                    <input type="text" id="UpstaPhone" name="phone" placeholder="电话">
+                    <input type="text" id="UpstaPhone" name="phone" placeholder="电话" required="required">
                     <label for="staEmail">邮箱:</label>
-                    <input type="text" id="UpstaEmail" name="email" placeholder="邮箱">
+                    <input type="text" id="UpstaEmail" name="email" placeholder="邮箱" required="required">
                     <label for="staPassword">密码:</label>
                     <input type="text" id="UpstaPassword" name="password" placeholder="密码">
                     <input type="submit" value="提交">
@@ -447,12 +449,12 @@
             <div id="addCol" style="display : none">
                 <form action="https://api.seekerer.com/api/admin/addCollege" method="post" target="Out3">
                     <label for="colID">学院编号:</label>
-                    <input type="text" id="colID" name="collegeId" placeholder="请输入学院编号">
+                    <input type="text" id="colID" name="collegeId" placeholder="请输入学院编号" required="required">
                     <label for="colName">学院名称:</label>
-                    <input type="text" id="colName" name="collegeName" placeholder="请输入学院名称">
+                    <input type="text" id="colName" name="collegeName" placeholder="请输入学院名称" required="required">
                     <label for="colAdmin">学院负责人:</label>
                     <!-- <input type="text" id="colAdmin" name="colAdmin" placeholder="请输入学院负责人"> -->
-                    <select id="colAdmin" name="collegeHeadId">
+                    <select id="colAdmin" name="collegeHeadId" required="required">
                         <!-- <option value="1">张三</option>
                         <option value="2">李四</option> -->
                     </select>
@@ -465,25 +467,26 @@
             <div id="addMaj" style="display : none">
                 <form action="https://api.seekerer.com/api/admin/addMajor" method="post" target="Out4">
                     <label for="majID">专业编号:</label>
-                    <input type="text" id="majID" name="majorId" placeholder="请输入专业编号">
+                    <input type="text" id="majID" name="majorId" placeholder="请输入专业编号" required="required">
                     <label for="majName">专业名称:</label>
-                    <input type="text" id="majName" name="majorName" placeholder="请输入专业名称">
+                    <input type="text" id="majName" name="majorName" placeholder="请输入专业名称" required="required">
                     <label for="majColl">所属学院:</label>
                     <!-- <input type="text" id="majColl" name="majColl" placeholder="请输入所属学院"> -->
-                    <select id="majColl" name="collegeId">
+                    <select id="majColl" name="collegeId" required="required">
                         <!-- <option value="1">信息工程学院</option>
                         <option value="2">测绘与空间信息工程学院</option> -->
                     </select>
                     <label for="majAdmin">专业负责人:</label>
                     <!-- <input type="text" id="majAdmin" name="majAdmin" placeholder="请输入专业负责人"> -->
-                    <select id="majAdmin" name="majorHeadId">
+                    <select id="majAdmin" name="majorHeadId" required="required">
                         <!-- <option value="1">张三</option>
                         <option value="2">李四</option> -->
                     </select>
                     <label for="majRemark">备注:</label>
                     <input type="text" id="majRemark" name="majRemark" placeholder="请输入备注">
                     <label for="creditLimit">学分上限:</label>
-                    <input type="number" id="creditLimit" name="majorCreditLimit" placeholder="请输入学分上限">
+                    <input type="number" id="creditLimit" name="majorCreditLimit" placeholder="请输入学分上限"
+                        required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out4"></iframe>
                 </form>
@@ -491,11 +494,12 @@
             <div id="editCollInfo" style="display: none;">
                 <form id="UpCollInfo" action="https://api.seekerer.com/api/admin/updateCollegeInfo" target="out6">
                     <label for="UpcollID">学院编号:</label>
-                    <input type="text" id="UpcollID" name="college_id" placeholder="请输入学院编号" style="display:none;">
+                    <input type="text" id="UpcollID" name="college_id" placeholder="请输入学院编号" style="display:none;"
+                        required="required">
                     <label for="UpcollName">学院名称:</label>
-                    <input type="text" id="UpcollName" name="college_name" placeholder="请输入学院名称">
+                    <input type="text" id="UpcollName" name="college_name" placeholder="请输入学院名称" required="required">
                     <label for="UpcollAdmin">学院负责人:</label>
-                    <select id="UpcollAdmin" name="head_id">
+                    <select id="UpcollAdmin" name="head_id" required="required">
                         <!-- <option value="1">张三</option>
                         <option value="2">李四</option> -->
                     </select>
@@ -510,23 +514,25 @@
                 <form id="UpMajInfo" action="https://api.seekerer.com/api/admin/updateMajorInfo" method="post"
                     target="Out45">
                     <label for="UpmajID">专业编号:</label>
-                    <input type="text" style="display: none;" id="UpmajID" name="major_id" placeholder="请输入专业编号">
+                    <input type="text" style="display: none;" id="UpmajID" name="major_id" placeholder="请输入专业编号"
+                        required="required">
                     <label for="UpmajName">专业名称:</label>
-                    <input type="text" id="UpmajName" name="major_name" placeholder="请输入专业名称">
+                    <input type="text" id="UpmajName" name="major_name" placeholder="请输入专业名称" required="required">
                     <label for="UpmajColl">所属学院:</label>
-                    <select id="UpmajColl" disabled="true" name="UpmajColl">
+                    <select id="UpmajColl" disabled="true" name="UpmajColl" required="required">
                         <!-- <option value="1">信息工程学院</option>
                         <option value="2">测绘与空间信息工程学院</option> -->
                     </select>
                     <label for="UpmajAdmin">专业负责人:</label>
-                    <select id="UpmajAdmin" name="head_id">
+                    <select id="UpmajAdmin" name="head_id" required="required">
                         <!-- <option value="1">张三</option>
                         <option value="2">李四</option> -->
                     </select>
                     <label for="UpmajRemark">备注:</label>
                     <input type="text" id="UpmajRemark" name="remarks" placeholder="请输入备注">
                     <label for="UpcreditLimit">学分上限:</label>
-                    <input type="number" id="UpcreditLimit" name="credit_limit" placeholder="请输入学分上限">
+                    <input type="number" id="UpcreditLimit" name="credit_limit" placeholder="请输入学分上限"
+                        required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out45"></iframe>
                 </form>
@@ -534,9 +540,11 @@
             <div id="addCourseCategory" style="display: none;">
                 <form action="https://api.seekerer.com/api/admin/addCategory" method="post" target="Out46">
                     <label for="courseCategoryID">课程类别编号:</label>
-                    <input type="number" id="courseCategoryID" name="category_id" placeholder="请输入课程类别编号">
+                    <input type="number" id="courseCategoryID" name="category_id" placeholder="请输入课程类别编号"
+                        required="required">
                     <label for="courseCategoryName">课程类别名称:</label>
-                    <input type="text" id="courseCategoryName" name="category_name" placeholder="请输入课程类别名称">
+                    <input type="text" id="courseCategoryName" name="category_name" placeholder="请输入课程类别名称"
+                        required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out46"></iframe>
                 </form>
@@ -547,9 +555,10 @@
                     target="Out47">
                     <label for="UpcourseCategoryID">课程类别编号:</label>
                     <input type="number" id="UpcourseCategoryID" name="category_id" placeholder="请输入课程类别编号"
-                        style="display:none;">
+                        style="display:none;" required="required">
                     <label for="UpcourseCategoryName">课程类别名称:</label>
-                    <input type="text" id="UpcourseCategoryName" name="category_name" placeholder="请输入课程类别名称">
+                    <input type="text" id="UpcourseCategoryName" name="category_name" placeholder="请输入课程类别名称"
+                        required="required">
                     <input type="submit" value="提交">
                     <iframe name="Out47"></iframe>
                 </form>

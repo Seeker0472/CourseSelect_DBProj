@@ -59,7 +59,7 @@ public interface adminAdd {
     @Update("update course_categories set category_name=#{category_name} where category_id=#{category_id}")
     public void updateCategoryInfo(Integer category_id,String category_name);
 
-    @Delete("delete from students where account_id = #{account_id}")
+    @Delete("delete from identities where account_id = #{account_id} and identity = 1")
     public void deleteStudent(String account_id);
 
     @Delete("call delete_college(#{college_id,jdbcType=CHAR,mode=IN},#{result,jdbcType=INTEGER,mode=OUT})")

@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const account = urlObj.searchParams.get('account');
         const identitySwitchContent = document.getElementById("identityDrop");
         const name = document.getElementById("userName");
-        popDiv();
+        //popDiv();
         let account_id = 'Adm';
         fetchWithAuth("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
             method: 'GET'
@@ -911,7 +911,14 @@ function phasePageParam2() {
 
 //加载页面是执行的函数
 function loadPage1() {
-
+    {
+        var script = document.createElement('script');
+        script.type = 'text/javaScript';
+        script.src = '../admLoadCharts.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    if (typeof myChart != "undefined")
+        myChart.resize();
 }
 function loadPage2() {
     phasePageParam2();
@@ -934,6 +941,6 @@ function loadPage5() {
 }
 //第一次加载
 function firstload() {
-    popDiv();
+    //popDiv();
 
 }
