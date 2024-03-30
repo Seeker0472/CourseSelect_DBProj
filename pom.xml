@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.seekerer</groupId>
     <artifactId>CourseSelect</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0-Release</version>
     <name>CourseSelect</name>
     <description>CourseSelect</description>
     <properties>

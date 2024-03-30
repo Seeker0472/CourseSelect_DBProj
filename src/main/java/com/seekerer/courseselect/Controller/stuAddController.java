@@ -17,9 +17,12 @@ public class stuAddController {
     public Object selectCourse(@RequestHeader("account")String student_id,@RequestBody Map<String,Object> body)
     {
         if(body.get("deliverId")==null)
-            return Result.error();
-
-        return Result.success(stuAdd.selectCourse(student_id,(Integer) body.get("deliverId")));
+            return Result.error("请选择课程");
+        Map<String,Object> result=stuAdd.selectCourse(student_id,(Integer) body.get("deliverId"));
+        if(!result.get("msg").equals("选课成功"))
+            return Result.error(result.get("msg").toString());
+        else
+            return Result.success();
     }
     @RequestMapping("/api/stu/cancelCourse")
     public Object cancelCourse(@RequestHeader("account")String student_id, @RequestBody Map<String,Object> body)

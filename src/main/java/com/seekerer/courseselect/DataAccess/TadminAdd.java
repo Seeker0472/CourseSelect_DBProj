@@ -11,8 +11,8 @@ public interface TadminAdd {
     public void addCourse(String course_id, String course_name, int credits, String category_id, String major_id, boolean is_mandatory,String Intro);
 
     //TODO:不能重复,最好做成一个存储过程什么的
-    @Insert("insert into course_deliver (course_id, teacher_id, start_week, end_week, start_time, end_time, location, class_hours, term_id, max_enrollment, course_status) VALUES (#{course_id}, #{teacher_id}, #{start_week}, #{end_week}, #{start_time}, #{end_time}, #{location}, #{class_hours}, #{term_id}, #{max_enrollment}, #{course_status})")
-    public void addCourseDeliver(String course_id, String teacher_id, int start_week, int end_week, int start_time, int end_time, String location, int class_hours, int term_id, int max_enrollment, String course_status);
+    @Insert("insert into course_deliver (course_id, teacher_id, start_week, end_week, start_time, end_time, location, class_hours, term_id, max_enrollment, course_status,course_day) VALUES (#{course_id}, #{teacher_id}, #{start_week}, #{end_week}, #{start_time}, #{end_time}, #{location}, #{class_hours}, #{term_id}, #{max_enrollment}, #{course_status},#{course_day})")
+    public void addCourseDeliver(String course_id, String teacher_id, int start_week, int end_week, int start_time, int end_time, String location, int class_hours, int term_id, int max_enrollment, String course_status,int course_day);
 
     @Delete("delete from course_scores where deliver_id=#{deliver_id} and student_id=#{student_id}")
     public void cancelCourse(String student_id,Integer deliver_id);

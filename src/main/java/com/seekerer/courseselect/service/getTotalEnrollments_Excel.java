@@ -30,7 +30,6 @@ public class getTotalEnrollments_Excel {
         headerRow.createCell(2).setCellValue("性别");
         headerRow.createCell(3).setCellValue("专业");
         headerRow.createCell(4).setCellValue("电话号码");
-        // ...其他表头...
 
         int rowNum = 1;
         for (Course_select_info entity : entities) {
@@ -40,7 +39,6 @@ public class getTotalEnrollments_Excel {
             row.createCell(2).setCellValue(entity.getGender());
             row.createCell(3).setCellValue(entity.getMajor_name());
             row.createCell(4).setCellValue(entity.getPhone());
-            // ...其他单元格...
         }
 
         // 自动调整列宽

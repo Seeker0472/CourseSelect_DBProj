@@ -150,7 +150,7 @@ function initializeCourseSelectPage() {
                                 .then(response => { return response.json(); })
                                 .then(response => {
                                     if (response.code != 200) {
-                                        alert("选课失败");
+                                        alert("选课失败:"+response.msg);
                                     } else {
                                         //如果请求成功
 

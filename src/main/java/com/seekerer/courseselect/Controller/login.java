@@ -27,9 +27,6 @@ public class login {
         params.put("id", username);
         params.put("password", password);
 
-        Integer result = 0;
-        String account_id_out = "";
-        Integer identity_out = 0;
         loginAndRegister.Login(params);
         String jwt=jwtsConfig.genJwt(username);
         if(params.get("result") != (Object)1){

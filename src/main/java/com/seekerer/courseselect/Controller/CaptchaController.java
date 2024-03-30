@@ -1,6 +1,5 @@
 package com.seekerer.courseselect.Controller;
 import com.google.code.kaptcha.Producer;
-import com.seekerer.courseselect.Classes.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,12 +15,10 @@ import java.io.IOException;
 @CrossOrigin
 @RestController
 public class CaptchaController {
-
     @Autowired
     private Producer kaptchaProducer;
     @Autowired
     private com.seekerer.courseselect.DataAccess.LoginAndRegister loginAndRegister;
-
     @GetMapping(value = "/captcha", produces = MediaType.IMAGE_JPEG_VALUE)
     public StreamingResponseBody getCaptcha(@RequestParam(required = true)String uuid) {//此接口必须传入uuid
         String text = kaptchaProducer.createText();
@@ -40,11 +37,5 @@ public class CaptchaController {
             }
         };
     }
-//    @GetMapping
-//    public Result Login(String username, String password){
-//        System.out.println(username+":"+password);
-//        //return new RedirectView("?error=true");
-//        //return new RedirectView("/home/home.html");
-//        return Result.success();
-//    }
+
 }
