@@ -1,0 +1,21 @@
+# build phase
+FROM maven:3.9.9-amazoncorretto-17-debian-bookworm AS build
+COPY settings.xml /root/.m2/settings.xml
+
+WORKDIR /app
+# copy pom.xml && src
+COPY pom.xml .
+COPY src ./src
+# maven package
+RUN mvn clean package
+
+# stage2- run!
+FROM openjdk:24-ea-17-oraclelinux9
+WORKDIR /app
+# copy build result
+COPY --from=build /app/target/CourseSelect-0.1.0-Release.jar app.jar
+# expose port
+EXPOSE 80 443
+# start app
+ENTRYPOINT ["java", "-jar", "app.jar"]
+

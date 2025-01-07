@@ -1,3 +1,5 @@
+create database courseSelect;
+use courseSelect;
 -- MySQL dump 10.13  Distrib 8.0.35, for Win64 (x86_64)
 --
 -- Host: 59.110.55.140    Database: courseSelect

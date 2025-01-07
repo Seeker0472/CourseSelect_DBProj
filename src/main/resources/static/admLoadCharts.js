@@ -23,7 +23,7 @@ function loadScript(url) {
 
 // 使用 Promise.all
 Promise.all([
-    fetch('https://api.seekerer.com/api/admin/getTotalCreditsInfo').then(response => response.json()),
+    fetch('http://127.0.0.1/api/admin/getTotalCreditsInfo').then(response => response.json()),
     loadScript('../ecSimpleTransform.min.js')
 ]).then(function (results) {
     run(results[0]);

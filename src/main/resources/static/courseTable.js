@@ -28,7 +28,7 @@ var timeout;
 const Days = [document.getElementById("Day1"), document.getElementById("Day2"), document.getElementById("Day3"), document.getElementById("Day4"), document.getElementById("Day5"), document.getElementById("Day6"), document.getElementById("Day7")];
 
 function DrawClassTable() {
-    fetchWithAuth('https://api.seekerer.com/api/stu/GetAllSelectedClass?term_id=' + term_id, {
+    fetchWithAuth('http://127.0.0.1/api/stu/GetAllSelectedClass?term_id=' + term_id, {
         method: 'GET',
     })
         .then(response => {

@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.getElementById("userName");
         //popDiv();
         let account_id = 'Adm';
-        fetchWithAuth("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
+        fetchWithAuth("http://127.0.0.1/api/admin/getIdentity?accountId=" + account, {
             method: 'GET'
         }).then(response => { return response.json(); })
             .then(response => {
@@ -151,7 +151,7 @@ function initializeClassBody() {
     while (ClassBody.hasChildNodes()) {
         ClassBody.removeChild(ClassBody.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCoursedeliver", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllCoursedeliver", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -228,11 +228,11 @@ function initializeClassBody() {
 }
 
 function getExcel(course_id) {
-    window.location.href = "https://api.seekerer.com/api/acaAdmin/getTotalEnrollments?deliver_id=" + course_id;
+    window.location.href = "http://127.0.0.1/api/acaAdmin/getTotalEnrollments?deliver_id=" + course_id;
 }
 
 function deleteCourseDeliver(deliver_id) {
-    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteCourseDeliver?deliver_id=" + deliver_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaadmin/deleteCourseDeliver?deliver_id=" + deliver_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -246,7 +246,7 @@ function deleteCourseDeliver(deliver_id) {
 
 function initUpdateCourse_DeliverInfo(deliver_id) {
     const upform = document.getElementById("UpCourseDeliver_info");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getSepCourseDeliverInfo?deliver_id=" + deliver_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getSepCourseDeliverInfo?deliver_id=" + deliver_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -267,7 +267,7 @@ function initUpdateCourse_DeliverInfo(deliver_id) {
                 teacher_id: response.data.teacher_id,
             }
         }).then(data => {
-            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllTerms", {
+            fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllTerms", {
                 method: 'GET'
             }).then(response => { return response.json(); })
                 .then(response => {
@@ -284,7 +284,7 @@ function initUpdateCourse_DeliverInfo(deliver_id) {
                         upform.Upterm_id.appendChild(option);
                     });
                 });
-            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getteachers", {
+            fetchWithAuth("http://127.0.0.1/api/acaAdmin/getteachers", {
                 method: 'GET'
             }).then(response => { return response.json(); })
                 .then(response => {
@@ -312,7 +312,7 @@ function initializeSelectedClassBody(deliver_id) {
     while (SelectedClassBody.hasChildNodes()) {
         SelectedClassBody.removeChild(SelectedClassBody.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getCourseSelectedStu?deliver_id=" + deliver_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getCourseSelectedStu?deliver_id=" + deliver_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -347,7 +347,7 @@ function initializeSelectedClassBody(deliver_id) {
 //初始化课程表格
 function initCourseTable() {
     const courseTable = document.getElementById("CoursesTable");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCourses", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllCourses", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -401,7 +401,7 @@ function initCourseTable() {
 }
 
 function deleteCourse(course_id) {
-    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteCourse?course_id=" + course_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaadmin/deleteCourse?course_id=" + course_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -465,7 +465,7 @@ function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllStuInfo", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllStuInfo", {
         method: 'POST'
     }).then(response => { return response.json(); })
         .then(responces => {
@@ -512,7 +512,7 @@ function initializeStuTable() {
 function initselectedTable(stuId) {
     let defaultTermId = 0;
     const term = document.getElementById("stu_terms");
-    fetchWithAuth("https://api.seekerer.com/api/all/getTerms", {
+    fetchWithAuth("http://127.0.0.1/api/all/getTerms", {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -538,7 +538,7 @@ function initselectedTable(stuId) {
 
 function getStuCourse(stuId, term_id) {
     const stuInfoBody = document.getElementById("stuInfoBody");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getStuCourseSimp?student_id=" + stuId + "&term_id=" + term_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getStuCourseSimp?student_id=" + stuId + "&term_id=" + term_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -573,7 +573,7 @@ function getStuCourse(stuId, term_id) {
 }
 
 function cancelCourse(deliver_id, stu_id) {
-    fetchWithAuth("https://api.seekerer.com/api/acaadmin/cancelCourse?deliver_id=" + deliver_id + "&student_id=" + stu_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaadmin/cancelCourse?deliver_id=" + deliver_id + "&student_id=" + stu_id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -656,7 +656,7 @@ function popDiv(page) {
 //获取课程信息,用来初始化修改课程信息页面
 function initUpdateCourseInfo(course_id) {
     const upform = document.getElementById("UpCourse_info");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getSepCourseInfo?course_id=" + course_id, {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getSepCourseInfo?course_id=" + course_id, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -677,7 +677,7 @@ function initUpdateCourseInfo(course_id) {
                 category_id: response.data.category_id
             }
         }).then(data => {
-            fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCategories", {
+            fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllCategories", {
                 method: 'GET'
             })
                 .then(response => { return response.json(); })
@@ -704,7 +704,7 @@ function getCourseProfessorAndTerm() {
     const course_id = document.getElementById("course_id");
     const professor_id = document.getElementById("professor_id");
 
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCourses", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllCourses", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -721,7 +721,7 @@ function getCourseProfessorAndTerm() {
 
         });
 
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getteachers", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getteachers", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -736,7 +736,7 @@ function getCourseProfessorAndTerm() {
             });
         });
 
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllTerms", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllTerms", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -758,7 +758,7 @@ function getCollegeNow() {
     const url = new URL(window.location.href);
     const college_id = url.searchParams.get('college_id');
     const major_id = document.getElementById("major_id");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getMajors", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getMajors", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -777,7 +777,7 @@ function getCollegeNow() {
 
 function initCourseCategory() {
     const courseCategory = document.getElementById("category");
-    fetchWithAuth("https://api.seekerer.com/api/acaAdmin/getAllCategories", {
+    fetchWithAuth("http://127.0.0.1/api/acaAdmin/getAllCategories", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {

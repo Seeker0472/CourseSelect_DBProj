@@ -19,7 +19,7 @@ function loadScript(url) {
 
 
 function generateURL() {
-    var url = 'https://api.seekerer.com/api/acaAdmin/getTotalCreditsInfo?college_id=';
+    var url = 'http://127.0.0.1/api/acaAdmin/getTotalCreditsInfo?college_id=';
     // Use the global URL class directly without declaring it as a constant.
     const currentURL = new URL(window.location.href);
     const college_id = currentURL.searchParams.get('college_id');

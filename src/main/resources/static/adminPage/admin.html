@@ -218,7 +218,7 @@
         <div id="popMain">
             <div id="addCourse">
                 <!-- 在这里补上添加课程信息的表单 -->
-                <form action="https://api.seekerer.com/api/acaadmin/addCourse" method="post" target="Out">
+                <form action="http://127.0.0.1/api/acaadmin/addCourse" method="post" target="Out">
                     <label for="classID">课程代码:</label>
                     <input type="number" id="classID" name="course_id" placeholder="请输入要搜索的课程代码">
                     <label for="courseName">课程名称:</label>
@@ -269,7 +269,7 @@
             </div>
             <div id="editInfo">
                 <!-- 在这里补上修改课程信息的表单 -->
-                <form id="UpCourse_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseInfo" method="post"
+                <form id="UpCourse_info" action="http://127.0.0.1/api/acaadmin/UpdateCourseInfo" method="post"
                     target="Out123">
                     <input type="text" style="display: none" id="UpCourse_id" name="course_id">
                     <label for="UpCourse_name">课程名称:</label>
@@ -315,7 +315,7 @@
             </div>
             <div id="offerCourse">
                 在这里补上开设课程的表单,还没搞完!
-                <form action="https://api.seekerer.com/api/acaadmin/addCourseDeliver" method="post" target="Out1">
+                <form action="http://127.0.0.1/api/acaadmin/addCourseDeliver" method="post" target="Out1">
                     <label for="course_id">课程:</label>
                     <select id="course_id" name="course_id">
                         <!-- <option value="all">全部</option>
@@ -438,7 +438,7 @@
             </div>
             <div id="UpdateCourse_diliver_info">
                 <!-- 在这里修改开课信息 -->
-                <form id="UpCourseDeliver_info" action="https://api.seekerer.com/api/acaadmin/UpdateCourseDeliver"
+                <form id="UpCourseDeliver_info" action="http://127.0.0.1/api/acaadmin/UpdateCourseDeliver"
                     target="Out1232">
                     <input type="text" style="display: none;" id="UpCourse_diliver_id" name="deliver_id">
                     <label for="Upteacher_id">教师:</label>

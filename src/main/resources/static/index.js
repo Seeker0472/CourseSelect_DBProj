@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(event.target);
         formData.append("uuid", uuid)
-        fetch("https://api.seekerer.com/login", {
+        fetch("http://127.0.0.1/login", {
             method: 'POST',
             body: formData
         }).then(response => { return response.json(); })
@@ -67,7 +67,7 @@ function generateRandomUUID() {
 }
 function initverimg() {
     uuid = generateRandomUUID();
-    fetch('https://api.seekerer.com/captcha?uuid=' + uuid, {
+    fetch('http://127.0.0.1/captcha?uuid=' + uuid, {
         method: 'GET'
     })
         .then(response => {

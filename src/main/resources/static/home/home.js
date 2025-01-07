@@ -4,7 +4,7 @@ let advs
 
 let term_id;
 
-fetch("https://api.seekerer.com/api/all/getStat", {
+fetch("http://127.0.0.1/api/all/getStat", {
     method: 'GET',
 })
     .then(response => {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     const url = new URL(window.location.href);
     stuid = url.searchParams.get('account');
-    fetchWithAuth("https://api.seekerer.com/api/stu/GetAccountInfo?account_id=" + stuid, {
+    fetchWithAuth("http://127.0.0.1/api/stu/GetAccountInfo?account_id=" + stuid, {
         method: 'get',
     }).then(response => { return response.json(); })
         .then(response => {
@@ -78,7 +78,7 @@ function initializeCourseSelectPage() {
             ]
         }
     }*/
-    fetchWithAuth("https://api.seekerer.com/api/stu/getCourseSelectList", {
+    fetchWithAuth("http://127.0.0.1/api/stu/getCourseSelectList", {
         //这个地方需要大改!!!!!!!!!
 
         method: 'get',
@@ -140,7 +140,7 @@ function initializeCourseSelectPage() {
                     selectbutton.onclick = function () {
                         //这里记得补上交互逻辑
                         if (!course.isSelected) {
-                            fetchWithAuth("https://api.seekerer.com/api/stu/SelectCourse", {
+                            fetchWithAuth("http://127.0.0.1/api/stu/SelectCourse", {
                                 method: 'post',
                                 body:
                                     JSON.stringify({
@@ -168,7 +168,7 @@ function initializeCourseSelectPage() {
                                     console.error('选课请求出错:', error);
                                 })
                         } else {
-                            fetchWithAuth("https://api.seekerer.com/api/stu/cancelCourse", {
+                            fetchWithAuth("http://127.0.0.1/api/stu/cancelCourse", {
                                 method: 'post',
                                 body:
                                     JSON.stringify({
@@ -228,7 +228,7 @@ function flushSelectedNum() {
     const isOpen = document.getElementById("Link2Display");
     if (isOpen.style.display === "none")
         return;
-    fetchWithAuth("https://api.seekerer.com/api/stu/GetAllSelectedNum", {
+    fetchWithAuth("http://127.0.0.1/api/stu/GetAllSelectedNum", {
         method: 'get'
     })
         .then(response => { return response.json(); })
@@ -346,7 +346,7 @@ function loadPage3() {
 function loadPage4() {
     getTerms();
     if (!term_id)
-        fetch("https://api.seekerer.com/api/all/getStat", {
+        fetch("http://127.0.0.1/api/all/getStat", {
             method: 'GET',
         })
             .then(response => {
@@ -373,7 +373,7 @@ function firstload() {
 }
 
 function getTerms() {
-    fetchWithAuth('https://api.seekerer.com/api/all/getTerms', {
+    fetchWithAuth('http://127.0.0.1/api/all/getTerms', {
         method: 'GET',
     })
         .then(response => {
@@ -401,7 +401,7 @@ function getTerms() {
 
 function initCourseTable4(term) {
 
-    fetchWithAuth('https://api.seekerer.com/api/stu/GetAllSelectedClass?term_id=' + term, {
+    fetchWithAuth('http://127.0.0.1/api/stu/GetAllSelectedClass?term_id=' + term, {
         method: 'GET',
     })
         .then(response => {

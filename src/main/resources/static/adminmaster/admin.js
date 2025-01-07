@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const name = document.getElementById("userName");
         //popDiv();
         let account_id = 'Adm';
-        fetch("https://api.seekerer.com/api/admin/getIdentity?accountId=" + account, {
+        fetch("http://127.0.0.1/api/admin/getIdentity?accountId=" + account, {
             method: 'GET'
         }).then(response => { return response.json(); })
             .then(response => {
@@ -111,7 +111,7 @@ function clearAll() {
 
 function getAllStaffForCollege() {
     let college = document.getElementById("majColl").value;
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + college, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepStaff?ColId=" + college, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -139,7 +139,7 @@ function initializeStuTable() {
     while (stuTable.hasChildNodes()) {
         stuTable.removeChild(stuTable.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/admin/getAllStuInfo", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getAllStuInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -199,7 +199,7 @@ function initializeStuTable() {
 }
 
 function deleteStu(stuID) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/deleteStudent?account_id=" + stuID, {
+    fetchWithAuth("http://127.0.0.1/api/admin/deleteStudent?account_id=" + stuID, {
     }).then(response => { return response.json(); })
         .then(response => {
             if (response.code === 200) {
@@ -215,7 +215,7 @@ function deleteStu(stuID) {
 //初始化单个学生详情
 function updateStuInfo(stuId) {
     const UpstuInfo = document.getElementById("UpstuInfo");
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStuInfo?studentId=" + stuId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepStuInfo?studentId=" + stuId, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -236,7 +236,7 @@ function updateStuInfo(stuId) {
             };
 
         }).then(Info => {
-            fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+            fetchWithAuth('http://127.0.0.1/api/admin/getCollegeList', {
                 method: 'GET'
             })
                 .then(response => { return response.json(); })
@@ -268,7 +268,7 @@ function updateStuInfo(stuId) {
 }
 //初始化单个学生详情的专业部分
 function getSepCol(college_id, major_id) {
-    fetchWithAuth('https://api.seekerer.com/api/admin/getSepMajorList?ColId=' + college_id, {
+    fetchWithAuth('http://127.0.0.1/api/admin/getSepMajorList?ColId=' + college_id, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -297,7 +297,7 @@ function initializeStaTable() {
     while (staTable.hasChildNodes()) {
         staTable.removeChild(staTable.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/admin/getStaffInfo", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getStaffInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -362,7 +362,7 @@ function initializeStaTable() {
 }
 
 function delstaff(id) {
-    fetchWithAuth("https://api.seekerer.com/api/acaadmin/deleteStaff?id=" + id, {
+    fetchWithAuth("http://127.0.0.1/api/acaadmin/deleteStaff?id=" + id, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -379,7 +379,7 @@ function delstaff(id) {
 
 function initUpStaffInfo(account_id) {
     const UpStaffInfo = document.getElementById("UpStaffInfo");
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaffInfo?accountId=" + account_id, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepStaffInfo?accountId=" + account_id, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -404,7 +404,7 @@ function initializetsaTable() {
     while (tsaTable.hasChildNodes()) {
         tsaTable.removeChild(tsaTable.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/admin/getAcaAdminInfo", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getAcaAdminInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -450,7 +450,7 @@ function initializetsaTable() {
 }
 
 function unBindTSA(userid, collegeid) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/unbindTAdmin?account_id=" + userid + "&college_id=" + collegeid, {
+    fetchWithAuth("http://127.0.0.1/api/admin/unbindTAdmin?account_id=" + userid + "&college_id=" + collegeid, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -471,7 +471,7 @@ function initializeTeaTable() {
     while (teaTable.hasChildNodes()) {
         teaTable.removeChild(teaTable.firstChild);
     }
-    fetchWithAuth("https://api.seekerer.com/api/admin/getTeacherInfo", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getTeacherInfo", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -513,7 +513,7 @@ function initializeTeaTable() {
 }
 
 function unbindTeacher(userid, collegeid) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/unbindTeacher?account_id=" + userid + "&college_id=" + collegeid, {
+    fetchWithAuth("http://127.0.0.1/api/admin/unbindTeacher?account_id=" + userid + "&college_id=" + collegeid, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -632,7 +632,7 @@ function popDiv(page, title) {
 }
 //添加专业,初始化学院列表
 function initAddMajor() {
-    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('http://127.0.0.1/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -656,7 +656,7 @@ function initAddMajor() {
 }
 //添加添加学院,初始化职工列表
 function initaddCol() {
-    fetchWithAuth("https://api.seekerer.com/api/admin/getEmptyStaff", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getEmptyStaff", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -680,7 +680,7 @@ function initaddCol() {
 
 //添加学生,初始化学院列表
 function initaddStu() {
-    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('http://127.0.0.1/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -714,7 +714,7 @@ function initaddMaj() {
     if (college === "") {
         return;
     }
-    fetchWithAuth('https://api.seekerer.com/api/admin/getSepMajorList?ColId=' + college, {
+    fetchWithAuth('http://127.0.0.1/api/admin/getSepMajorList?ColId=' + college, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -741,7 +741,7 @@ function initaddMaj() {
 
 //初始化绑定省份页面,初始化学院列表
 function initbindIdenColl() {
-    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('http://127.0.0.1/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -870,7 +870,7 @@ function initcourseMangeTasble() {
     }
 
 
-    fetchWithAuth("https://api.seekerer.com/api/admin/getAllCourseCategories", {
+    fetchWithAuth("http://127.0.0.1/api/admin/getAllCourseCategories", {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -971,7 +971,7 @@ function initCollManTable() {
         collManTable.removeChild(collManTable.firstChild);
     }
 
-    fetchWithAuth('https://api.seekerer.com/api/admin/getCollegeList', {
+    fetchWithAuth('http://127.0.0.1/api/admin/getCollegeList', {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -1030,7 +1030,7 @@ function initCollManTable() {
 }
 
 function delCollege(CollId) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/deleteCollege?college_id=" + CollId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/deleteCollege?college_id=" + CollId, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -1047,7 +1047,7 @@ function delCollege(CollId) {
 
 //初始化修改学院详情
 function initeditCollTable(collId) {
-    fetchWithAuth('https://api.seekerer.com/api/admin/getSepCollegeInfo?collegeId=' + collId, {
+    fetchWithAuth('http://127.0.0.1/api/admin/getSepCollegeInfo?collegeId=' + collId, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -1069,7 +1069,7 @@ function initeditCollTable(collId) {
 }
 
 function initUpCollHeadSelect(headId, collId) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + collId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepStaff?ColId=" + collId, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -1099,7 +1099,7 @@ function initMajorManTable() {
         majorManTable.removeChild(majorManTable.firstChild);
 
     }
-    fetchWithAuth('https://api.seekerer.com/api/admin/getMajorList', {
+    fetchWithAuth('http://127.0.0.1/api/admin/getMajorList', {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -1157,7 +1157,7 @@ function initMajorManTable() {
 }
 
 function delMajor(majorId) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/deleteMajor?major_id=" + majorId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/deleteMajor?major_id=" + majorId, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
@@ -1175,7 +1175,7 @@ function delMajor(majorId) {
 
 //初始化修改专业详情
 function initUpMajorInfo(majorId) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepMajorInfo?major_id=" + majorId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepMajorInfo?major_id=" + majorId, {
         method: 'GET'
     }).then(response => { return response.json(); })
         .then(response => {
@@ -1207,7 +1207,7 @@ function initUpMajorInfo(majorId) {
 }
 
 function initUpMajorHeadSelect(headId, collId) {
-    fetchWithAuth("https://api.seekerer.com/api/admin/getSepStaff?ColId=" + collId, {
+    fetchWithAuth("http://127.0.0.1/api/admin/getSepStaff?ColId=" + collId, {
         method: 'GET'
     })
         .then(response => { return response.json(); })
