@@ -5,7 +5,7 @@
 ## Update:How to run
 
 - (optional) prepare an linux environment
-- pull this program & enter the directory via `git clone https://github.com/Seeker0472/CourseSelect_DBProj.git && cd CourseSelect_DBProj`
+- clone this repo & enter the directory via `git clone https://github.com/Seeker0472/CourseSelect_DBProj.git && cd CourseSelect_DBProj`
 - install `docker` && `docker-compose`
 - run `docker-compose up -d` and the project will build & run 
 - visit localhost:80 with admin account `Adm` && password `admin`
